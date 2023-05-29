@@ -1,0 +1,1124 @@
+%========================{ PACKAGES }=========================
+
+\documentclass[11pt]{article}
+% Article type and font.
+\usepackage[margin=1in,bottom=1in,top=1in]{geometry}
+% Formatting of pages in doc.
+\usepackage{setspace}
+% Custom control for line spacing in doc.
+\usepackage{fancyhdr}
+% Fancy Header Pkg.
+\usepackage{amsmath}
+% American Mathematical Society Math Pkg.
+\usepackage{amssymb}
+% American Mathematical Society Symbols Pkg.
+\usepackage{fdsymbol}
+% Many addtnl. mathematical operators.
+\usepackage{marvosym}
+% Many addtnl. useful symbols, such as for footnotes
+\usepackage[dvipsnames]{xcolor}
+\definecolor{Lred}{RGB}{255, 102, 102}
+\definecolor{bloodorange}{RGB}{255, 83, 0}
+\definecolor{Lbloodorange}{RGB}{255, 152, 102}
+\definecolor{Lorange}{RGB}{255, 201, 102}
+\definecolor{shininggold}{RGB}{255, 210, 0}
+\definecolor{Lshininggold}{RGB}{255, 228, 102}
+\definecolor{Lyellow}{RGB}{255, 255, 179}
+\definecolor{leafgreen}{RGB}{128, 192, 0}
+\definecolor{Lleafgreen}{RGB}{179, 217, 102}
+\definecolor{hulkgreen}{RGB}{0, 128, 0}
+\definecolor{Lhulkgreen}{RGB}{102, 179, 102}
+\definecolor{oceanblue}{RGB}{0, 64, 128}
+\definecolor{Loceanblue}{RGB}{102, 140, 179}
+\definecolor{Lblue}{RGB}{102, 102, 255}
+\definecolor{darkblue}{RGB}{38, 0, 193}
+\definecolor{Ldarkblue}{RGB}{125, 102, 218}
+\definecolor{indigo}{RGB}{75, 0, 130}
+\definecolor{Lindigo}{RGB}{147, 102, 180}
+\definecolor{codeblack}{RGB}{40, 36, 44}
+\definecolor{codeborder}{RGB}{119,136,153}
+\definecolor{macosred}{RGB}{255, 92, 84}
+\definecolor{macosyellow}{RGB}{252,188,44}
+\definecolor{macosgreen}{RGB}{36, 204, 67}
+\definecolor{macosgrey}{RGB}{72, 68, 68}
+\definecolor{macosblack}{RGB}{28, 28, 28}
+% more colors & some custom ones (L = light)
+\usepackage{tikz}
+% Manually draw math pictures using code
+\usepackage{multicol}
+% Split page into multiple columns
+\usetikzlibrary{positioning}
+% Useful for manually-creating graphs (e.g. lattices).
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+% Upload images directly into doc, size them, etc.
+% Uploaded images are pulled from ./images/ folder in sidebar.
+\usepackage[font=small,labelfont=bf]{caption}
+% Create custom captions for images, graphs, etc.
+\usepackage{color}
+\definecolor{lightgray}{gray}{0.75}
+% Color package with custom color for command snippets below.
+\usepackage{multirow}
+\setlength{\columnseprule}{1pt}
+\setlength{\columnsep}{20pt}
+\def\columnseprulecolor{\color{black}}
+% For tables
+\usepackage[]{mdframed}
+% Creates box around text: useful for code/solutions.
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+% Hyperlinks; second one makes their clickable boxes invisible
+\usepackage{booktabs}
+% For style lines dividing matrix elements inside.
+\usepackage{textcomp}
+% For straight, single quotes.
+\usepackage{yfonts}
+% adds fonts like gothic
+% 11-color rainbow palette
+\usepackage{longfbox}
+\makeatletter
+\newdimen\@tempdimd
+\makeatother
+\usepackage[many]{tcolorbox}
+% for rounded boxes around text
+% highlighting text (colorful)
+\tcbuselibrary{skins, xparse, listings}
+% for something to do with the realisitc command shell
+\usepackage{pgfornament}
+% for decorative symbols and such
+
+%====================={ CUSTOM COMMANDS }===================== 
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+% Modular Arithmetic spacing + parenthesis
+\NewDocumentCommand{\Customarrow}{}{\hspace{0.2cm}\rightarrow\hspace{0.2cm}}
+% Large custom "implies" arrow
+\NewDocumentCommand{\customarrow}{}{\hspace{0.1cm}\rightarrow\hspace{0.1cm}}
+% Small custom "implies" arrow
+\NewDocumentCommand{\newproblem}{mm}
+{\begin{center}
+    \section*{\underline{Problem #1:{}{#2}}}
+\end{center}}
+% New Problem: formatting, bolding, spacing, etc.
+\NewDocumentCommand{\problempart}{mm}{\noindent\textbf{(#1){ } #2}}
+% Part x of Problem y
+
+\def\barroman#1{\sbox0{#1}\dimen0=\dimexpr\wd0+1pt\relax
+  \makebox[\dimen0]{\rlap{\vrule width\dimen0 height 0.09ex depth 0.06ex}%
+    \rlap{\vrule width\dimen0 height\dimexpr\ht0+0.06ex\relax 
+            depth\dimexpr-\ht0+0.09ex\relax}%
+    \kern.5pt#1\kern.5pt}}
+% Roman Numerals: \barroman{letter(s)}
+
+\newtcolorbox{redbox}[1]{colback=red!5!white,
+colframe=red,fonttitle=\bfseries,
+title={#1}}
+% red text box
+
+\newtcolorbox{bloodorangebox}[1]{colback=bloodorange!5!white,
+colframe=bloodorange,fonttitle=\bfseries,
+title={#1}}
+% bloodorange text box
+
+\newtcolorbox{orangebox}[1]{colback=orange!5!white,
+colframe=orange,fonttitle=\bfseries,
+title={#1}}
+% orange text box
+
+\newtcolorbox{shininggoldbox}[1]{colback=shininggold!5!white,
+colframe=shininggold,fonttitle=\bfseries,
+title={#1}}
+% shininggold text box
+
+\newtcolorbox{yellowbox}[1]{colback=yellow!5!white,
+colframe=yellow,fonttitle=\bfseries,
+title={#1}}
+% yellow text box
+
+\newtcolorbox{leafgreenbox}[1]{colback=leafgreen!5!white,
+colframe=leafgreen,fonttitle=\bfseries,
+title={#1}}
+% leafgreen text box
+
+\newtcolorbox{hulkgreenbox}[1]{colback=hulkgreen!5!white,
+colframe=hulkgreen,fonttitle=\bfseries,
+title={#1}}
+% hulkgreen text box
+
+\newtcolorbox{oceanbluebox}[1]{colback=oceanblue!5!white,
+colframe=oceanblue,fonttitle=\bfseries,
+title={#1}}
+% oceanblue text box
+
+\newtcolorbox{bluebox}[1]{colback=blue!5!white,
+colframe=blue,fonttitle=\bfseries,
+title={#1}}
+% blue text box
+
+\newtcolorbox{darkbluebox}[1]{colback=darkblue!5!white,
+colframe=darkblue,fonttitle=\bfseries,
+title={#1}}
+% darkblue text box
+
+\newtcolorbox{indigobox}[1]{colback=indigo!5!white,
+colframe=indigo,fonttitle=\bfseries,
+title={#1}}
+% indigo text box
+
+\newtcolorbox{blackbox}[1]{colback=black!5!white,
+colframe=black,fonttitle=\bfseries,
+title={#1}}
+% black text box
+
+\newcommand\codebox[1]{
+    \noindent\hspace{-0.25em}\begin{tcolorbox}[on line, hbox, colback = codeblack, colframe = codeborder, coltext = white, boxrule = 1.5pt, left = 2pt, right = 2pt, top = 0.5pt, bottom = 0.5pt]
+    \small\texttt{#1}\normalsize
+    \end{tcolorbox}
+}
+% for typesetting console commands
+
+    \newtcblisting{ubuntu}{colback=macosblack, colupper=white, colframe=macosgrey, listing only,
+        listing options={style=tcblatex,language=sh,escapeinside=``,},
+        title={\vspace{0.25em}\hspace{-1em}\textcolor{macosred}{\Huge{$\bullet$}}\textcolor{macosyellow}{\Huge{$\bullet$}}\textcolor{macosgreen}{\Huge{$\bullet$}}},
+        every listing line={\MyUbuntuPrompt}}
+        \pgfkeys{/ubuntu/.cd,
+        user/.code={\gdef\MyUbuntuUser{#1}},user={},
+        host/.code={\gdef\MyUbuntuHost{#1}},host={},
+        color/.code={\gdef\MyUbuntuColor{#1}},color=white,
+        prompt char/.code={\gdef\MyUbuntuPromptChar{#1}},prompt char=\%,
+        root/.style={user=anthonymalysz,host=Air,color=white,prompt char=\%},
+        bob/.style={user=bob,host=remotehost,color=cyan},
+        }
+        
+    \newcommand{\SU}[1]{\pgfkeys{/ubuntu/.cd,#1}
+    \gdef\MyUbuntuPrompt{\textcolor{\MyUbuntuColor}{\small\ttfamily\bfseries \MyUbuntuUser@\MyUbuntuHost{}\hspace{0.2cm}\textcolor{white}{\url{~}}\hspace{0.2cm}{\textcolor{white}\MyUbuntuPromptChar}}}}
+    \newcommand{\StartConsole}{\gdef\MyUbuntuPrompt{}}
+
+    \SU{user=anthonymalysz,host=Air,color=white}
+
+    % `\SU{bob}`
+    % whoami`\StartConsole`
+    % bob`\SU{bob}`
+    % _
+% for drawing realistic command shell window; commented out part is for 2nd user 'Bob'
+
+%========================{ DOCUMENT }=========================
+
+\onehalfspacing
+\begin{document}
+
+\begin{blackbox}{\begin{center}\Large\textbf{Table of Contents:}\end{center}}
+\begin{center}\large\textit{In Progress...}\end{center}
+
+\large\textbf{\hyperlink{page.1}{Work Log}} ................................................................................................................ \hyperlink{page.1}{1}\\
+\large\textbf{\hyperlink{page.2}{Communications \& Ideas Pad}} ............................................................................. \hyperlink{page.2}{2}
+\end{blackbox}
+
+\begin{blackbox}{\begin{center}\Large\textbf{Work Log:}\end{center}}
+\hspace{-0.3cm}\small\textbf{\hyperlink{page.3}{WEEK [I.]}}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\hyperlink{page.3}{\fcolorbox{red}{white}{Mon 05/22}}\textbf{------}\hyperlink{page.3}{\fcolorbox{red}{white}{Tue 05/23}}\textbf{------}\hyperlink{page.5}{\fcolorbox{red}{white}{Wed 05/24}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Thrs 05/25}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Fri 05/26}} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{\hyperlink{page.8}{WEEK [II.]}}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.8}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\fcolorbox{bloodorange}{white}{Wed 05/31}\textbf{------}\fcolorbox{bloodorange}{white}{Thrs 06/01}\textbf{------}\fcolorbox{bloodorange}{white}{Fri 06/02} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [III.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{orange}{white}{Mon 06/05}\textbf{------}\fcolorbox{orange}{white}{Tue 06/06}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [VI.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{shininggold}{white}{Mon 06/12}\textbf{------}\fcolorbox{shininggold}{white}{Tue 06/13}\textbf{------}\fcolorbox{shininggold}{white}{Wed 06/14}\textbf{------}\fcolorbox{shininggold}{white}{Thrs 06/15}\textbf{------}\fcolorbox{shininggold}{white}{Fri 06/16} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [V.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{yellow}{white}{Mon 06/19}\textbf{------}\fcolorbox{yellow}{white}{Tue 06/20}\textbf{------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\fcolorbox{yellow}{white}{Thrs 06/22}\textbf{------}\fcolorbox{yellow}{white}{Fri 06/23} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [VI.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{leafgreen}{white}{Mon 06/26}\textbf{------}\fcolorbox{leafgreen}{white}{Tue 06/27}\textbf{------}\fcolorbox{leafgreen}{white}{Wed 06/28}\textbf{------}\fcolorbox{leafgreen}{white}{Thrs 06/29}\textbf{------}\fcolorbox{leafgreen}{white}{Fri 06/30} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [VII.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{hulkgreen}{white}{Mon 07/03}\textbf{------}\fbox{\hspace{0.22cm}Holiday\hspace{0.22cm}}\textbf{------}\fcolorbox{hulkgreen}{white}{Wed 07/05}\textbf{------}\fcolorbox{hulkgreen}{white}{Thrs 07/06}\textbf{------}\fcolorbox{hulkgreen}{white}{Fri 07/07} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [VIII.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{oceanblue}{white}{Mon 07/10}\textbf{------}\fcolorbox{oceanblue}{white}{Tue 07/11}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [IX.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{blue}{white}{Mon 07/17}\textbf{------}\fcolorbox{blue}{white}{Tue 07/18}\textbf{------}\fcolorbox{blue}{white}{Wed 07/19}\textbf{------}\fcolorbox{blue}{white}{Thrs 07/20}\textbf{------}\fcolorbox{blue}{white}{Fri 07/21} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [X.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{darkblue}{white}{Mon 07/24}\textbf{------}\fcolorbox{darkblue}{white}{Tue 07/25}\textbf{------}\fcolorbox{darkblue}{white}{Wed 07/26}\textbf{------}\fcolorbox{darkblue}{white}{Thrs 07/27}\textbf{------}\fcolorbox{darkblue}{white}{Fri 07/28} \\
+
+\vspace{-1em}
+\hspace{-0.3cm}\small\textbf{WEEK [XI.]}
+\vspace{0.25em}
+
+\normalsize\indent \vline\textbf{------------}\fcolorbox{indigo}{white}{Mon 07/31}\textbf{------}\fcolorbox{indigo}{white}{Tue 08/01}\textbf{------}\fcolorbox{indigo}{white}{Wed 08/02}\textbf{------}\fbox{\textbf{PRESENTATION}}
+\end{blackbox}
+\newpage
+
+%========================={ HEADER }==========================
+
+\pagestyle{fancy}
+\fancyhead[L]{\textbf{NIST SURF Program}}
+\fancyhead[C]{\hspace{-1.5cm} Malysz, Stein}
+\fancyhead[R]{\textbf{May 22nd - August 3rd, 2023}}
+
+%=========================={ BODY }===========================
+
+\begin{tcbraster}[%
+    raster columns=1,
+    raster rows=1,
+    code={%
+      \tcbheightfromgroup\topboxheight{topbox}%
+      \tcbheightfromgroup\bottomboxheight{bottombox}%
+    },
+    raster height=\textheight-\topboxheight-\bottomboxheight-4mm]{\begin{center}\Large\textbf{Communications \& Ideas Pad:}\end{center}}
+    \begin{tcolorbox}
+        \begin{itemize}
+            \item TYPE HERE what comes across the noggin...
+            \item ...
+            \item ...
+        \end{itemize}
+    \end{tcolorbox}
+\end{tcbraster}
+
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=red,
+background-color=Lred,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{I}.} \large(05/22 - 05/26)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=red, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{redbox}{Monday, May 22nd}
+\begin{itemize}
+    \item Attended welcome meeting via BlueJeans.
+    \item Sat in on a meeting of AJ's with people reporting their week's work in the NIST ITL.
+\end{itemize}
+\end{redbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{redbox}{Tuesday, May 23rd}
+\begin{itemize}
+    \item Had trouble with iTAC getting into my work laptop; installed VirtualBox with the goal of installing Ubuntu as the VM inside it. Decided using homebrew would be easier.
+    \item Installed multipass using \codebox{brew install multipass}.
+    \item Confirmed it worked by running \codebox{multipass version} and \codebox{multipass find}:
+    \begin{ubuntu}
+ multipass version`\StartConsole`
+multipass   1.10.1+mac 
+multipassd  1.10.1+mac 
+    
+########################################################################
+Multipass 1.11.1 bug fix release
+Fix Windows path, Virtualbox mount failure, Windows native mounts
+
+Go here for more information: 
+https://github.com/canonical/multipass/releases/tag/v1.11.1
+########################################################################`\SU{root}`
+\end{ubuntu}
+\end{itemize}
+\begin{center}
+\textbf{\large\bullet} \\
+\textbf{\large\bullet} \\
+\textbf{\large\bullet} \\
+\large\textbf{\textit{Continued}...} \\
+\textbf{\large\bullet} \\
+\textbf{\large\bullet} \\
+\textbf{\large\bullet} \\
+\end{center}
+\end{redbox}
+
+\begin{redbox}{Tuesday, May 23rd (cont. \#1/2)}
+\begin{ubuntu}
+ multipass find `\StartConsole` 
+Image                   Aliases      Version     Description
+18.04                   bionic       20230525    Ubuntu 18.04 LTS
+20.04                   focal        20230523    Ubuntu 20.04 LTS
+22.04                   jammy,lts    20230518    Ubuntu 22.04 LTS
+anbox-cloud-appliance                latest      Anbox Cloud Appliance
+charm-dev                            latest      A development and 
+                                                 testing environment 
+                                                 for charmers
+docker                               0.4         A Docker environment 
+                                                 with Portainer and 
+                                                 related tools
+jellyfin                             latest      Jellyfin is a Free 
+                                                 Software Media System 
+                                                 that puts you in 
+                                                 control of managing 
+                                                 and streaming your 
+                                                 media.
+minikube                             latest      minikube is local 
+                                                 Kubernetes
+ros-noetic                           0.1         A development and 
+                                                 testing environment 
+                                                 for ROS Noetic.
+ros2-humble                          0.1         A development and 
+                                                 testing environment 
+                                                 for ROS 2 Humble.`\SU{root}`
+    
+    \end{ubuntu}
+\begin{itemize}
+    \item Proceeded to follow \href{https://medium.com/@paulrobu/how-to-run-ubuntu-22-04-vms-on-apple-m1-arm-based-systems-for-free-c8283fb38309}{\textbf{this blog}} to figure out how to run Ubuntu 22.04 VMs on my Apple M1 ARM-based system for free, whose steps included:
+    \begin{enumerate}
+        \item\codebox{multipass launch 22.04 -n primary -c 2 -m 4G -d 16G}
+        \item\codebox{multipass shell}
+        \item\codebox{sudo passwd ubuntu}
+    \end{enumerate}
+    To access the newly-installed desktop, I discovered the IP address of the VM by running \codebox{ip a}within the Ubuntu shell. I then used the IP address, and to connect I downloaded Microsoft Remote Desktop from the AppStore. Not sure if it worked.
+    \begin{center}
+        \large\textbf{(\textit{Continued} ...)}
+    \end{center}
+\end{itemize}
+\end{redbox}
+\begin{redbox}{Tuesday, May 23rd (cont. \#2/2)}
+\begin{itemize}
+    \item Spent a bit more time figuring out how to run a web server on a multipass VM (on macOS with an M1 processor), mostly using StackOverflow and prompting ChatGPT (I think I was successful, as I was able to visit the IP address at the end in my browser):
+    \begin{enumerate}
+    \item\large\textbf{Installation: }\normalsize Install Multipass by visiting the Multipass website (https://multipass.run/) and downloading the appropriate version for macOS M1. Follow the provided instructions to complete the installation.
+    \item\large\textbf{Launching a Multipass VM: }\normalsize Launch a Multipass VM by opening a terminal window and running \codebox{multipass launch --name my-vm}. This will create a new virtual machine named \texttt{my-vm}. 
+    \item\large\textbf{Accessing the VM: }\normalsize To access the Multipass VM, run \codebox{multipass shell my-vm}. This will open a shell session inside the VM. 
+    \item\large\textbf{Installing and Configuring the Web Server: }\normalsize Install Apache inside the VM by running \codebox{sudo apt update} and \codebox{sudo apt install apache2}. Once the installation is complete, Apache should be running automatically. You can test it by opening a web browser on your Mac and navigating to \texttt{http://<VM-IP-address>}. Replace \texttt{<VM-IP-address>} with the IP address of your Multipass VM.
+    \item\large\textbf{Sharing Files with the VM: }\normalsize By default, the Multipass VM doesn't have direct access to your Mac's file system. You can use the Multipass file transfer feature to share files between your Mac and the VM. To transfer files from your Mac to the VM, use the following command: \codebox{multipass transfer /path/to/local/file my-vm:/path/to/destination/file}, (for me, the \texttt{/path/to/destination/file} was \texttt{/Users/anthonymalysz}). To transfer files from the VM to your Mac, use the following command: \codebox{multipass transfer my-vm:/path/to/vm/file /path/to/destination/file}. Replace the paths with the appropriate locations on your Mac and the VM. 
+    \end{enumerate}
+\end{itemize}
+\end{redbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{redbox}{Wednesday, May 24th}
+\begin{itemize}
+    \item Started the day by figuring out how to configure two HTTP servers, one on port 8080 and one on port 9090 by opening two shells and running \codebox{python3 -m http.server 8080} in one shell and \codebox{python3 -m http.server 9090} in the other; then, I installed \href{https://en.wikipedia.org/wiki/Iptables}{\textbf{iptables}} and configured the iptables such that access to the 9090 HTTP server was allowed, but access to the 8080 server was prohibited. These were the steps I took (ChatGPT, SO):
+\end{itemize}
+\end{redbox}
+
+\begin{redbox}{Wednesday, May 24th (cont. \#1/2)}
+\begin{itemize}
+    \begin{itemize}
+        \item Open up two terminal windows and run \codebox{python3 -m http.server 8080} and \codebox{python3 -m http.server 9090}, so that they're both up.
+        \item Create a new Apache configuration file for the first server on port 8080: \codebox{sudo nano /etc/apache2/other/first\_server.conf}. This command will create a new configuration file specifically for the first server.
+        \item Inside this file, I added the following configuration (then I saved the changes by pressing Ctrl + X, then Y, then Enter) and exited the editor:
+        \end{itemize}
+        \begin{ubuntu}
+ sudo nano /etc/apache2/other/first_server.conf `\StartConsole`
+
+Listen 8080
+<VirtualHost *:8080>
+    DocumentRoot "/Users/anthonymalysz"
+</VirtualHost>`\SU{root}`
+        \end{ubuntu}
+    \begin{itemize}
+        \item Similarly, I created a new Apache configuration file for the second server on port 9090 by running: \codebox{sudo nano /etc/apache2/other/second\_server.conf}. This command created a new configuration file specifically for the second server.
+        \item Inside the file, I added the following configuration (then I saved the changes by pressing Ctrl + X, then Y, then Enter) and exited the editor:
+        \end{itemize}
+        \begin{ubuntu}
+ sudo nano /etc/apache2/other/second_server.conf `\StartConsole`
+
+Listen 9090
+<VirtualHost *:9090>
+    DocumentRoot "/Users/anthonymalysz"
+</VirtualHost>`\SU{root}`
+        \end{ubuntu}
+    \begin{itemize}
+        \item At this point, I've created separate configuration files for each server on ports 8080 and 9090, which are stored in \codebox{/etc/apache2/other/first\_server.conf} and \codebox{/etc/apache2/other/second\_server.conf}, respectively. 
+        \item Next, I installed \codebox{pf} (Packet Filter) as a firewall. I edited the \codebox{pf} configuration file and added the following two lines to the bottom:
+    \end{itemize}
+\end{itemize}
+\end{redbox}
+\begin{redbox}{Wednesday, May 24th (cont. \#2/2)}
+    \begin{ubuntu}
+ sudo nano /etc/pf.conf`\StartConsole`
+
+rdr pass inet proto tcp from any to any port 9090 -> 127.0.0.1 port 9090
+block in inet proto tcp from any to any port 8080
+    \end{ubuntu}
+\begin{itemize}
+    \begin{itemize}
+        \item After saving changes and exiting, I enabled \codebox{pf} by running \codebox{sudo pfctl -e}.
+    \end{itemize}
+    \item After seeing that I could still access both by visiting \codebox{http://localhost:8080} and \codebox{http://localhost:9090}, it seems that I was supposed to do all of this inside the Ubuntu VM to begin with...oops! In any case, this was more of a learning experience than anything to begin with, to see how these things are still done more ``manually" than they ``should" be. 
+    \item During our sync meeting for the day, we decided to avoid things like this in the future---and to have better strucutre and records overall going forward---that we should create a \LaTeX document to log all of our work.
+\end{itemize}
+\end{redbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{redbox}{Thursday, May 25th}
+\begin{itemize}
+    \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.1}{\textbf{Work Log}} and \hyperlink{page.1}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
+\end{itemize}
+\end{redbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{redbox}{Friday, May 26th}
+\begin{itemize}
+    \item Gained access to my NIST Laptop and downloaded necessary apps.
+    \item Filled in Monday's, Tuesday's, and Wednesday's activities in this document (using Element DMs, ChatGPT prompt history, and Internset search history), and made new commands that will help with typesetting code and realisic-looking terminal window(s). 
+    \item\textbf{TODO:} Explore our \href{https://github.com/users/aj-stein-nist/projects/2}{\textbf{Github Project Board}}.
+\end{itemize}
+\end{redbox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=bloodorange,
+background-color=Lbloodorange,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{II}.} \large(05/30 - 06/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=bloodorange, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{bloodorangebox}{Tuesday, May 30th}
+This is my own box with a mandatory title.
+\end{bloodorangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{bloodorangebox}{Wednesday, May 31st}
+This is my own box with a mandatory title.
+\end{bloodorangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{bloodorangebox}{Thursday, June 1st}
+This is my own box with a mandatory title.
+\end{bloodorangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{bloodorangebox}{Friday, June 2nd}
+This is my own box with a mandatory title.
+\end{bloodorangebox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=orange,
+background-color=Lorange,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{III}.} \large(06/05 - 06/09)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=orange, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{orangebox}{Tuesday, June 6th}
+This is my own box with a mandatory title.
+\end{orangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{orangebox}{Wednesday, June 7th}
+This is my own box with a mandatory title.
+\end{orangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{orangebox}{Thursday, June 8th}
+This is my own box with a mandatory title.
+\end{orangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{orangebox}{Friday, June 9th}
+This is my own box with a mandatory title.
+\end{orangebox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=shininggold,
+background-color=Lshininggold,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{IV}.} \large(06/12 - 06/16)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=shininggold, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\begin{shininggoldbox}{Monday, June 12th}
+This is my own box with a mandatory title.
+\end{shininggoldbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{shininggoldbox}{Tuesday, June 13th}
+This is my own box with a mandatory title.
+\end{shininggoldbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{shininggoldbox}{Wednesday, June 14th}
+This is my own box with a mandatory title.
+\end{shininggoldbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{shininggoldbox}{Thursday, June 15th}
+This is my own box with a mandatory title.
+\end{shininggoldbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{shininggoldbox}{Friday, June 16th}
+This is my own box with a mandatory title.
+\end{shininggoldbox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=yellow,
+background-color=Lyellow,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{V}.} \large(06/19 - 06/23)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=yellow, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{yellowbox}{Tuesday, June 20th}
+This is my own box with a mandatory title.
+\end{yellowbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{yellowbox}{Wednesday, June 21st}
+This is my own box with a mandatory title.
+\end{yellowbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{yellowbox}{Thursday, June 22nd}
+This is my own box with a mandatory title.
+\end{yellowbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{yellowbox}{Friday, June 23rd}
+This is my own box with a mandatory title.
+\end{yellowbox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=leafgreen,
+background-color=Lleafgreen,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{VI}.} \large(06/26 - 06/30)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=leafgreen, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{leafgreenbox}{Monday, June 26th}
+This is my own box with a mandatory title.
+\end{leafgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{leafgreenbox}{Tuesday, June 27th}
+This is my own box with a mandatory title.
+\end{leafgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{leafgreenbox}{Wednesday, June 28th}
+This is my own box with a mandatory title.
+\end{leafgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{leafgreenbox}{Thursday, June 29th}
+This is my own box with a mandatory title.
+\end{leafgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{leafgreenbox}{Friday, June 30th}
+This is my own box with a mandatory title.
+\end{leafgreenbox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=hulkgreen,
+background-color=Lhulkgreen,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{VII}.} \large(07/03 - 07/07)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=hulkgreen, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{hulkgreenbox}{Monday, July 3rd}
+This is my own box with a mandatory title.
+\end{hulkgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{hulkgreenbox}{Wednesday, July 5th}
+This is my own box with a mandatory title.
+\end{hulkgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{hulkgreenbox}{Thursday, July 6th}
+This is my own box with a mandatory title.
+\end{hulkgreenbox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{hulkgreenbox}{Friday, July 7th}
+This is my own box with a mandatory title.
+\end{hulkgreenbox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=oceanblue,
+background-color=Loceanblue,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{VIII}.} \large(07/10 - 07/14)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=oceanblue, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{oceanbluebox}{Monday, July 10th}
+This is my own box with a mandatory title.
+\end{oceanbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{oceanbluebox}{Tuesday, July 11th}
+This is my own box with a mandatory title.
+\end{oceanbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{oceanbluebox}{Wednesday, July 12th}
+This is my own box with a mandatory title.
+\end{oceanbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{oceanbluebox}{Thursday, July 13th}
+This is my own box with a mandatory title.
+\end{oceanbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{oceanbluebox}{Friday, July 14th}
+This is my own box with a mandatory title.
+\end{oceanbluebox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=blue,
+background-color=Lblue,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{IX}.} \large(07/17 - 07/21)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=blue, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{bluebox}{Monday, July 17th}
+This is my own box with a mandatory title.
+\end{bluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{bluebox}{Tuesday, July 18th}
+This is my own box with a mandatory title.
+\end{bluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{bluebox}{Wednesday, July 19th}
+This is my own box with a mandatory title.
+\end{bluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{bluebox}{Thursday, July 20th}
+This is my own box with a mandatory title.
+\end{bluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{bluebox}{Friday, July 21st}
+This is my own box with a mandatory title.
+\end{bluebox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=darkblue,
+background-color=Ldarkblue,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{X}.} \large(07/24 - 07/28)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=darkblue, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{darkbluebox}{Monday, July 24th}
+This is my own box with a mandatory title.
+\end{darkbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{darkbluebox}{Tuesday, July 25th}
+This is my own box with a mandatory title.
+\end{darkbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{darkbluebox}{Wednesday, July 26th}
+This is my own box with a mandatory title.
+\end{darkbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{darkbluebox}{Thursday, July 27th}
+This is my own box with a mandatory title.
+\end{darkbluebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{darkbluebox}{Friday, July 28th}
+This is my own box with a mandatory title.
+\end{darkbluebox}
+\newpage
+
+\noindent\begin{longfbox}[
+rounded,
+padding=4pt,
+border-width=1.5pt,
+border-top-left-radius=30pt,
+border-left-width=8pt,
+border-color=indigo,
+background-color=Lindigo,
+border-right-style=double,
+]
+\medskip
+\phantom{~~}\Large\textbf{WEEK \barroman{XI}.} \large(07/31 - 08/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\end{longfbox}
+\\
+
+\begin{center}
+\vspace{-1em}
+\pgfornament[color=indigo, width=6cm, ydelta=-10pt]{88}
+\vspace{-0.5em}
+\end{center}
+
+\normalsize\begin{indigobox}{Monday, July 31st}
+This is my own box with a mandatory title.
+\end{indigobox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{indigobox}{Tuesday, August 1st}
+This is my own box with a mandatory title.
+\end{indigobox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\normalsize\begin{indigobox}{Wednesday, August 2nd}
+This is my own box with a mandatory title.
+\end{indigobox}
+
+
+
+
+
+\end{document}
