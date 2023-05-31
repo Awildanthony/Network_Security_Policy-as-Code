@@ -571,7 +571,7 @@ border-right-style=double,
     \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
     \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
     \begin{itemize}
-        \item Similar to before, we open two terminal windows and run \codebox{multipass iptables} to access the Ubuntu shell. We then host HTTP servers on ports 8080 and 9000, using \codebox{python3 -m http.server 8080}and \codebox{python3 -m http.server 9000}.
+        \item Similar to before, we open two terminal windows and run \codebox{multipass shell} to access the Ubuntu shell. We then host HTTP servers on ports 8080 and 9000, using \codebox{python3 -m http.server 8080}and \codebox{python3 -m http.server 9000}.
         \item Like in last week's demo, upon opening a third terminal window and accessing the Ubuntu shell, running \codebox{sudo iptables -L -n} brings up the current list of network policies on this Linux VM, which are all set to \texttt{ACCEPT} by default:
 \begin{ubuntu}
  sudo iptables -L -n`\BeginConsole`
@@ -615,9 +615,25 @@ target     prot opt source               destination
         \item By typing \codebox{ip a} and checking what the IP address is (in this case, it's not \codebox{localhost} like I tried last time---we will hopefully go over what \texttt{localhost} is later), we visit \codebox{http://192.168.64.3:8080} and \codebox{http://192.168.64.3:9000} (where the IP address is \codebox{192.168.64.3}). If done correctly, we should now be able to visit the former page, but not the latter.
         \item\textbf{Note:} to delete (flush) any changes we've made to the network policies on our VM, we can run \codebox{sudo iptables -F} to flush the firewall rules.
     \end{itemize}
-    \item Investigated what different \href{https://en.wikipedia.org/wiki/Category:Transport_layer_protocols}{\textbf{transport layer protocols}} are, specifically TCP and UDP. Here are some differences between them, and how I think a computer is able to distinguish them (so that I can make a firewall treat each differently):
-    \item\textbf{TODO:} make a table comparing TCP, UDP, etc. 
-\end{itemize}
+    \item Investigated what different \href{https://en.wikipedia.org/wiki/Category:Transport_layer_protocols}{\textbf{transport layer protocols}} are, and how I think a computer is able to distinguish them (so that I can make a firewall treat each differently):
+    \end{itemize}
+    \begin{multicols}{2}
+        Every \textbf{packet} follows a 5-layer structure:
+        \begin{itemize}
+            \item\textbf{Application} $\longrightarrow$ HTTP
+            \vspace{-0.2cm}\item\textbf{Transport} $\longrightarrow$ TCP, UDP, ...
+            \vspace{-0.2cm}\item\textbf{Network} $\longrightarrow$ IP
+            \vspace{-0.2cm}\item\textbf{Link} $\longrightarrow$ WiFi
+            \vspace{-0.2cm}\item\textbf{Physical} $\longrightarrow$ Ethernet Cable
+        \end{itemize}
+        The \textbf{Transport Layer} allows simultaneous use of a network connection by multiple applications. When the \textbf{Application Layer} creates a message, it is sent to the Transport Layer, which then wraps it in a \textbf{segment}: it includes additional information like source port and destination port. The segment is then sent to the \textbf{Network Layer}.
+        \vfill
+        \columnbreak
+        \scriptsize\textbf{TCP:} transmits packets in a streamlined, numbered fashion; even if they arrive out-of-order, they will be re-arranged before reception by another application. TCP uses a congestion protocol to handle high-traffic networks, so while slower and with more overhead space, it makes sense where there's greater bandwidth; an effect of this, though, is less control over when packets are sent. With TCP, re-transmission is possible and also secured by a 3-way handshake: Network A asks Network B to set up a connection, Network B responds, and finally Network A communicates the established connection. TCP might be used to stream videos or send pictures and texts. \\
+        \hline
+        \vspace{0.75em}
+        \scriptsize\textbf{UDP:} transmits packets in a discrete fashion, without order and prioritizing efficiency over reliability or security: useful in instances of low bandwidth, or if packets are mutually uncorrelated. When using UDP, packet loss is much more common as well; packets are only sent once, so if they are lost in transmission, they simply go discarded, unannounced. UDP might be used to send emails or play online video games (packet loss $>$ lag).
+    \end{multicols}
 \end{bloodorangebox}
 
 \begin{center}
@@ -627,7 +643,9 @@ target     prot opt source               destination
 \end{center}
 
 \begin{bloodorangebox}{Wednesday, May 31st}
-This is my own box with a mandatory title.
+\begin{itemize}
+    \item Finished yesterday's blurb about TCP and UDP, and continuing with others:
+\end{itemize}
 \end{bloodorangebox}
 
 \begin{center}
