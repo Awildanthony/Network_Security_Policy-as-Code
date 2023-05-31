@@ -42,6 +42,8 @@
 \definecolor{macosgreen}{RGB}{36, 204, 67}
 \definecolor{macosgrey}{RGB}{72, 68, 68}
 \definecolor{macosblack}{RGB}{28, 28, 28}
+\definecolor{apple}{RGB}{67, 199, 51}
+\definecolor{electricviolet}{RGB}{106, 65, 246}
 % more colors & some custom ones (L = light)
 \usepackage{tikz}
 % Manually draw math pictures using code
@@ -177,6 +179,31 @@ title={#1}}
 }
 % for typesetting console commands
 
+    \newtcblisting{MacTerminal}{colback=macosblack, colupper=white, colframe=macosgrey, listing only,
+        listing options={style=tcblatex,language=sh,escapeinside=``,},
+        title={\vspace{0.25em}\hspace{-1em}\textcolor{macosred}{\Huge{$\bullet$}}\textcolor{macosyellow}{\Huge{$\bullet$}}\textcolor{macosgreen}{\Huge{$\bullet$}}},
+        every listing line={\MyMacTerminalPrompt}}
+        \pgfkeys{/MacTerminal/.cd,
+        user/.code={\gdef\MyMacTerminalUser{#1}},user={},
+        host/.code={\gdef\MyMacTerminalHost{#1}},host={},
+        color/.code={\gdef\MyMacTerminalColor{#1}},color=white,
+        prompt char/.code={\gdef\MyMacTerminalPromptChar{#1}},prompt char=\%,
+        root/.style={user=anthonymalysz,host=@Air,color=white,prompt char=\%},
+        bob/.style={user=bob,host=@remotehost,color=cyan},
+        }
+        
+    \newcommand{\SU}[1]{\pgfkeys{/MacTerminal/.cd,#1}
+    \gdef\MyMacTerminalPrompt{\textcolor{\MyMacTerminalColor}{\small\ttfamily\bfseries \MyMacTerminalUser\MyMacTerminalHost{}\hspace{0.2cm}\textcolor{white}{\url{~}}\hspace{0.2cm}{\textcolor{white}\MyMacTerminalPromptChar}}}}
+    \newcommand{\StartConsole}{\gdef\MyMacTerminalPrompt{}}
+
+    \SU{user=anthonymalysz,host=@Air,color=white}
+
+    % `\SU{bob}`
+    % whoami`\StartConsole`
+    % bob`\SU{bob}`
+    % _
+% for drawing realistic mac terminal window; commented out part is for 2nd user 'Bob'
+
     \newtcblisting{ubuntu}{colback=macosblack, colupper=white, colframe=macosgrey, listing only,
         listing options={style=tcblatex,language=sh,escapeinside=``,},
         title={\vspace{0.25em}\hspace{-1em}\textcolor{macosred}{\Huge{$\bullet$}}\textcolor{macosyellow}{\Huge{$\bullet$}}\textcolor{macosgreen}{\Huge{$\bullet$}}},
@@ -185,22 +212,22 @@ title={#1}}
         user/.code={\gdef\MyUbuntuUser{#1}},user={},
         host/.code={\gdef\MyUbuntuHost{#1}},host={},
         color/.code={\gdef\MyUbuntuColor{#1}},color=white,
-        prompt char/.code={\gdef\MyUbuntuPromptChar{#1}},prompt char=\%,
-        root/.style={user=anthonymalysz,host=Air,color=white,prompt char=\%},
-        bob/.style={user=bob,host=remotehost,color=cyan},
+        prompt char/.code={\gdef\MyUbuntuPromptChar{#1}},prompt char=\$,
+        root/.style={user=ubuntu,host=@primary,color=apple,prompt char=\$},
+        bob/.style={user=bob,host=@remotehost,color=cyan},
         }
         
-    \newcommand{\SU}[1]{\pgfkeys{/ubuntu/.cd,#1}
-    \gdef\MyUbuntuPrompt{\textcolor{\MyUbuntuColor}{\small\ttfamily\bfseries \MyUbuntuUser@\MyUbuntuHost{}\hspace{0.2cm}\textcolor{white}{\url{~}}\hspace{0.2cm}{\textcolor{white}\MyUbuntuPromptChar}}}}
-    \newcommand{\StartConsole}{\gdef\MyUbuntuPrompt{}}
+    \newcommand{\switchuser}[1]{\pgfkeys{/ubuntu/.cd,#1}
+    \gdef\MyUbuntuPrompt{\textcolor{\MyUbuntuColor}{\small\ttfamily\bfseries \MyubuntuUser\MyUbuntuHost{\textcolor{white}{:}}\textcolor{electricviolet}{\large{$\sim$}}{\textcolor{white}\MyUbuntuPromptChar}}}}
+    \newcommand{\BeginConsole}{\gdef\MyUbuntuPrompt{}}
 
-    \SU{user=anthonymalysz,host=Air,color=white}
+    \switchuser{user=ubuntu,host=ubuntu@primary,color=apple}
 
     % `\SU{bob}`
     % whoami`\StartConsole`
     % bob`\SU{bob}`
     % _
-% for drawing realistic command shell window; commented out part is for 2nd user 'Bob'
+% for drawing realistic Ubuntu terminal window; commented out part is for 2nd user 'Bob'
 
 %========================{ DOCUMENT }=========================
 
@@ -349,7 +376,7 @@ border-right-style=double,
     \item Had trouble with iTAC getting into my work laptop; installed VirtualBox with the goal of installing Ubuntu as the VM inside it. Decided using homebrew would be easier.
     \item Installed multipass using \codebox{brew install multipass}.
     \item Confirmed it worked by running \codebox{multipass version} and \codebox{multipass find}:
-    \begin{ubuntu}
+    \begin{MacTerminal}
  multipass version`\StartConsole`
 multipass   1.10.1+mac 
 multipassd  1.10.1+mac 
@@ -361,7 +388,7 @@ Fix Windows path, Virtualbox mount failure, Windows native mounts
 Go here for more information: 
 https://github.com/canonical/multipass/releases/tag/v1.11.1
 ########################################################################`\SU{root}`
-\end{ubuntu}
+\end{MacTerminal}
 \end{itemize}
 \begin{center}
 \textbf{\large\bullet} \\
@@ -375,7 +402,7 @@ https://github.com/canonical/multipass/releases/tag/v1.11.1
 \end{redbox}
 
 \begin{redbox}{Tuesday, May 23rd (cont. \#1/2)}
-\begin{ubuntu}
+\begin{MacTerminal}
  multipass find `\StartConsole` 
 Image                   Aliases      Version     Description
 18.04                   bionic       20230525    Ubuntu 18.04 LTS
@@ -403,7 +430,7 @@ ros2-humble                          0.1         A development and
                                                  testing environment 
                                                  for ROS 2 Humble.`\SU{root}`
     
-    \end{ubuntu}
+    \end{MacTerminal}
 \begin{itemize}
     \item Proceeded to follow \href{https://medium.com/@paulrobu/how-to-run-ubuntu-22-04-vms-on-apple-m1-arm-based-systems-for-free-c8283fb38309}{\textbf{this blog}} to figure out how to run Ubuntu 22.04 VMs on my Apple M1 ARM-based system for free, whose steps included:
     \begin{enumerate}
@@ -449,26 +476,26 @@ ros2-humble                          0.1         A development and
         \item Create a new Apache configuration file for the first server on port 8080: \codebox{sudo nano /etc/apache2/other/first\_server.conf}. This command will create a new configuration file specifically for the first server.
         \item Inside this file, I added the following configuration (then I saved the changes by pressing Ctrl + X, then Y, then Enter) and exited the editor:
         \end{itemize}
-        \begin{ubuntu}
+        \begin{MacTerminal}
  sudo nano /etc/apache2/other/first_server.conf `\StartConsole`
 
 Listen 8080
 <VirtualHost *:8080>
     DocumentRoot "/Users/anthonymalysz"
 </VirtualHost>`\SU{root}`
-        \end{ubuntu}
+        \end{MacTerminal}
     \begin{itemize}
         \item Similarly, I created a new Apache configuration file for the second server on port 9090 by running: \codebox{sudo nano /etc/apache2/other/second\_server.conf}. This command created a new configuration file specifically for the second server.
         \item Inside the file, I added the following configuration (then I saved the changes by pressing Ctrl + X, then Y, then Enter) and exited the editor:
         \end{itemize}
-        \begin{ubuntu}
+        \begin{MacTerminal}
  sudo nano /etc/apache2/other/second_server.conf `\StartConsole`
 
 Listen 9090
 <VirtualHost *:9090>
     DocumentRoot "/Users/anthonymalysz"
 </VirtualHost>`\SU{root}`
-        \end{ubuntu}
+        \end{MacTerminal}
     \begin{itemize}
         \item At this point, I've created separate configuration files for each server on ports 8080 and 9090, which are stored in \codebox{/etc/apache2/other/first\_server.conf} and \codebox{/etc/apache2/other/second\_server.conf}, respectively. 
         \item Next, I installed \codebox{pf} (Packet Filter) as a firewall. I edited the \codebox{pf} configuration file and added the following two lines to the bottom:
@@ -476,12 +503,12 @@ Listen 9090
 \end{itemize}
 \end{redbox}
 \begin{redbox}{Wednesday, May 24th (cont. \#2/2)}
-    \begin{ubuntu}
+    \begin{MacTerminal}
  sudo nano /etc/pf.conf`\StartConsole`
 
 rdr pass inet proto tcp from any to any port 9090 -> 127.0.0.1 port 9090
 block in inet proto tcp from any to any port 8080
-    \end{ubuntu}
+    \end{MacTerminal}
 \begin{itemize}
     \begin{itemize}
         \item After saving changes and exiting, I enabled \codebox{pf} by running \codebox{sudo pfctl -e}.
@@ -540,7 +567,57 @@ border-right-style=double,
 \end{center}
 
 \normalsize\begin{bloodorangebox}{Tuesday, May 30th}
-This is my own box with a mandatory title.
+\begin{itemize}
+    \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
+    \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
+    \begin{itemize}
+        \item Similar to before, we open two terminal windows and run \codebox{multipass iptables} to access the Ubuntu shell. We then host HTTP servers on ports 8080 and 9000, using \codebox{python3 -m http.server 8080}and \codebox{python3 -m http.server 9000}.
+        \item Like in last week's demo, upon opening a third terminal window and accessing the Ubuntu shell, running \codebox{sudo iptables -L -n} brings up the current list of network policies on this Linux VM, which are all set to \texttt{ACCEPT} by default:
+\begin{ubuntu}
+ sudo iptables -L -n`\BeginConsole`
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination    
+\end{ubuntu}
+        \item After running \codebox{sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT} and \codebox{sudo iptables -A INPUT -p tcp --dport 9000 -j DROP}, we can check this list of policies again and see that two new ``rows'' have been added:
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+\vspace{0.5em}
+\large\textbf{(\textit{Continued}...)} \\
+\vspace{1.5em}
+\end{center}
+\end{bloodorangebox}
+
+\newpage
+\begin{bloodorangebox}{Tuesday, May 30th (Cont. \#1/1)}
+\begin{ubuntu}
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:8080
+DROP       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:9000
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination    
+\end{ubuntu}
+
+\begin{itemize}
+    \begin{itemize}
+        \item By typing \codebox{ip a} and checking what the IP address is (in this case, it's not \codebox{localhost} like I tried last time---we will hopefully go over what \texttt{localhost} is later), we visit \codebox{http://192.168.64.3:8080} and \codebox{http://192.168.64.3:9000} (where the IP address is \codebox{192.168.64.3}). If done correctly, we should now be able to visit the former page, but not the latter.
+        \item\textbf{Note:} to delete (flush) any changes we've made to the network policies on our VM, we can run \codebox{sudo iptables -F} to flush the firewall rules.
+    \end{itemize}
+    \item Investigated what different \href{https://en.wikipedia.org/wiki/Category:Transport_layer_protocols}{\textbf{transport layer protocols}} are, specifically TCP and UDP. Here are some differences between them, and how I think a computer is able to distinguish them (so that I can make a firewall treat each differently):
+    \item\textbf{TODO:} make a table comparing TCP, UDP, etc. 
+\end{itemize}
 \end{bloodorangebox}
 
 \begin{center}
