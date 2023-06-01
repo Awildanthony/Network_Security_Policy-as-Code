@@ -44,6 +44,10 @@
 \definecolor{macosblack}{RGB}{28, 28, 28}
 \definecolor{apple}{RGB}{67, 199, 51}
 \definecolor{electricviolet}{RGB}{106, 65, 246}
+\definecolor{blueone}{RGB}{64, 102, 255}
+\definecolor{bluetwo}{RGB}{112, 140, 255}
+\definecolor{bluethree}{RGB}{160, 179, 255}
+\definecolor{bluefour}{RGB}{207, 217, 255}
 % more colors & some custom ones (L = light)
 \usepackage{tikz}
 % Manually draw math pictures using code
@@ -57,14 +61,15 @@
 % Uploaded images are pulled from ./images/ folder in sidebar.
 \usepackage[font=small,labelfont=bf]{caption}
 % Create custom captions for images, graphs, etc.
-\usepackage{color}
-\definecolor{lightgray}{gray}{0.75}
-% Color package with custom color for command snippets below.
 \usepackage{multirow}
 \setlength{\columnseprule}{1pt}
 \setlength{\columnsep}{20pt}
 \def\columnseprulecolor{\color{black}}
 % For tables
+\usepackage{colortbl}
+% For coloring cells of tables
+\usepackage{arydshln}
+% For dashed lines surrounding cells in tables
 \usepackage[]{mdframed}
 % Creates box around text: useful for code/solutions.
 \usepackage{hyperref}
@@ -88,6 +93,9 @@
 % for something to do with the realisitc command shell
 \usepackage{pgfornament}
 % for decorative symbols and such
+\usepackage{array}
+% need this for something table-related
+
 
 %====================={ CUSTOM COMMANDS }===================== 
 
@@ -251,7 +259,7 @@ title={#1}}
 \hspace{-0.3cm}\small\textbf{\hyperlink{page.8}{WEEK [II.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.8}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\fcolorbox{bloodorange}{white}{Wed 05/31}\textbf{------}\fcolorbox{bloodorange}{white}{Thrs 06/01}\textbf{------}\fcolorbox{bloodorange}{white}{Fri 06/02} \\
+\normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.8}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\hyperlink{page.10}{\fcolorbox{bloodorange}{white}{Wed 05/31}}\textbf{------}\hyperlink{page.11}{\fcolorbox{bloodorange}{white}{Thrs 06/01}}\textbf{------}\fcolorbox{bloodorange}{white}{Fri 06/02} \\
 
 \vspace{-1em}
 \hspace{-0.3cm}\small\textbf{WEEK [III.]}
@@ -348,7 +356,7 @@ background-color=Lred,
 border-right-style=double,
 ]
 \medskip
-\phantom{~~}\Large\textbf{WEEK \barroman{I}.} \large(05/22 - 05/26)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\phantom{~~}\Large\textbf{WEEK \barroman{I}.} \large(05/22 - 05/26)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Getting Comfortable...}}
 \end{longfbox}
 \\
 
@@ -358,7 +366,7 @@ border-right-style=double,
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{redbox}{Monday, May 22nd}
+\normalsize\begin{redbox}{Monday, May 22nd\vspace{-2em}\begin{flushright}\large\textbf{Orientation}\end{flushright}}
 \begin{itemize}
     \item Attended welcome meeting via BlueJeans.
     \item Sat in on a meeting of AJ's with people reporting their week's work in the NIST ITL.
@@ -366,12 +374,11 @@ border-right-style=double,
 \end{redbox}
 
 \begin{center}
-\vspace{-0.25em}
 \pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
-\vspace{-0.4em}
+\vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Tuesday, May 23rd}
+\begin{redbox}{Tuesday, May 23rd\vspace{-2em}\begin{flushright}\large\textbf{VM Struggles}\end{flushright}}
 \begin{itemize}
     \item Had trouble with iTAC getting into my work laptop; installed VirtualBox with the goal of installing Ubuntu as the VM inside it. Decided using homebrew would be easier.
     \item Installed multipass using \codebox{brew install multipass}.
@@ -458,12 +465,11 @@ ros2-humble                          0.1         A development and
 \end{redbox}
 
 \begin{center}
-\vspace{-0.25em}
 \pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
-\vspace{-0.4em}
+\vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Wednesday, May 24th}
+\begin{redbox}{Wednesday, May 24th\vspace{-2em}\begin{flushright}\large\textbf{Firewall Struggles}\end{flushright}}
 \begin{itemize}
     \item Started the day by figuring out how to configure two HTTP servers, one on port 8080 and one on port 9090 by opening two shells and running \codebox{python3 -m http.server 8080} in one shell and \codebox{python3 -m http.server 9090} in the other; then, I installed \href{https://en.wikipedia.org/wiki/Iptables}{\textbf{iptables}} and configured the iptables such that access to the 9090 HTTP server was allowed, but access to the 8080 server was prohibited. These were the steps I took (ChatGPT, SO):
 \end{itemize}
@@ -519,24 +525,22 @@ block in inet proto tcp from any to any port 8080
 \end{redbox}
 
 \begin{center}
-\vspace{-0.25em}
 \pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
-\vspace{-0.4em}
+\vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Thursday, May 25th}
+\begin{redbox}{Thursday, May 25th\vspace{-2em}\begin{flushright}\large\textbf{Documentation Begins}\end{flushright}}
 \begin{itemize}
     \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.1}{\textbf{Work Log}} and \hyperlink{page.1}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
 \end{itemize}
 \end{redbox}
 
 \begin{center}
-\vspace{-0.25em}
 \pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
-\vspace{-0.4em}
+\vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Friday, May 26th}
+\begin{redbox}{Friday, May 26th\vspace{-2em}\begin{flushright}\large\textbf{Catch-Up}\end{flushright}}
 \begin{itemize}
     \item Gained access to my NIST Laptop and downloaded necessary apps.
     \item Filled in Monday's, Tuesday's, and Wednesday's activities in this document (using Element DMs, ChatGPT prompt history, and Internset search history), and made new commands that will help with typesetting code and realisic-looking terminal window(s). 
@@ -566,7 +570,7 @@ border-right-style=double,
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{bloodorangebox}{Tuesday, May 30th}
+\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2em}\begin{flushright}\large\textbf{Success with \texttt{iptables}}\end{flushright}}
 \begin{itemize}
     \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
     \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
@@ -637,15 +641,43 @@ target     prot opt source               destination
 \end{bloodorangebox}
 
 \begin{center}
-\vspace{-0.25em}
 \pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
-\vspace{-0.4em}
+\vspace{-0.5em}
 \end{center}
 
-\begin{bloodorangebox}{Wednesday, May 31st}
-\begin{itemize}
-    \item Finished yesterday's blurb about TCP and UDP, and continuing with others:
-\end{itemize}
+\begin{bloodorangebox}{Wednesday, May 31st\vspace{-2em}\begin{flushright}\large\textbf{Investigating Protocols}\end{flushright}}
+\begin{center}
+\vspace{-0.5em}
+\resizebox{14cm}{2.46cm}{\hspace{0.5cm}
+\begin{tabular}{lccl}
+\multicolumn{1}{c}{}                                  & \textbf{\begin{tabular}[c]{@{}c@{}}\small{TCP/IP Model (1982)}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}\small{OSI Model (1984)}\end{tabular}} &  \\ \cline{2-3}
+\multicolumn{1}{l|}{\multirow{3}{*}{\raisebox{-4ex}[0ex][0ex]{\scriptsize{HTTP, SSH, FTP, ...}}}} & \multicolumn{1}{c|}{\multirow{3}{*}{\textbf{APPLICATION}}}             & \multicolumn{1}{c|}{\cellcolor{blueone}APPLICATION}                                    &  \\ \cdashline{3-3}
+\multicolumn{1}{l|}{}                                 & \multicolumn{1}{c|}{}                                                  & \multicolumn{1}{c|}{\cellcolor{blueone}PRESENTATION}                                   &  \\ \cdashline{3-3}
+\multicolumn{1}{l|}{}                                 & \multicolumn{1}{c|}{}                                                  & \multicolumn{1}{c|}{\cellcolor{blueone}SESSION}                                        &  \\ \cdashline{1-1}\cline{2-3}
+\multicolumn{1}{l|}{\raisebox{-0.5ex}[0ex][0ex]{\scriptsize{TCP, UDP, ...}}}                         & \multicolumn{1}{c|}{\textbf{TRANSPORT}}                                & \multicolumn{1}{c|}
+{\cellcolor{bluetwo}TRANSPORT}                                      &  \\ \cdashline{1-1}\cline{2-3}
+\multicolumn{1}{l|}{\raisebox{-0.5ex}[0ex][0ex]{\scriptsize{Ethernet, Switches, ...}}}               & \multicolumn{1}{c|}{\textbf{INTERNET}}                                 & \multicolumn{1}{c|}{\cellcolor{bluethree}NETWORK}                                        &  \\ \cdashline{1-1}\cline{2-3}
+\multicolumn{1}{l|}{\multirow{2}{*}{\raisebox{-2ex}[0ex][0ex]{\scriptsize{Cables, NIC, ...}}}}     & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{LINK}}}                    & \multicolumn{1}{c|}{\cellcolor{bluefour}DATA LINK}                                      &  \\ \cdashline{3-3}
+\multicolumn{1}{l|}{}                                 & \multicolumn{1}{c|}{}                                                  & \multicolumn{1}{c|}{\cellcolor{bluefour}PHYSICAL}                                       &  \\ \cdashline{1-1}\cline{2-3}
+\end{tabular}
+}
+\end{center}
+\vspace{-0.5em}
+$$\big\Downarrow\hspace{5cm}\big\Downarrow\hspace{5 cm}\big\Downarrow\hspace{0.7cm}$$
+\begin{tabular}{|m{0.10\textwidth}|m{0.13\textwidth}|m{0.685\textwidth}|}
+\cline{1-3}
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.1cm}\large{HTTP}\end{tabular}}       & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{Hypertext Transfer Protocol} is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. In a typical flow over HTTP, a client machine makes a request---these have a version type, URL, method, request headers, and (optional) body---to a server, which then responds.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.3cm}\large{SSH}\end{tabular}}                       & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{Secure Shell} is a cryptographic network protocol for operating network services securely over unsecured networks. Its most notable applications are remote login and command-line execution. SSH applications are based on a client–server architecture, connecting an SSH client instance with an SSH server. SSH operates as a layered protocol suite with three principal hierarchical components: the transport layer provides server authentication, confidentiality, and integrity; the user authentication protocol validates the user to the server; and the connection protocol multiplexes the encrypted tunnel into multiple logical communication channels.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.3cm}\large{FTP}\end{tabular}}             & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{File Transfer Protocol} is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network. FTP is built on a client–server model architecture using separate control and data connections between the client and the server. FTP users may authenticate themselves with a clear-text sign-in protocol, usually with a username and password, but can connect anonymously if the server is configured to allow it. FTP is often secured with SSL/TLS or replaced with SSH File Transfer Protocol.}                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.26cm}\large{TCP}\end{tabular}}      & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{Transmission Control Protocol} is one of the main protocols of the IP suite. \textbf{[See Above]}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.24cm}\large{UDP}\end{tabular}}             & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{User Datagram Protocol} is one of the core communication protocols of the Internet protocol suite used to send messages to other hosts on an IP network. \textbf{[See Above]}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.55cm}\large{IP}\end{tabular}}                   & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Protocol} is the network layer communications protocol for relaying datagrams across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. IP has the task of delivering packets from the source host to the destination host solely based on the IP addresses in the packet headers. For this purpose, IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information. The original Internet Protocol Version 4 (IPv4) is the dominant protocol of the Internet, with successor IPv6.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.15cm}\large{ICMP}\end{tabular}} & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Control Message Protocol} is used by network devices (e.g. router), to send error messages and operational info. indicating (un)successful communications with another IP address. ICMP differs from transport protocols (TCP, UDP, etc.) in that it is not typically used to exchange data between systems nor regularly employed by end-user network applications.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.25cm}\large{ARP}\end{tabular}}        & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Address Resolution Protocol} is a communication protocol that discovers the link layer address (e.g. MAC address) associated with a given internet layer address (usually IPv4).}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\small{Ethernet}\end{tabular}}       & \hspace{0.61cm}\cellcolor{bluefour}\footnotesize{\textbf{Link}}        & 
+\tiny{\textbf{Ethernet} is a wired communications standard to network computers in a local environment (LAN, or ``Local Area Network''). Ethernet cables are usually Twisted Pair cables that can handle speeds up to 10 Gbps (CAT 7); these come in half-duplex and full-duplex variants, allowing information to be transmitted one-way or both-ways, respectively. Fiber-optic cables are reserved for fast, long distance travel of data. Ethernet devices are computers, routers, printers, or any machine with an internal or external NIC (network interface card); switches and routers enable communication between these devices, while communication across Ethernet networks are facilitated by gateways (for dissimilar networks) and bridges (similar ones).} \\ 
+\cline{1-3}
+\end{tabular}
 \end{bloodorangebox}
 
 \begin{center}
