@@ -259,13 +259,13 @@ title={#1}}
 \hspace{-0.3cm}\small\textbf{\hyperlink{page.8}{WEEK [II.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.8}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\hyperlink{page.10}{\fcolorbox{bloodorange}{white}{Wed 05/31}}\textbf{------}\hyperlink{page.11}{\fcolorbox{bloodorange}{white}{Thrs 06/01}}\textbf{------}\fcolorbox{bloodorange}{white}{Fri 06/02} \\
+\normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.8}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\hyperlink{page.10}{\fcolorbox{bloodorange}{white}{Wed 05/31}}\textbf{------}\hyperlink{page.11}{\fcolorbox{bloodorange}{white}{Thrs 06/01}}\textbf{------}\hyperlink{page.13}{\fcolorbox{bloodorange}{white}{Fri 06/02}} \\
 
 \vspace{-1em}
-\hspace{-0.3cm}\small\textbf{WEEK [III.]}
+\hspace{-0.3cm}\small\hyperlink{page.14}{\textbf{WEEK [III.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\fcolorbox{orange}{white}{Mon 06/05}\textbf{------}\fcolorbox{orange}{white}{Tue 06/06}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
+\normalsize\indent \vline\textbf{------------}\hyperlink{page.14}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\fcolorbox{orange}{white}{Tue 06/06}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
 
 \vspace{-1em}
 \hspace{-0.3cm}\small\textbf{WEEK [VI.]}
@@ -544,7 +544,7 @@ block in inet proto tcp from any to any port 8080
 \begin{itemize}
     \item Gained access to my NIST Laptop and downloaded necessary apps.
     \item Filled in Monday's, Tuesday's, and Wednesday's activities in this document (using Element DMs, ChatGPT prompt history, and Internset search history), and made new commands that will help with typesetting code and realisic-looking terminal window(s). 
-    \item Explored our \href{https://github.com/users/aj-stein-nist/projects/2}{\textbf{Github Project Board}}, linked Overleaf with public Github repo.
+    \item Explored our \href{https://github.com/users/aj-stein-nist/projects/2}{\textbf{GitHub Project Board}}, linked Overleaf with public GitHub repo.
 \end{itemize}
 \end{redbox}
 \newpage
@@ -686,7 +686,7 @@ $$\big\Downarrow\hspace{5cm}\big\Downarrow\hspace{5 cm}\big\Downarrow\hspace{0.7
 \vspace{-0.4em}
 \end{center}
 
-\begin{bloodorangebox}{Thursday, June 1st\vspace{-2em}\begin{flushright}\large\textbf{Posting GitHub Issues \& Wireshark}\end{flushright}}
+\begin{bloodorangebox}{Thursday, June 1st\vspace{-2em}\begin{flushright}\large\textbf{GitHub Bug Issue \& Wireshark}\end{flushright}}
 \begin{itemize}
     \item During our discussion last time of the way TCP communicates across a network, the command \codebox{netstat -ant}rendered a list of active TCP connections, ports on which the computer is listening, Ethernet statistics, the IP routing table, IPv4 statistics (for the IP, ICMP, TCP, and UDP protocols), and IPv6 statistics (for the IPv6, ICMPv6, TCP over IPv6, and UDP over IPv6 protocols). We were interested in investigating why the following ports were actively \texttt{LISTEN}-ing at all:
 \end{itemize}
@@ -714,7 +714,7 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
         \small{\textbf{Note:} early iTunes let you pirate songs by streaming from another person's device, using things of a similar fashion. Why does Apple having Airplay listening ports on by default?}
         \item Port \codebox{*.53} is DNS, according to \href{https://support.apple.com/en-ca/HT202944}{\textbf{this}} list of what ports usually listen to on MacOS.
     \end{itemize}
-    \item Updated to the newest version of MacOS Ventura last night (that might not be relevant) and trying to run \codebox{multipass shell} no longer worked, giving the error \codebox{shell failed: Cannot retrieve credentials in unknown state}. This prompted AJ and I to look into the \href{https://github.com/canonical/multipass}{\textbf{source code}} on Github, and to file my first \href{https://github.com/canonical/multipass/issues/3106}{\textbf{bug report}}!\\
+    \item Updated to the newest version of MacOS Ventura last night (that might not be relevant) and trying to run \codebox{multipass shell} no longer worked, giving the error \codebox{shell failed: Cannot retrieve credentials in unknown state}. This prompted AJ and I to look into the \href{https://github.com/canonical/multipass}{\textbf{source code}} on GitHub, and to file my first \href{https://github.com/canonical/multipass/issues/3106}{\textbf{bug report}}!\\
     \small{\textbf{Note:} adding \texttt{.patch} to the end of a URL on an issue request in GitHub might reveal emails!}
     \item\normalsize{Got on the phone with iTAC and gained administrator access - also will no longer need smartcard to log in to work laptop, so no more login error messages.}
 \end{itemize}
@@ -723,18 +723,35 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
 \begin{bloodorangebox}{Thursday, June 1st (Cont. \#1/1)}
 \begin{itemize}
     \item\LARGE\textbf{mailserver.pcap} \\
-    \normalsize This file contains information about a mail server in an Amazon Web Services account. You can see this server communicating with multiple other computers, one of them is a user (maybe from the company running) this mail server and other computers in internal or external networks.
+    \normalsize This file contains information about a mail server in an AWS account. You can see this server communicating with multiple computers, one of them is a user (maybe from the company running) this mail server and other computers in internal/external networks.
     \begin{enumerate}
-    \item \textbf{The PCAP file encodes information about different protocols used by the mail server, which protocols are used? How do you know this from Wireshark?} \\
-    For every packet that's intercepted, Wireshark provides columns for the Time received, Source Port, Destination Port, Protocol, Bit Length, and other Info about the packet. Among the protocols used are TCP, ARP, DHCP, HTTP, etc.
-    \item \textbf{What is the IP address of the mail server?} \\
-    My guess would be \texttt{10.0.0.41}; looking at the different TCP Retransmission Alerts in black and red, the source is always \texttt{10.0.0.41}. With this being a mail server, it makes sense that it would be the one sending out messages, and when packets are dropped, the TCP alerts the source and tries again.
-    \item \textbf{Besides the mail server, what is the IP address of other source and destinations that are not the mail server?} \\
-    Taking a similar approach to the previous question, other common addresses are \texttt{10.0.0.1}, \texttt{10.0.0.2}, and \texttt{52.1.52.89} (ubuntu@cloudxlarge.com, from line \#53)?
+    \item \textbf{The PCAP file encodes information about different protocols used by the mail server, which protocols are used? How do you know this?} \\
+
+    \vspace{-1em}
+    Wireshark can sort packets in columns for: Time received, Source/Destination Port, Protocol, etc. For more specifics, visit \codebox{Statistics $>$ Protocol Heirarchy}
+    \item \textbf{What is the IP address of the mail server? Besides the mail server, what is the IP address of other sources and destinations?} \\
+
+    \vspace{-1em}
+    We can look at HTTP communications between IP addresses that appear quite frequently at a glance: trying the query \codebox{ip.addr == 169.254.169.254 \&\& http} renders a history of communications between the user \texttt{10.0.0.41} and the server \texttt{169.254.169.254}. By also selecting any packet of interest by \codebox{Rclick $>$ Follow $>$ TCP Stream}, we can view its contents if unencrypted. Another common addresses is \texttt{52.1.52.89} (\texttt{ubuntu@cloudxlarge.com}, line \#53?).
     \item \textbf{What protocol does the user's computer use to send mail from themselves to the mail server and someone else? In the filter window, how can you filter on only this traffic from the PCAP in Wireshark?} \\
-    If you click the ``Protocol" icon at the top of the column, Wireshark will search alphabetically by Protocol. ARP is of the form ``Who has $<$address \#1$>$? Tell $<$address \#2$>$''; DHCP has a bunch of requests and acknowledgements communications between \texttt{10.0.0.41} and \texttt{10.0.0.1}, which I assume is the mailserver talking with itself; and others follow suit---the HTTP requests (and some TCP connections) are where another IP address is visible that is probably the user's computer \texttt{169.254.169.254}, since it's communicating with the above addresses.
-    \item \textbf{When you locate the traffic from the question above, you should be able to follow all the application (Layer 7 OSI) packets in this TCP based protocol to see what is being sent via email? What is it?} \\
-    HTTP is indeed a Layer 7 OSI application, and these packets ``info" section all start with either \texttt{GET}, \texttt{HTTP}, or \texttt{POST}: the user clicking hyperlinks, the server loading those pages (\textbackslash\texttt{webmail}), and the user posting mail (\textbackslash\texttt{compose.php}) in php.
+
+    \vspace{-1em}
+    Over HTTP, packets' ``info" section all start with either \texttt{GET}, \texttt{HTTP}, or \texttt{POST}: the user clicking hyperlinks, the mail server loading those pages (\textbackslash\texttt{webmail}), and the user posting mail (\textbackslash\texttt{compose.php}) in php. When user sends mail to others, SMTP (Simple Mail Transfer Protocol) is used. This was discovered using \codebox{ip.addr == 10.0.0.41 \&\& smtp}, and following the TCP Stream of any packet.
+    \item \textbf{RE the previous question, you should be able to follow all Application-Layer packets in this TCP-based protocol to see what is being sent via email? What is it?} \\
+
+    \vspace{-1em}
+\scriptsize{\texttt{To: "Joe Chandler" <joe@northamericanlumbercoalition.com> \\
+Subject: Proposed salary structure \\
+X-Mailer: mail (GNU Mailutils 2.99.99) \\
+Message-Id: <20171026160829.5F311465F4@northamericanlumbercoalition.com> \\
+Date: Thu, 26 Oct 2017 16:08:29 +0000 (UTC) \\
+From: "Annie Smith" <annie@northamericanlumbercoalition.com>\\
+--952363535-1509298501=:17199 \\
+Content-ID: <20171029173501.17199@ip-10-0-80-181.ec2.internal> \\
+Content-Type: text/plain\\
+Here is the latest proposal for the new salary matrix. \\
+thanks,\\
+Annie}}
     \end{enumerate}
 \end{itemize}
 \end{bloodorangebox}
@@ -745,8 +762,35 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
 \vspace{-0.4em}
 \end{center}
 
-\begin{bloodorangebox}{Friday, June 2nd}
-This is my own box with a mandatory title.
+\begin{bloodorangebox}{Friday, June 2nd\vspace{-2em}\begin{flushright}\large\textbf{Wireshark: File Excavation}\end{flushright}}
+\begin{itemize}
+    \item\LARGE\textbf{attack.pcap}\normalsize
+    \begin{enumerate}
+    \item \textbf{When you open this file, there is a lot of data from different protocols. Can you use Wireshark to analyze this pcap and find the number of packets/segments, the total number of bytes, packets/segments transferred and received, and look at them by protocol (Ethernet, IPv4, TCP, UDP). Does Wireshark have the ability to do that?
+} \medskip
+
+    Yes, go to \codebox{Statistics $>$ Protocol Hierarchy}.
+    \medskip
+    
+    \item \textbf{What Layer 7 TCP-based protocols are used in this alleged attack that are not HTTP and not HTTPS? What query did you use to find them? \\
+} \medskip 
+
+    \vspace{-1.5em}
+    \noindent According to \href{https://www.ssl2buy.com/wiki/port-443#:~:text=Port%20443%20is%20used%20explicitly,port%20443%20for%20secure%20transfers.}{\textbf{this source}}, port 443 is used explicitly for HTTPS services; so, all packets not using HTTP nor HTTPS can be filtered using \codebox{tcp \&\& not http \&\& tcp.port != 443}, which consists of 64.3\% of all packets. Go to \codebox{Statistics $>$ Protocol Hierarchy}to see all stats within this query.
+    \medskip
+    
+    \item \textbf{What query can you use, without specifying the tcp source or destination ports, to find TCP packets with data inside of them that have the characters \codebox{SMB}?
+} \medskip
+
+    Well, to search for TCP packets that have the protocol SMB, the query \codebox{tcp \&\& smb} works; however, if you want to search for TCP packets with some string ``foo'' in the info box, the query \codebox{tcp} along with \codebox{CMD+F $>$ foo} with the case (in)sensitive option works (for \texttt{attack.pcap}, the latter returns nothing).
+    
+    \item \textbf{RE the previous two questions, one of these protocols shows up more than the others and it seems a lot of packets are exchanged with them, can you use Wireshark to extract what files look like from this traffic? Do some research and tell me: how would you do that with Wireshark?
+} \medskip
+
+    \vspace{-1.5em}
+    The former query returns about 64\% of all packets, while the latter returns only 2\%; in particular, the former is all traffic excluding (most?) of the Layer-7 TCP Protocols, and when inspecting any of these that remain using \codebox{Rclick $>$ Follow $>$ TCP Stream}, we can see that they are (all?) encrypted, even when viewed as ASCII characters. By visiting \codebox{File $>$ Export Objects $>$ SMB} and Saving them to our computer, we can open the excel file \texttt{\%5cHR\%5cNALC-salaries.xls} (it's still cool, despite being malware!).
+    \end{enumerate}
+\end{itemize}
 \end{bloodorangebox}
 \newpage
 
