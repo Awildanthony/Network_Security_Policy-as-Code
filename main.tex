@@ -815,7 +815,47 @@ border-right-style=double,
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{orangebox}{Tuesday, June 6th}
+\normalsize\begin{orangebox}{Monday, June 5th\vspace{-2em}\begin{flushright}\large\textbf{Researching: Firewalls, Network Architecture}\end{flushright}}
+\begin{itemize}
+    \item Did some research into the hierarchy of firewalls:
+\end{itemize}
+\vspace{-2.5em}
+\begin{center}
+\begin{tikzpicture}
+    \hspace{-0.05cm}\filldraw[color=blue, fill=blueone!90, very thick](0,0) rectangle (15.5,13);
+    \node[text width=15.5cm] at (8, 12.25) {\textcolor{white}{\underline{\large\textbf{Next-Generation Firewall (NGFW)}:}\\
+    \scriptsize $\bullet$ Deep Packet Inspection (DPI), Intrusion Detection/Prevention, Malware Filtering, AntiVirus, phishing, etc.}};
+        \begin{scope}[xshift = 0.25cm, yshift = 0.25cm]
+            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (8.65,11.25);
+            \node[text width=8.25cm] at (4.3, 9.3) {\textcolor{white}{\underline{\large\textbf{Stateful Inspection Firewall}:}\\
+            \vspace{0.25em}
+            \footnotesize $\bullet$ Keeps track of the state of network connections (TCP streams, UDP datagrams, etc.) \\
+            $\bullet$ Applies labels (LISTEN, ESTABLISHED, CLOSING) \\
+            $\bullet$ State table entries are created for protocols that are \\
+            \phantom{$\bullet$} allowed to communicate through the firewall in accor-\\
+            \vspace{-0.15em}
+            \phantom{$\bullet$} dance with the configured security policy.}};
+            \begin{scope}[xshift = 0.25cm, yshift = 0.3cm]
+                \filldraw[color=blue, fill=bluethree!90, very thick](0,0) rectangle (4,6.05);
+            \end{scope}
+            \begin{scope}[xshift = 4.4cm, yshift = 0.3cm]
+                \filldraw[color=blue, fill=bluethree!90, very thick](0,0) rectangle (4,6.05);
+            \end{scope}
+        \end{scope}
+        \begin{scope}[xshift = 9.2cm, yshift = 0.25cm]
+            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (6.1,11.25);
+        \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{orangebox}
+
+\begin{center}
+\vspace{-0.25em}
+\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\vspace{-0.4em}
+\end{center}
+
+\begin{orangebox}{Tuesday, June 6th}
 This is my own box with a mandatory title.
 \end{orangebox}
 
