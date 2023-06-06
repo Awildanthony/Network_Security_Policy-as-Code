@@ -398,13 +398,13 @@ https://github.com/canonical/multipass/releases/tag/v1.11.1
 \end{MacTerminal}
 \end{itemize}
 \begin{center}
-\textbf{\large\bullet} \\
-\textbf{\large\bullet} \\
-\textbf{\large\bullet} \\
+\textbf{\large$\bullet$} \\
+\textbf{\large$\bullet$} \\
+\textbf{\large$\bullet$} \\
 \large\textbf{\textit{Continued}...} \\
-\textbf{\large\bullet} \\
-\textbf{\large\bullet} \\
-\textbf{\large\bullet} \\
+\textbf{\large$\bullet$} \\
+\textbf{\large$\bullet$} \\
+\textbf{\large$\bullet$} \\
 \end{center}
 \end{redbox}
 
@@ -885,8 +885,22 @@ border-right-style=double,
 \vspace{-0.4em}
 \end{center}
 
-\begin{orangebox}{Tuesday, June 6th}
-This is my own box with a mandatory title.
+\begin{orangebox}{Tuesday, June 6th\vspace{-2em}\begin{flushright}\large\textbf{UTM (new VM) \& Suricata}\end{flushright}}
+\begin{itemize}
+    \item \texttt{multipass} is becoming more trouble than it's worth; when trying to launch a shell from the primary (or any) instance, it takes forever and times out. Trying to research solutions to this issue online or in the Issues tab of the \texttt{multipass} \href{https://github.com/canonical/multipass/issues}{\textbf{GitHub repo}}, other people seem to have similar problems that are hard to fix. I suspect this is because of my M1 Mac, so I've looked into what people recommend online, and I found \href{https://mac.getutm.app/}{\textbf{UTM}} as a possible alternative for a Linux VM that runs \texttt{Ubuntu 22.04}. Installation steps:
+    \begin{itemize}
+        \item Install \href{https://cdimage.ubuntu.com/jammy/daily-live/current/}{\texttt{Ubuntu 22.04}}, choosing the \textbf{64-bit ARM (ARMv8/AArch64)} desktop image option instead of the AMD option for this Mac's processor. This will produce a \texttt{jammy-desktop-arm64.iso}, which you can save anywhere (desktop).
+        \item Follow \href{https://www.youtube.com/watch?v=1WWj6qoWhJw}{\textbf{this video's}} instructions to install \href{https://mac.getutm.app/}{\textbf{UTM}}.
+        \item In the VM, follow \href{https://www.digitalocean.com/community/tutorials/how-to-install-suricata-on-ubuntu-20-04}{\textbf{this guide}} to install \href{https://en.wikipedia.org/wiki/Suricata_(software)}{\textbf{Suricata}}, an open-source based IDS/IPS.
+    \end{itemize}
+    \item \textbf{Today's Assignment:} You should research how to test a rule against a PCAP file after you install Suricata in Linux, not configuring the whole utility as a daemonized service and leaving it running long-term. You will only need to do the former.
+    \begin{enumerate}
+        \item You've been alerted that \codebox{27.43.100.29} is on a threat list targeting web services. Write a signature that alerts on accesses from this host to any local web service.
+        \item Your organization recently noticed that malicious actors were scanning for \codebox{phpMyAdmin} at \codebox{/phpMyAdmin/scripts/setup.php} on our web servers. The scan engine did not set a User-Agent. Write an alert for whenever an external host tries to fetch that URI without a User-Agent set. Test with \codebox{http.pcapDownload http.pcap}.
+        \item A few years ago a phishing attack was launched where the attacker got multiple users to add a malicious service as a trusted service on their Google account. The attack required the victim to click on a link to \href{https://accounts.google.com/o/oauth2/auth}{\codebox{https://accounts.google.com/o/oauth2/auth}}. Write a signature that finds all email with a link to that address. Test with \codebox{smtp.pcapDownload smtp.pcap}.
+        \item You are looking for data inside the friends lists on Yahoo! Messenger packets. The protocol is documented here: \href{http://libyahoo2.sourceforge.net/ymsg-9.txt}{\codebox{http://libyahoo2.sourceforge.net/ymsg-9.txt}}. Write a rule that will identify Yahoo messenger packets with a service of \codebox{00 f1} (this replaced \texttt{YAHOO\_SERVICE\_LIST} at some undocumented point in ancient history). You can test this against \codebox{ymsg2.pcap Download ymsg2.pcap}.
+    \end{enumerate}
+\end{itemize}
 \end{orangebox}
 
 \begin{center}
