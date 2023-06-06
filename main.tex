@@ -265,7 +265,7 @@ title={#1}}
 \hspace{-0.3cm}\small\hyperlink{page.14}{\textbf{WEEK [III.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\hyperlink{page.14}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\fcolorbox{orange}{white}{Tue 06/06}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
+\normalsize\indent \vline\textbf{------------}\hyperlink{page.14}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\hyperlink{page.15}{\fcolorbox{orange}{white}{Tue 06/06}}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
 
 \vspace{-1em}
 \hspace{-0.3cm}\small\textbf{WEEK [VI.]}
@@ -560,7 +560,7 @@ background-color=Lbloodorange,
 border-right-style=double,
 ]
 \medskip
-\phantom{~~}\Large\textbf{WEEK \barroman{II}.} \large(05/30 - 06/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\phantom{~~}\Large\textbf{WEEK \barroman{II}.} \large(05/30 - 06/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Network Protocols}}
 \end{longfbox}
 \\
 
@@ -817,36 +817,66 @@ border-right-style=double,
 
 \normalsize\begin{orangebox}{Monday, June 5th\vspace{-2em}\begin{flushright}\large\textbf{Researching: Firewalls, Network Architecture}\end{flushright}}
 \begin{itemize}
-    \item Did some research into the hierarchy of firewalls:
+    \item Research firewalls, their hierarchy, their interactions with IDS/IPS, how they differ, and where they fall in a network diagram (both diagrams constructed below):
 \end{itemize}
-\vspace{-2.5em}
+\vspace{-3em}
 \begin{center}
 \begin{tikzpicture}
-    \hspace{-0.05cm}\filldraw[color=blue, fill=blueone!90, very thick](0,0) rectangle (15.5,13);
-    \node[text width=15.5cm] at (8, 12.25) {\textcolor{white}{\underline{\large\textbf{Next-Generation Firewall (NGFW)}:}\\
-    \scriptsize $\bullet$ Deep Packet Inspection (DPI), Intrusion Detection/Prevention, Malware Filtering, AntiVirus, phishing, etc.}};
+    \hspace{-0.05cm}\filldraw[color=blue, fill=blueone!90, very thick](0,0) rectangle (15.5,12);
+    \node[text width=15.5cm] at (8, 11.25) {\textcolor{white}{\underline{\large\textbf{Next-Generation Firewall (NGFW)}:}\\
+    \vspace{0.25em}
+    \footnotesize $\bullet$ Deep Packet Inspection (DPI), Stuff similar to IDS/IPS, Malware Filtering, AntiVirus, phishing, etc.}};
         \begin{scope}[xshift = 0.25cm, yshift = 0.25cm]
-            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (8.65,11.25);
-            \node[text width=8.25cm] at (4.3, 9.3) {\textcolor{white}{\underline{\large\textbf{Stateful Inspection Firewall}:}\\
-            \vspace{0.25em}
-            \footnotesize $\bullet$ Keeps track of the state of network connections (TCP streams, UDP datagrams, etc.) \\
-            $\bullet$ Applies labels (LISTEN, ESTABLISHED, CLOSING) \\
+            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (8.65,10.25);
+            \node[text width=8.25cm] at (4.3, 8.3) {\textcolor{white}{\underline{\large\textbf{Stateful Inspection Firewall}:}\\
+            \vspace{0.5em}
+            \footnotesize $\bullet$ Keeps track of the state of network connections (TCP streams, UDP datagrams, etc.). \\
+            $\bullet$ Applies labels (LISTEN, ESTABLISHED, CLOSING). \\
             $\bullet$ State table entries are created for protocols that are \\
             \phantom{$\bullet$} allowed to communicate through the firewall in accor-\\
             \vspace{-0.15em}
             \phantom{$\bullet$} dance with the configured security policy.}};
             \begin{scope}[xshift = 0.25cm, yshift = 0.3cm]
                 \filldraw[color=blue, fill=bluethree!90, very thick](0,0) rectangle (4,6.05);
+                \node[text width=3.75cm] at (2.05, 3.05) {\textcolor{white}{\underline{\large\textbf{Packet Filter}:}\\
+                \vspace{0.25em}
+                \footnotesize $\bullet$ Sits at the junction with routers \& switches. \\
+                $\bullet$ Compares packets sent between devices against header info: packet type, port number, IP adr, etc. \\
+                $\bullet$ Either silently discards (default), discards with TCP response to sender, or allows packet to pass.}};
             \end{scope}
             \begin{scope}[xshift = 4.4cm, yshift = 0.3cm]
                 \filldraw[color=blue, fill=bluethree!90, very thick](0,0) rectangle (4,6.05);
+                \node[text width=3.75cm] at (2.05, 3.1) {\textcolor{white}{\underline{\large\textbf{Circuit-Level}} \\
+                \textbf{\underline{Gateway}:}\\
+                \vspace{0.5em}
+                \footnotesize $\bullet$ Between Application and Transport Layers. \\
+                $\bullet$ Avoids the filtering of individual packets. \\
+                $\bullet$ Manages endpoint conversations by remembering which port number the two IP addresses use. \\
+                $\bullet$ $\checkmark$'s TCP handshakes.}};
             \end{scope}
         \end{scope}
         \begin{scope}[xshift = 9.2cm, yshift = 0.25cm]
-            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (6.1,11.25);
+            \filldraw[color=blue, fill=bluetwo!90, very thick](0,0) rectangle (6.1,10.25);
+            \node[text width=5.75cm] at (3.05, 5.3) {\textcolor{white}{\underline{\large\textbf{Application-Level Gateway}} \\
+            \textbf{\underline{(Proxy Firewall)}:}\\
+            \vspace{0.75em}
+            \footnotesize $\bullet$ Sits between Internet and (W)LAN. \\
+            \vspace{0.25em}
+            $\bullet$ Proxy firewall $\Rightarrow$ proxy server, but proxy servers $\nRightarrow$ proxy firewalls. \\
+            \vspace{0.25em}
+            $\bullet$ An intermediary between clients and servers: caches webpages to reduce bandwidth demand, filters traffic, compresses data, detects viruses, etc.\\
+            \vspace{0.25em}
+            $\bullet$ Can hide user information or to connect to services that would be blocked. \\
+            \vspace{0.25em}
+            $\bullet$ Inspects packets at the Application Layer, with knowledge of standard ports and their respective protocols to filter abnormal traffic. \\
+            \vspace{0.25em}
+            $\bullet$ Uses virtual private networks (VPNs) and encrypted DNS to provide unified security management.}};
         \end{scope}
 \end{tikzpicture}
+\vspace{-1.5em}
+\hspace{-0.06cm}\includegraphics[width = 15.55cm, height = 6.05cm]{Network.png}
 \end{center}
+\vspace{0.5em}
 \end{orangebox}
 
 \begin{center}
