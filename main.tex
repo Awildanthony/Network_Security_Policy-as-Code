@@ -48,6 +48,9 @@
 \definecolor{bluetwo}{RGB}{112, 140, 255}
 \definecolor{bluethree}{RGB}{160, 179, 255}
 \definecolor{bluefour}{RGB}{207, 217, 255}
+\definecolor{ubuntupurple}{RGB}{48, 10, 36}
+\definecolor{ubuntugreen}{RGB}{38, 162, 105}
+\definecolor{ubuntublue}{RGB}{19, 72, 139}
 % more colors & some custom ones (L = light)
 \usepackage{tikz}
 % Manually draw math pictures using code
@@ -212,7 +215,7 @@ title={#1}}
     % _
 % for drawing realistic mac terminal window; commented out part is for 2nd user 'Bob'
 
-    \newtcblisting{ubuntu}{colback=macosblack, colupper=white, colframe=macosgrey, listing only,
+    \newtcblisting{ubuntu}{colback=ubuntupurple, colupper=white, colframe=macosgrey, listing only,
         listing options={style=tcblatex,language=sh,escapeinside=``,},
         title={\vspace{0.25em}\hspace{-1em}\textcolor{macosred}{\Huge{$\bullet$}}\textcolor{macosyellow}{\Huge{$\bullet$}}\textcolor{macosgreen}{\Huge{$\bullet$}}},
         every listing line={\MyUbuntuPrompt}}
@@ -221,7 +224,7 @@ title={#1}}
         host/.code={\gdef\MyUbuntuHost{#1}},host={},
         color/.code={\gdef\MyUbuntuColor{#1}},color=white,
         prompt char/.code={\gdef\MyUbuntuPromptChar{#1}},prompt char=\$,
-        root/.style={user=ubuntu,host=@primary,color=apple,prompt char=\$},
+        root/.style={user=ubuntu,host=@primary,color=ubuntugreen,prompt char=\$},
         bob/.style={user=bob,host=@remotehost,color=cyan},
         }
         
@@ -909,8 +912,67 @@ border-right-style=double,
 \vspace{-0.4em}
 \end{center}
 
-\begin{orangebox}{Wednesday, June 7th}
-This is my own box with a mandatory title.
+\begin{orangebox}{Wednesday, June 7th\vspace{-2em}\begin{flushright}\large\textbf{UTM \& Suricata, Continued}\end{flushright}}
+\begin{itemize}
+    \item Beginning where we left off yesterday, the first necessary step is to set up file sharing between the host and guest machines. For UTM, this will make use of the SPICE WebDAV directory share mode, which which you can access a selected shared directory:
+    \begin{enumerate}
+        \item Following \href{https://docs.getutm.app/guest-support/linux/}{\textbf{these instructions}}, ensure that the SPICE agent is installed. The SPICE agent is required for clipboard sharing (both QEMU and Apple backend) as well as dynamic display resolution in QEMU backend. Run these commands: \\
+        \codebox{\$ sudo apt install spice-vdagent} \codebox{\$ sudo apt install qemu-guest-agent}
+        \item Install the SPICE WebDAV with \codebox{\$ sudo apt install spice-webdavd}. 
+        \item Ensure no virtual machines are running, and open UTM. Select the desired VM, then click the top-rightmost icon in the window. Now, we are in \codebox{Settings $>$ Sharing $>$ Directory Share Mode}. Select \texttt{SPICE WebDAV}. Also ensure that the box above it is checked to enable clipboard sharing. Below it is a path where the shared directory folder with the \texttt{.pcap} files can be selected.
+        \item Then, you should be able to access \codebox{http://127.0.0.1:9843} from a browser inside the guest machine once it is running. This will render an HTML view of the shared directory folder that was manually selected in the previous step. You may click through the hyperlinks and click on the files to download them. \\
+        \textbf{Note:} a \href{https://github.com/utmapp/UTM/discussions/3917}{\textbf{common bug}} where the VM's \texttt{Spice client tools} folder can't open.
+    \end{enumerate}
+    \item Continuing with yesterday's assignment, question 1 asks to write a signature that alerts on accesses from to any local web services, with \codebox{27.43.100.29}being on a threat list:
+\end{itemize}
+\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/Desktop}}
+\begin{ubuntu}
+$ pwd `\BeginConsole`
+/home/amalysz/Desktop `\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/Desktop}}`
+$ ls `\BeginConsole`
+eve.json  fast.log  http.pcap  smtp.pcap  stats.log  suricata.log  ymsg2.pcap`\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/Desktop}}`
+$ ls -lh `\BeginConsole`
+total 148K
+-rw-r--r-- 1 root    root     70K Jun  7 13:40 eve.json
+-rw-r--r-- 1 root    root    1.4K Jun  7 13:40 fast.log
+-rw-rw-r-- 1 amalysz amalysz 1.9K Jun  7 12:23 http.pcap
+-rw-rw-r-- 1 amalysz amalysz 5.2K Jun  7 12:25 smtp.pcap
+-rw-r--r-- 1 root    root     21K Jun  7 13:40 stats.log
+-rw-r--r-- 1 root    root     13K Jun  7 13:40 suricata.log
+-rw-rw-r-- 1 amalysz amalysz 9.9K Jun  7 12:25 ymsg2.pcap `\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/Desktop}}`
+$ cd /var/lib/suricata
+\end{ubuntu}
+\end{orangebox}
+
+\begin{orangebox}{Wednesday, June 7th (Cont. \#1/1)}
+\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}
+\begin{ubuntu}
+$ ls`\BeginConsole`
+rules update`\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}`
+$ sudo nano custom-rules.rules
+\end{ubuntu}
+\begin{itemize}
+    \item \textbf{Note:} The reason we \codebox{cd} into \codebox{/var/lib/suricata} is because that is the default rule path for configuring Suricata to load Suricata-Update managed rules, as we can find by \codebox{cd}-ing into \codebox{cd /etc/suricata}, opening \codebox{open suricata.yaml}, and finally searching for the \codebox{rule-files:} config directive, as below:
+\end{itemize}
+\begin{center}
+\vspace{-0.5em}
+\phantom{~~~~~~~}\includegraphics[width = 14.4cm, height = 6cm]{suricata.yaml screenshot.png}
+\end{center}
+\begin{itemize}
+    \vspace{-1.75em}
+    \item Editing \texttt{custom-rules.rules} and allow us to write custom Suricata rules using its \href{https://www.youtube.com/watch?v=d-t-8lJ2PII&t=829s}{\textbf{proper syntax}}. We will write two rules: one that detects any network http interactions specifically between the IP \codebox{27.43.100.29} and our \texttt{\$HOME\_NET}, and a second that detects any network interactions with any outside networks \texttt{\$EXTERNAL\_NET}. \\
+    \textbf{Note:} pre-set labels like \texttt{\$HOME\_NET} and \texttt{\$EXTERNAL\_NET} are in \texttt{<some file>}, where custom labels can also be configured for individual/ranges of IPs, including ports:
+\end{itemize}
+\switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}
+\begin{ubuntu}
+$ sudo nano custom-rules.rules`\BeginConsole`
+alert http 27.43.100.29 any <-> $HOME_NET any (msg: "threat list alert";)
+alert http $EXTERNAL_NET any <-> $HOME_NET any (msg: "external alert";)
+\end{ubuntu}
+\begin{itemize}
+    \item After using \codebox{Ctrl+X} and \codebox{Y} followed by \codebox{ENTER} to save and exit, we can then \texttt{cd} back out again and run all three \texttt{.pcap} files through Suricata, which should alert us in accordance with our new custom rules. To do so, follow \href{https://asciinema.org/a/488029}{\textbf{this video}}. \\
+    \textbf{Note:} Come back to this---having difficulties with configuration change (to ``cheat").
+\end{itemize}
 \end{orangebox}
 
 \begin{center}
