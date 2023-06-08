@@ -98,7 +98,12 @@
 % for decorative symbols and such
 \usepackage{array}
 % need this for something table-related
-
+\usepackage{fontspec}
+% for toggling between fonts & using custom fonts (must use XeLaTeX/LuaLaTeX)
+\usepackage{moresize}
+% adds \HUGE and \TINY 
+\usepackage{emoji}
+% emojis! (must use LuaLaTeX)
 
 %====================={ CUSTOM COMMANDS }===================== 
 
@@ -245,18 +250,34 @@ title={#1}}
 \onehalfspacing
 \begin{document}
 
-\begin{blackbox}{\begin{center}\Large\textbf{Table of Contents:}\end{center}}
-\begin{center}\large\textit{In Progress...}\end{center}
+\fontspec{MrRobot.ttf}
+\begin{center}
+    \textcolor{red}{
+    \HUGE \underline{Next-Generation} \\
+    \HUGE \underline{Compliance as Code} \\
+    \bigskip
+    \Huge NIST SURF Program 2023 \\
+    \bigskip
+    \large created by \\
+    \medskip
+    \hspace{-0.4cm}\Large Mentor:\hspace{0.5cm}A.J. Stein\hspace{4.5cm}Anthony Malysz\\
+    \hspace{0.7cm}\normalsize\texttt{alexander.stein@nist.gov}\hspace{4cm}\texttt{anthonymalysz@college.harvard.edu} \\
+    }
+\end{center}
 
-\large\textbf{\hyperlink{page.1}{Work Log}} ................................................................................................................ \hyperlink{page.1}{1}\\
-\large\textbf{\hyperlink{page.2}{Communications \& Ideas Pad}} ............................................................................. \hyperlink{page.2}{2}
+\vspace{1.5em}
+\begin{blackbox}{\begin{center}\LARGE\textcolor{red}{Abstract}\Large\end{center}}
+\normalfont
+\large\phantom{~~~~} IT governance and information security policies are often complex to formulate, and even more complex to implement. Technical management and organization executives draft policy language with the intent to inform all employees, not engineers, let alone the computers themselves that must actualize said policies. After policy language is drafted, expert technical staff are needed to apply the policy to their technical domain, such as network and security administration of Linux operating systems, to implement the policy. Often rigorous information security programs require additional impartial, third-party experts to come and assess the implementation and review its readiness for production use separate of those that wrote the policy and implemented the systems to support it. Therefore, even minor policy changes require significant trickle-down efforts by skilled employees in high-demand sectors of industry that are difficult to employee and retain. \\ 
+\phantom{~~~~} It would be ideal to read human-friendly policy documents and have software interpret them and provide code in the relevant domains accordingly to implement them and assess them, without human intervention. In this project, I want to explore this research space with the following work items. Review the current state of software and machine learning models to convert policy documents to Linux system network and security administration functions in a semi-automated or completely automated fashion. Prototype known research approaches from 1 or novel solutions to build a machine learning model to take human-friendly policy documents and convert it into eBPF policy code for managing network and security functions for modern Linux operating systems.
 \end{blackbox}
 
-\begin{blackbox}{\begin{center}\Large\textbf{Work Log:}\end{center}}
-\hspace{-0.3cm}\small\textbf{\hyperlink{page.3}{WEEK [I.]}}
-\vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\hyperlink{page.3}{\fcolorbox{red}{white}{Mon 05/22}}\textbf{------}\hyperlink{page.3}{\fcolorbox{red}{white}{Tue 05/23}}\textbf{------}\hyperlink{page.5}{\fcolorbox{red}{white}{Wed 05/24}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Thrs 05/25}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Fri 05/26}} \\
+\begin{blackbox}{\begin{center}\LARGE\textcolor{red}{Work\hspace{0.5cm}Log}\end{center}}
+\normalfont
+\hspace{-0.3cm}\small\textbf{\hyperlink{page.3}{WEEK [I.]}} \\
+\vspace{0.25em}
+\indent\vline\normalsize\textbf{------------}\hyperlink{page.3}{\fcolorbox{red}{white}{Mon 05/22}}\textbf{------}\hyperlink{page.3}{\fcolorbox{red}{white}{Tue 05/23}}\textbf{------}\hyperlink{page.5}{\fcolorbox{red}{white}{Wed 05/24}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Thrs 05/25}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Fri 05/26}} \\
 
 \vspace{-1em}
 \hspace{-0.3cm}\small\textbf{\hyperlink{page.8}{WEEK [II.]}}
@@ -318,6 +339,7 @@ title={#1}}
 
 \normalsize\indent \vline\textbf{------------}\fcolorbox{indigo}{white}{Mon 07/31}\textbf{------}\fcolorbox{indigo}{white}{Tue 08/01}\textbf{------}\fcolorbox{indigo}{white}{Wed 08/02}\textbf{------}\fbox{\textbf{PRESENTATION}}
 \end{blackbox}
+\normalfont
 \newpage
 
 %========================={ HEADER }==========================
@@ -328,25 +350,6 @@ title={#1}}
 \fancyhead[R]{\textbf{May 22nd - August 3rd, 2023}}
 
 %=========================={ BODY }===========================
-
-\begin{tcbraster}[%
-    raster columns=1,
-    raster rows=1,
-    code={%
-      \tcbheightfromgroup\topboxheight{topbox}%
-      \tcbheightfromgroup\bottomboxheight{bottombox}%
-    },
-    raster height=\textheight-\topboxheight-\bottomboxheight-4mm]{\begin{center}\Large\textbf{Communications \& Ideas Pad:}\end{center}}
-    \begin{tcolorbox}
-        \begin{itemize}
-            \item TYPE HERE what comes across the noggin...
-            \item ...
-            \item ...
-        \end{itemize}
-    \end{tcolorbox}
-\end{tcbraster}
-
-\newpage
 
 \noindent\begin{longfbox}[
 rounded,
@@ -359,17 +362,17 @@ background-color=Lred,
 border-right-style=double,
 ]
 \medskip
-\phantom{~~}\Large\textbf{WEEK \barroman{I}.} \large(05/22 - 05/26)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Getting Comfortable...}}
+\phantom{~~}\Large\textbf{WEEK \barroman{I}.} \large(05/22 - 05/26)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Virtual Machines...}}
 \end{longfbox}
 \\
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=red, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=red, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{redbox}{Monday, May 22nd\vspace{-2em}\begin{flushright}\large\textbf{Orientation}\end{flushright}}
+\normalsize\begin{redbox}{Monday, May 22nd\vspace{-2em}\begin{flushright}\large\textbf{Virtual Orientation} \emoji{laptop}\emoji{wave}\end{flushright}}
 \begin{itemize}
     \item Attended welcome meeting via BlueJeans.
     \item Sat in on a meeting of AJ's with people reporting their week's work in the NIST ITL.
@@ -377,11 +380,11 @@ border-right-style=double,
 \end{redbox}
 
 \begin{center}
-\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Tuesday, May 23rd\vspace{-2em}\begin{flushright}\large\textbf{VM Struggles}\end{flushright}}
+\begin{redbox}{Tuesday, May 23rd\vspace{-2em}\begin{flushright}\large\textbf{VM Struggles} \emoji{beer}\emoji{technologist}\end{flushright}}
 \begin{itemize}
     \item Had trouble with iTAC getting into my work laptop; installed VirtualBox with the goal of installing Ubuntu as the VM inside it. Decided using homebrew would be easier.
     \item Installed multipass using \codebox{brew install multipass}.
@@ -411,7 +414,7 @@ https://github.com/canonical/multipass/releases/tag/v1.11.1
 \end{center}
 \end{redbox}
 
-\begin{redbox}{Tuesday, May 23rd (cont. \#1/2)}
+\begin{redbox}{Tuesday, May 23rd (cont. \#1/2)\vspace{-2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
 \begin{MacTerminal}
  multipass find `\StartConsole` 
 Image                   Aliases      Version     Description
@@ -449,12 +452,12 @@ ros2-humble                          0.1         A development and
         \item\codebox{sudo passwd ubuntu}
     \end{enumerate}
     To access the newly-installed desktop, I discovered the IP address of the VM by running \codebox{ip a}within the Ubuntu shell. I then used the IP address, and to connect I downloaded Microsoft Remote Desktop from the AppStore. Not sure if it worked.
-    \begin{center}
-        \large\textbf{(\textit{Continued} ...)}
-    \end{center}
 \end{itemize}
+\begin{center}
+    \large\textbf{(\textit{Continued} ...)}
+\end{center}
 \end{redbox}
-\begin{redbox}{Tuesday, May 23rd (cont. \#2/2)}
+\begin{redbox}{Tuesday, May 23rd (cont. \#2/2)\vspace{-2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
 \begin{itemize}
     \item Spent a bit more time figuring out how to run a web server on a multipass VM (on macOS with an M1 processor), mostly using StackOverflow and prompting ChatGPT (I think I was successful, as I was able to visit the IP address at the end in my browser):
     \begin{enumerate}
@@ -468,17 +471,17 @@ ros2-humble                          0.1         A development and
 \end{redbox}
 
 \begin{center}
-\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Wednesday, May 24th\vspace{-2em}\begin{flushright}\large\textbf{Firewall Struggles}\end{flushright}}
+\begin{redbox}{Wednesday, May 24th\vspace{-2em}\begin{flushright}\large\textbf{Firewall Struggles} \emoji{fire}\emoji{brick}\end{flushright}}
 \begin{itemize}
-    \item Started the day by figuring out how to configure two HTTP servers, one on port 8080 and one on port 9090 by opening two shells and running \codebox{python3 -m http.server 8080} in one shell and \codebox{python3 -m http.server 9090} in the other; then, I installed \href{https://en.wikipedia.org/wiki/Iptables}{\textbf{iptables}} and configured the iptables such that access to the 9090 HTTP server was allowed, but access to the 8080 server was prohibited. These were the steps I took (ChatGPT, SO):
+    \item Figured out how to configure two HTTP servers, one on port 8080 and one on port 9090 by opening two shells and running \codebox{python3 -m http.server 8080} in one shell and \codebox{python3 -m http.server 9090} in the other; then, I installed \href{https://en.wikipedia.org/wiki/Iptables}{\textbf{iptables}} and configured the iptables such that access to the 9090 HTTP server was allowed, but access to the 8080 server was prohibited. These were the steps I took (ChatGPT, SO):
 \end{itemize}
 \end{redbox}
 
-\begin{redbox}{Wednesday, May 24th (cont. \#1/2)}
+\begin{redbox}{Wednesday, May 24th (cont. \#1/2)\vspace{-2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
 \begin{itemize}
     \begin{itemize}
         \item Open up two terminal windows and run \codebox{python3 -m http.server 8080} and \codebox{python3 -m http.server 9090}, so that they're both up.
@@ -511,7 +514,7 @@ Listen 9090
     \end{itemize}
 \end{itemize}
 \end{redbox}
-\begin{redbox}{Wednesday, May 24th (cont. \#2/2)}
+\begin{redbox}{Wednesday, May 24th (cont. \#2/2)\vspace{-2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
     \begin{MacTerminal}
  sudo nano /etc/pf.conf`\StartConsole`
 
@@ -528,25 +531,27 @@ block in inet proto tcp from any to any port 8080
 \end{redbox}
 
 \begin{center}
-\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Thursday, May 25th\vspace{-2em}\begin{flushright}\large\textbf{Documentation Begins}\end{flushright}}
+\begin{redbox}{Thursday, May 25th\vspace{-2em}\begin{flushright}\large\textbf{Documentation Begins} \emoji{memo}\emoji{art}\end{flushright}}
 \begin{itemize}
     \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.1}{\textbf{Work Log}} and \hyperlink{page.1}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
 \end{itemize}
 \end{redbox}
 
 \begin{center}
-\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=red,width=1cm,ydelta=-10pt]{11}\pgfornament[color=red,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=red,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Friday, May 26th\vspace{-2em}\begin{flushright}\large\textbf{Catch-Up}\end{flushright}}
+\begin{redbox}{Friday, May 26th\vspace{-2em}\begin{flushright}\large\textbf{Catch-Up} \emoji{runner}\emoji{check-mark-button}\end{flushright}}
 \begin{itemize}
     \item Gained access to my NIST Laptop and downloaded necessary apps.
+    \vspace{-0.65em}
     \item Filled in Monday's, Tuesday's, and Wednesday's activities in this document (using Element DMs, ChatGPT prompt history, and Internset search history), and made new commands that will help with typesetting code and realisic-looking terminal window(s). 
+    \vspace{-2em}
     \item Explored our \href{https://github.com/users/aj-stein-nist/projects/2}{\textbf{GitHub Project Board}}, linked Overleaf with public GitHub repo.
 \end{itemize}
 \end{redbox}
@@ -563,17 +568,17 @@ background-color=Lbloodorange,
 border-right-style=double,
 ]
 \medskip
-\phantom{~~}\Large\textbf{WEEK \barroman{II}.} \large(05/30 - 06/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Network Protocols}}
+\phantom{~~}\Large\textbf{WEEK \barroman{II}.} \large(05/30 - 06/02)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\large\textbf{\textit{Network Protocols...}}
 \end{longfbox}
 \\
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=bloodorange, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=bloodorange, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2em}\begin{flushright}\large\textbf{Success with \texttt{iptables}}\end{flushright}}
+\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2em}\begin{flushright}\large\textbf{Success with \texttt{iptables}} \emoji{left-right-arrow}\emoji{warning}\end{flushright}}
 \begin{itemize}
     \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
     \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
@@ -603,7 +608,7 @@ target     prot opt source               destination
 \end{bloodorangebox}
 
 \newpage
-\begin{bloodorangebox}{Tuesday, May 30th (Cont. \#1/1)}
+\begin{bloodorangebox}{Tuesday, May 30th (Cont. \#1/1)\vspace{-2em}\begin{flushright}\large\emoji{left-right-arrow}\emoji{warning}\end{flushright}}
 \begin{ubuntu}
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
@@ -619,7 +624,7 @@ target     prot opt source               destination
 
 \begin{itemize}
     \begin{itemize}
-        \item By typing \codebox{ip a} and checking what the IP address is (in this case, it's not \codebox{localhost} like I tried last time---we will hopefully go over what \texttt{localhost} is later), we visit \codebox{http://192.168.64.3:8080} and \codebox{http://192.168.64.3:9000} (where the IP address is \codebox{192.168.64.3}). If done correctly, we should now be able to visit the former page, but not the latter.
+        \item By typing \codebox{ip a} and checking what the IP address is (in this case, it's not \codebox{localhost} like I tried last time---we will go over what \texttt{localhost} is later), we visit \codebox{http://192.168.64.3:8080} and \codebox{http://192.168.64.3:9000}. Done correctly, we should now be able to visit the former page, but not the latter.
         \item\textbf{Note:} to delete (flush) any changes we've made to the network policies on our VM, we can run \codebox{sudo iptables -F} to flush the firewall rules.
     \end{itemize}
     \item Investigated what different \href{https://en.wikipedia.org/wiki/Category:Transport_layer_protocols}{\textbf{transport layer protocols}} are, and how I think a computer is able to distinguish them (so that I can make a firewall treat each differently):
@@ -644,11 +649,11 @@ target     prot opt source               destination
 \end{bloodorangebox}
 
 \begin{center}
-\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.5em}
 \end{center}
 
-\begin{bloodorangebox}{Wednesday, May 31st\vspace{-2em}\begin{flushright}\large\textbf{Investigating Protocols}\end{flushright}}
+\begin{bloodorangebox}{Wednesday, May 31st\vspace{-2em}\begin{flushright}\large\textbf{Investigating Protocols} \emoji{open-book}\emoji{p-button}\end{flushright}}
 \begin{center}
 \vspace{-0.5em}
 \resizebox{14cm}{2.46cm}{\hspace{0.5cm}
@@ -665,8 +670,6 @@ target     prot opt source               destination
 \end{tabular}
 }
 \end{center}
-\vspace{-0.5em}
-$$\big\Downarrow\hspace{5cm}\big\Downarrow\hspace{5 cm}\big\Downarrow\hspace{0.7cm}$$
 \begin{tabular}{|m{0.10\textwidth}|m{0.13\textwidth}|m{0.685\textwidth}|}
 \cline{1-3}
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.1cm}\large{HTTP}\end{tabular}}       & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{Hypertext Transfer Protocol} is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. In a typical flow over HTTP, a client machine makes a request---these have a version type, URL, method, request headers, and (optional) body---to a server, which then responds.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
@@ -674,7 +677,7 @@ $$\big\Downarrow\hspace{5cm}\big\Downarrow\hspace{5 cm}\big\Downarrow\hspace{0.7
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.3cm}\large{FTP}\end{tabular}}             & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{File Transfer Protocol} is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network. FTP is built on a client–server model architecture using separate control and data connections between the client and the server. FTP users may authenticate themselves with a clear-text sign-in protocol, usually with a username and password, but can connect anonymously if the server is configured to allow it. FTP is often secured with SSL/TLS or replaced with SSH File Transfer Protocol.}                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \cline{1-1} \cline{3-3} 
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.26cm}\large{TCP}\end{tabular}}      & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{Transmission Control Protocol} is one of the main protocols of the IP suite. \hyperlink{page.9}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \cline{1-1} \cline{3-3} 
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.24cm}\large{UDP}\end{tabular}}             & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{User Datagram Protocol} is one of the core communication protocols of the Internet protocol suite used to send messages to other hosts on an IP network. \hyperlink{page.9}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
-\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.55cm}\large{IP}\end{tabular}}                   & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Protocol} is the network layer communications protocol for relaying datagrams across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. IP has the task of delivering packets from the source host to the destination host solely based on the IP addresses in the packet headers. For this purpose, IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information. The original Internet Protocol Version 4 (IPv4) is the dominant protocol of the Internet, with successor IPv6.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
+\textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.55cm}\large{IP}\end{tabular}}                   & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Protocol} is the network layer communications protocol for relaying datagrams across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. IP has the task of delivering packets from the source host to the destination host solely based on the IP addresses in the packet headers. IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information. The original Internet Protocol Version 4 (IPv4) is the dominant protocol of the Internet, with successor IPv6.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.15cm}\large{ICMP}\end{tabular}} & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Control Message Protocol} is used by network devices (e.g. router), to send error messages and operational info. indicating (un)successful communications with another IP address. ICMP differs from transport protocols (TCP, UDP, etc.) in that it is not typically used to exchange data between systems nor regularly employed by end-user network applications.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
 \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.25cm}\large{ARP}\end{tabular}}        & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Address Resolution Protocol} is a communication protocol that discovers the link layer address (e.g. MAC address) associated with a given internet layer address (usually IPv4).}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
 \textbf{\begin{tabular}[c]{@{}c@{}}\small{Ethernet}\end{tabular}}       & \hspace{0.61cm}\cellcolor{bluefour}\footnotesize{\textbf{Link}}        & 
@@ -685,11 +688,11 @@ $$\big\Downarrow\hspace{5cm}\big\Downarrow\hspace{5 cm}\big\Downarrow\hspace{0.7
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
-\begin{bloodorangebox}{Thursday, June 1st\vspace{-2em}\begin{flushright}\large\textbf{GitHub Bug Issue \& Wireshark}\end{flushright}}
+\begin{bloodorangebox}{Thursday, June 1st\vspace{-2em}\begin{flushright}\large\textbf{GitHub Bug Issue \& Wireshark} \emoji{bug}\emoji{shark}\end{flushright}}
 \begin{itemize}
     \item During our discussion last time of the way TCP communicates across a network, the command \codebox{netstat -ant}rendered a list of active TCP connections, ports on which the computer is listening, Ethernet statistics, the IP routing table, IPv4 statistics (for the IP, ICMP, TCP, and UDP protocols), and IPv6 statistics (for the IPv6, ICMPv6, TCP over IPv6, and UDP over IPv6 protocols). We were interested in investigating why the following ports were actively \texttt{LISTEN}-ing at all:
 \end{itemize}
@@ -717,13 +720,13 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
         \small{\textbf{Note:} early iTunes let you pirate songs by streaming from another person's device, using things of a similar fashion. Why does Apple having Airplay listening ports on by default?}
         \item Port \codebox{*.53} is DNS, according to \href{https://support.apple.com/en-ca/HT202944}{\textbf{this}} list of what ports usually listen to on MacOS.
     \end{itemize}
-    \item Updated to the newest version of MacOS Ventura last night (that might not be relevant) and trying to run \codebox{multipass shell} no longer worked, giving the error \codebox{shell failed: Cannot retrieve credentials in unknown state}. This prompted AJ and I to look into the \href{https://github.com/canonical/multipass}{\textbf{source code}} on GitHub, and to file my first \href{https://github.com/canonical/multipass/issues/3106}{\textbf{bug report}}!\\
+    \item Updated to the newest version of MacOS Ventura last night (that might not be relevant) and trying to run \codebox{multipass shell} no longer worked, giving the error \codebox{shell failed: Cannot retrieve credentials in unknown state}. This prompted us to look into the \href{https://github.com/canonical/multipass}{\textbf{source code}} on GitHub, and to file my first \href{https://github.com/canonical/multipass/issues/3106}{\textbf{bug report}}!\\
     \small{\textbf{Note:} adding \texttt{.patch} to the end of a URL on an issue request in GitHub might reveal emails!}
     \item\normalsize{Got on the phone with iTAC and gained administrator access - also will no longer need smartcard to log in to work laptop, so no more login error messages.}
 \end{itemize}
 \end{bloodorangebox}
 
-\begin{bloodorangebox}{Thursday, June 1st (Cont. \#1/1)}
+\begin{bloodorangebox}{Thursday, June 1st (Cont. \#1/1)\vspace{-2em}\begin{flushright}\large \emoji{bug}\emoji{shark}\end{flushright}}
 \begin{itemize}
     \item\LARGE\textbf{mailserver.pcap} \\
     \normalsize This file contains information about a mail server in an AWS account. You can see this server communicating with multiple computers, one of them is a user (maybe from the company running) this mail server and other computers in internal/external networks.
@@ -761,11 +764,11 @@ Annie}}
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=bloodorange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=bloodorange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
-\begin{bloodorangebox}{Friday, June 2nd\vspace{-2em}\begin{flushright}\large\textbf{Wireshark: File Excavation}\end{flushright}}
+\begin{bloodorangebox}{Friday, June 2nd\vspace{-2em}\begin{flushright}\large\textbf{Wireshark: File Excavation} \emoji{pick}\emoji{shark}\end{flushright}}
 \begin{itemize}
     \item\LARGE\textbf{attack.pcap}\normalsize
     \begin{enumerate}
@@ -808,19 +811,19 @@ background-color=Lorange,
 border-right-style=double,
 ]
 \medskip
-\phantom{~~}\Large\textbf{WEEK \barroman{III}.} \large(06/05 - 06/09)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\phantom{~~}\Large\textbf{WEEK \barroman{III}.} \large(06/05 - 06/09)\phantom{~~~~~~~~~~~~~~~~~~~~~~}\textbf{\textit{Intercepting Network Traffic...}}
 \end{longfbox}
 \\
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=orange, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=orange, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{orangebox}{Monday, June 5th\vspace{-2em}\begin{flushright}\large\textbf{Researching: Firewalls, Network Architecture}\end{flushright}}
+\normalsize\begin{orangebox}{Monday, June 5th\vspace{-2em}\begin{flushright}\large\textbf{Firewalls \& Network Traffic} \emoji{globe-with-meridians}\emoji{vertical-traffic-light}\end{flushright}}
 \begin{itemize}
-    \item Research firewalls, their hierarchy, their interactions with IDS/IPS, how they differ, and where they fall in a network diagram (both diagrams constructed below):
+    \item Research firewalls: their hierarchy, interactions with IDS/IPS, place in a network, etc.
 \end{itemize}
 \vspace{-3em}
 \begin{center}
@@ -884,15 +887,15 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
-\begin{orangebox}{Tuesday, June 6th\vspace{-2em}\begin{flushright}\large\textbf{UTM (new VM) \& Suricata}\end{flushright}}
+\begin{orangebox}{Tuesday, June 6th\vspace{-2em}\begin{flushright}\large\textbf{UTM (new VM) \& Suricata} \emoji{penguin}\emoji{hamster}\end{flushright}}
 \begin{itemize}
-    \item \texttt{multipass} is becoming more trouble than it's worth; when trying to launch a shell from the primary (or any) instance, it takes forever and times out. Trying to research solutions to this issue online or in the Issues tab of the \texttt{multipass} \href{https://github.com/canonical/multipass/issues}{\textbf{GitHub repo}}, other people seem to have similar problems that are hard to fix. I suspect this is because of my M1 Mac, so I've looked into what people recommend online, and I found \href{https://mac.getutm.app/}{\textbf{UTM}} as a possible alternative for a Linux VM that runs \texttt{Ubuntu 22.04}. Installation steps:
+    \item \texttt{multipass} is becoming more trouble than it's worth; when trying to launch a shell from the primary (or any) instance, it takes forever and times out. Other people seem to have similar problems: see Issues tab of the \texttt{multipass} \href{https://github.com/canonical/multipass/issues}{\textbf{GitHub repo}}. I suspect this is because of my M1 Mac, so I've looked into what people recommend and found \href{https://mac.getutm.app/}{\textbf{UTM}} as a possible alternative for a Linux VM. Installation steps:
     \begin{itemize}
-        \item Install \href{https://cdimage.ubuntu.com/jammy/daily-live/current/}{\texttt{Ubuntu 22.04}}, choosing the \textbf{64-bit ARM (ARMv8/AArch64)} desktop image option instead of the AMD option for this Mac's processor. This will produce a \texttt{jammy-desktop-arm64.iso}, which you can save anywhere (desktop).
+        \item Install \href{https://cdimage.ubuntu.com/jammy/daily-live/current/}{\texttt{Ubuntu 22.04}}, choosing the \textbf{64-bit ARM (ARMv8/AArch64)} desktop image option instead of the AMD option for this Mac's M1 processor. This will produce a \texttt{jammy-desktop-arm64.iso}, which you can save anywhere (desktop).
         \item Follow \href{https://www.youtube.com/watch?v=1WWj6qoWhJw}{\textbf{this video's}} instructions to install \href{https://mac.getutm.app/}{\textbf{UTM}}.
         \item In the VM, follow \href{https://www.digitalocean.com/community/tutorials/how-to-install-suricata-on-ubuntu-20-04}{\textbf{this guide}} to install \href{https://en.wikipedia.org/wiki/Suricata_(software)}{\textbf{Suricata}}, an open-source based IDS/IPS.
     \end{itemize}
@@ -908,11 +911,11 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
-\begin{orangebox}{Wednesday, June 7th\vspace{-2em}\begin{flushright}\large\textbf{UTM \& Suricata, Continued}\end{flushright}}
+\begin{orangebox}{Wednesday, June 7th\vspace{-2em}\begin{flushright}\large\textbf{UTM \& Suricata, Continued} \emoji{hamster}\emoji{counterclockwise-arrows-button}\end{flushright}}
 \begin{itemize}
     \item Beginning where we left off yesterday, the first necessary step is to set up file sharing between the host and guest machines. For UTM, this will make use of the SPICE WebDAV directory share mode, which which you can access a selected shared directory:
     \begin{enumerate}
@@ -944,7 +947,7 @@ $ cd /var/lib/suricata
 \end{ubuntu}
 \end{orangebox}
 
-\begin{orangebox}{Wednesday, June 7th (Cont. \#1/1)}
+\begin{orangebox}{Wednesday, June 7th (Cont. \#1/1)\vspace{-2em}\begin{flushright}\large \emoji{hamster}\emoji{counterclockwise-arrows-button}\end{flushright}}
 \switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}
 \begin{ubuntu}
 $ ls`\BeginConsole`
@@ -977,7 +980,7 @@ alert http $EXTERNAL_NET any <-> $HOME_NET any (msg: "external alert";)
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -987,7 +990,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{11}\pgfornament[color=orange,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=orange,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1013,7 +1016,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=shininggold, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=shininggold, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1023,7 +1026,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1033,7 +1036,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1043,7 +1046,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1053,7 +1056,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{11}\pgfornament[color=shininggold,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=shininggold,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1079,7 +1082,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=yellow, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=yellow, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1089,7 +1092,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1099,7 +1102,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1109,7 +1112,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{11}\pgfornament[color=yellow,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=yellow,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1135,7 +1138,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=leafgreen, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=leafgreen, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1145,7 +1148,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1155,7 +1158,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1165,7 +1168,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1175,7 +1178,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=leafgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=leafgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1201,7 +1204,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=hulkgreen, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=hulkgreen, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1211,7 +1214,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1221,7 +1224,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1231,7 +1234,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{11}\pgfornament[color=hulkgreen,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=hulkgreen,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1257,7 +1260,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=oceanblue, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=oceanblue, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1267,7 +1270,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1277,7 +1280,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1287,7 +1290,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1297,7 +1300,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=oceanblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=oceanblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1323,7 +1326,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=blue, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=blue, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1333,7 +1336,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1343,7 +1346,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1353,7 +1356,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1363,7 +1366,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=blue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=blue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1389,7 +1392,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=darkblue, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=darkblue, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1399,7 +1402,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1409,7 +1412,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1419,7 +1422,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1429,7 +1432,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{11}\pgfornament[color=darkblue,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=darkblue,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1455,7 +1458,7 @@ border-right-style=double,
 
 \begin{center}
 \vspace{-1em}
-\pgfornament[color=indigo, width=6cm, ydelta=-10pt]{88}
+\hspace{0.1cm}\pgfornament[color=indigo, width=6cm, ydelta=-10pt]{88}
 \vspace{-0.5em}
 \end{center}
 
@@ -1465,7 +1468,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1475,7 +1478,7 @@ This is my own box with a mandatory title.
 
 \begin{center}
 \vspace{-0.25em}
-\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
+\hspace{0.2cm}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{11}\pgfornament[color=indigo,width=0.5cm,ydelta=-10pt]{6}\pgfornament[color=indigo,width=1cm,ydelta=-10pt]{14}
 \vspace{-0.4em}
 \end{center}
 
@@ -1488,3 +1491,4 @@ This is my own box with a mandatory title.
 
 
 \end{document}
+
