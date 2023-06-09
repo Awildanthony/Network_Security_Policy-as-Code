@@ -191,7 +191,7 @@ title={#1}}
 \newcommand\codebox[1]{
     \noindent\hspace{-0.25em}\begin{tcolorbox}[on line, hbox, colback = codeblack, colframe = codeborder, coltext = white, boxrule = 1.5pt, left = 2pt, right = 2pt, top = 0.5pt, bottom = 0.5pt]
     \small\texttt{#1}\normalsize
-    \end{tcolorbox}
+    \end{tcolorbox}\hspace{-0.25em}
 }
 % for typesetting console commands
 
@@ -465,7 +465,7 @@ ros2-humble                          0.1         A development and
     \item\large\textbf{Launching a Multipass VM: }\normalsize Launch a Multipass VM by opening a terminal window and running \codebox{multipass launch --name my-vm}. This will create a new virtual machine named \texttt{my-vm}. 
     \item\large\textbf{Accessing the VM: }\normalsize To access the Multipass VM, run \codebox{multipass shell my-vm}. This will open a shell session inside the VM. 
     \item\large\textbf{Installing and Configuring the Web Server: }\normalsize Install Apache inside the VM by running \codebox{sudo apt update} and \codebox{sudo apt install apache2}. Once the installation is complete, Apache should be running automatically. You can test it by opening a web browser on your Mac and navigating to \texttt{http://<VM-IP-address>}. Replace \texttt{<VM-IP-address>} with the IP address of your Multipass VM.
-    \item\large\textbf{Sharing Files with the VM: }\normalsize By default, the Multipass VM doesn't have direct access to your Mac's file system. You can use the Multipass file transfer feature to share files between your Mac and the VM. To transfer files from your Mac to the VM, use the following command: \codebox{multipass transfer /path/to/local/file my-vm:/path/to/destination/file}, (for me, the \texttt{/path/to/destination/file} was \texttt{/Users/anthonymalysz}). To transfer files from the VM to your Mac, use the following command: \codebox{multipass transfer my-vm:/path/to/vm/file /path/to/destination/file}. Replace the paths with the appropriate locations on your Mac and the VM. 
+    \item\large\textbf{Sharing Files with the VM: }\normalsize By default, the Multipass VM doesn't have direct access to your Mac's file system. You can use the Multipass file transfer feature to share files between your Mac and the VM. To transfer files from your Mac to the VM, use the following command: \codebox{multipass transfer /path/to/local/file my-vm:/path/to/destination/file} (for me, the \texttt{/path/to/destination/file} was \texttt{/Users/anthonymalysz}). To transfer files from the VM to your Mac, use the following command: \codebox{multipass transfer my-vm:/path/to/vm/file /path/to/destination/file}. Replace the paths with the appropriate locations on your Mac and the VM. 
     \end{enumerate}
 \end{itemize}
 \end{redbox}
@@ -782,7 +782,7 @@ Annie}}
 } \medskip 
 
     \vspace{-1.5em}
-    \noindent According to \href{https://www.ssl2buy.com/wiki/port-443#:~:text=Port%20443%20is%20used%20explicitly,port%20443%20for%20secure%20transfers.}{\textbf{this source}}, port 443 is used explicitly for HTTPS services; so, all packets not using HTTP nor HTTPS can be filtered using \codebox{tcp \&\& not http \&\& tcp.port != 443}, which consists of 64.3\% of all packets. Go to \codebox{Statistics $>$ Protocol Hierarchy}to see all stats within this query.
+    \noindent According to \href{https://www.ssl2buy.com/wiki/port-443#:~:text=Port%20443%20is%20used%20explicitly,port%20443%20for%20secure%20transfers.}{\textbf{this source}}, port 443 is used explicitly for HTTPS services; so, all packets not using HTTP nor HTTPS can be filtered using \codebox{tcp \&\& not http \&\& tcp.port != 443}, which consists of 64.3\% of all packets. Go to \codebox{Statistics $>$ Protocol Hierarchy} to see all stats within this query.
     \medskip
     
     \item \textbf{What query can you use, without specifying the tcp source or destination ports, to find TCP packets with data inside of them that have the characters \codebox{SMB}?
@@ -794,7 +794,7 @@ Annie}}
 } \medskip
 
     \vspace{-1.5em}
-    The former query returns about 64\% of all packets, while the latter returns only 2\%; in particular, the former is all traffic excluding (most?) of the Layer-7 TCP Protocols, and when inspecting any of these that remain using \codebox{Rclick $>$ Follow $>$ TCP Stream}, we can see that they are (all?) encrypted, even when viewed as ASCII characters. By visiting \codebox{File $>$ Export Objects $>$ SMB} and Saving them to our computer, we can open the excel file \texttt{\%5cHR\%5cNALC-salaries.xls} (it's still cool, despite being malware!).
+    The former query returns about 64\% of all packets, while the latter returns only 2\%; in particular, the former is all traffic excluding (most?) of the Layer-7 TCP Protocols, and when inspecting any of these that remain using \codebox{Rclick $>$ Follow $>$ TCP Stream}, we can see that they are (all?) encrypted, even when viewed as ASCII characters. By visiting \codebox{File $>$ Export Objects $>$ SMB} and saving them to our computer, we can open the excel file \texttt{\%5cHR\%5cNALC-salaries.xls} (it's still cool, despite actually being malware!).
     \end{enumerate}
 \end{itemize}
 \end{bloodorangebox}
@@ -963,19 +963,17 @@ $ sudo nano custom-rules.rules
 \end{center}
 \begin{itemize}
     \vspace{-1.75em}
-    \item Editing \texttt{custom-rules.rules} and allow us to write custom Suricata rules using its \href{https://www.youtube.com/watch?v=d-t-8lJ2PII&t=829s}{\textbf{proper syntax}}. We will write two rules: one that detects any network http interactions specifically between the IP \codebox{27.43.100.29} and our \texttt{\$HOME\_NET}, and a second that detects any network interactions with any outside networks \texttt{\$EXTERNAL\_NET}. \\
+    \item Write and \href{https://asciinema.org/a/488029}{\textbf{test}} four custom Suricata rules in \texttt{custom-rules.rules} using its \href{https://www.youtube.com/watch?v=d-t-8lJ2PII&t=829s}{\textbf{syntax}}.\\
     \textbf{Note:} pre-set labels like \texttt{\$HOME\_NET} and \texttt{\$EXTERNAL\_NET} are in \texttt{<some file>}, where custom labels can also be configured for individual/ranges of IPs, including ports:
 \end{itemize}
 \switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}
 \begin{ubuntu}
 $ sudo nano custom-rules.rules`\BeginConsole`
-alert http 27.43.100.29 any <-> $HOME_NET any (msg: "threat list alert";)
-alert http $EXTERNAL_NET any <-> $HOME_NET any (msg: "external alert";)
+alert http 27.43.100.29 any -> $HOME_NET any (msg:"threat list"; flow:to_server; sid:1; rev:1;)
+alert http any any -> $HOME_NET$ any (msg:"phpMyAdmin scan"; flow:established,to_server; content:"GET"; http_uri:"/phpMyAdmin/scripts/setup.php"; http_header:!"User-Agent"; sid:2; rev:2;)
+alert smtp any any -> $HOME_NET any (msg:"phishing"; flow:to_server; content:"https://accounts.google.com/o/oauth2/auth"; sid:3; rev:3;)
+alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 00|"; content:"|00 f1|"; distance:2; within:4; sid:4; rev:4;)
 \end{ubuntu}
-\begin{itemize}
-    \item After using \codebox{Ctrl+X} and \codebox{Y} followed by \codebox{ENTER} to save and exit, we can then \texttt{cd} back out again and run all three \texttt{.pcap} files through Suricata, which should alert us in accordance with our new custom rules. To do so, follow \href{https://asciinema.org/a/488029}{\textbf{this video}}. \\
-    \textbf{Note:} Come back to this---having difficulties with configuration change (to ``cheat").
-\end{itemize}
 \end{orangebox}
 
 \begin{center}
@@ -984,8 +982,25 @@ alert http $EXTERNAL_NET any <-> $HOME_NET any (msg: "external alert";)
 \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{orangebox}{Thursday, June 8th}
-This is my own box with a mandatory title.
+\normalsize\begin{orangebox}{Thursday, June 8th\vspace{-2em}\begin{flushright}\large Q\&A with VPNs \emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
+\begin{itemize}
+    \item\textbf{What is the basic premise of a VPN?} \\
+    Answer. 
+    \item\textbf{How does a VPN's cryptography work? Why is it secure, and do you retain total anonymity?} \\
+    Answer.
+    \item\textbf{Like with overlay of security protocols, how can multiple services be using the same port, and why is it that you don't see port numbers registered above 1024-65535?} \\
+    Answer.
+    \item\textbf{Is there sense in security through obfuscation---say, running SSH through a non-default port? How can someone find out an SSH service is running on any port without prior knowledge of the port number?} \\
+    Answer.
+    \item\textbf{What are the IPSec, OpenVPN, and Wireguard protocols and how do they use encapsulation?} \\
+    Answer. 
+    \item\textbf{How does a VPN client (say, Ubuntu Linux) know to not leak data by sending traffic outside the VPN, thereby going through the normal network connection?} \\
+    Answer.
+    \item\textbf{How could you tell that someone is using a VPN, and how could you hide that fact from someone else?} \\
+    Answer.
+    \item\textbf{Looking for meta data---even surrounding encrypted packet contents---is a standard practice; how could someone use cryptography to apply a further layer of security and hide that meta data?} \\
+    Answer.
+\end{itemize}
 \end{orangebox}
 
 \begin{center}
