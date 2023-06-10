@@ -289,13 +289,13 @@ title={#1}}
 \hspace{-0.3cm}\small\hyperlink{page.14}{\textbf{WEEK [III.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\hyperlink{page.14}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\hyperlink{page.15}{\fcolorbox{orange}{white}{Tue 06/06}}\textbf{------}\fcolorbox{orange}{white}{Wed 06/07}\textbf{------}\fcolorbox{orange}{white}{Thrs 06/08}\textbf{------}\fcolorbox{orange}{white}{Fri 06/09} \\
+\normalsize\indent \vline\textbf{------------}\hyperlink{page.14}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\hyperlink{page.15}{\fcolorbox{orange}{white}{Tue 06/06}}\textbf{------}\hyperlink{page.16}{\fcolorbox{orange}{white}{Wed 06/07}}\textbf{------}\hyperlink{page.18}{\fcolorbox{orange}{white}{Thrs 06/08}}\textbf{------}\hyperlink{page.21}{\fcolorbox{orange}{white}{Fri 06/09}} \\
 
 \vspace{-1em}
-\hspace{-0.3cm}\small\textbf{WEEK [VI.]}
+\hspace{-0.3cm}\small\hyperlink{page.22}{\textbf{WEEK [VI.]}}
 \vspace{0.25em}
 
-\normalsize\indent \vline\textbf{------------}\fcolorbox{shininggold}{white}{Mon 06/12}\textbf{------}\fcolorbox{shininggold}{white}{Tue 06/13}\textbf{------}\fcolorbox{shininggold}{white}{Wed 06/14}\textbf{------}\fcolorbox{shininggold}{white}{Thrs 06/15}\textbf{------}\fcolorbox{shininggold}{white}{Fri 06/16} \\
+\normalsize\indent \vline\textbf{------------}\hyperlink{page.22}{\fcolorbox{shininggold}{white}{Mon 06/12}}\textbf{------}\fcolorbox{shininggold}{white}{Tue 06/13}\textbf{------}\fcolorbox{shininggold}{white}{Wed 06/14}\textbf{------}\fcolorbox{shininggold}{white}{Thrs 06/15}\textbf{------}\fcolorbox{shininggold}{white}{Fri 06/16} \\
 
 \vspace{-1em}
 \hspace{-0.3cm}\small\textbf{WEEK [V.]}
@@ -985,21 +985,47 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 \normalsize\begin{orangebox}{Thursday, June 8th\vspace{-2em}\begin{flushright}\large Q\&A with VPNs \emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
 \begin{itemize}
     \item\textbf{What is the basic premise of a VPN?} \\
-    Answer. 
-    \item\textbf{How does a VPN's cryptography work? Why is it secure, and do you retain total anonymity?} \\
-    Answer.
-    \item\textbf{Like with overlay of security protocols, how can multiple services be using the same port, and why is it that you don't see port numbers registered above 1024-65535?} \\
-    Answer.
-    \item\textbf{Is there sense in security through obfuscation---say, running SSH through a non-default port? How can someone find out an SSH service is running on any port without prior knowledge of the port number?} \\
-    Answer.
-    \item\textbf{What are the IPSec, OpenVPN, and Wireguard protocols and how do they use encapsulation?} \\
-    Answer. 
-    \item\textbf{How does a VPN client (say, Ubuntu Linux) know to not leak data by sending traffic outside the VPN, thereby going through the normal network connection?} \\
-    Answer.
+    \phantom{~~~~} VPN means ``virtual private network". VPN services will pass your data through their VPN client downloaded onto your device instead of going directly to your ISP from your modem---this is to encrypt the traffic from third parties. It then goes from them to your VPN server, and from there to the internet. This last step allows you to configure your appeared location, as companies have VPN servers all over the world.
+    \item\textbf{How does a VPN's cryptography work? Do you retain total anonymity?} \\
+    \phantom{~~~~} When the VPN client and VPN server initiate a connection, they must authenticate each other and establish an encrypted tunnel. Authentication methods are usually... \\
+    \phantom{~~~~} Pre-shared keys are exchanged by both client and server as a means of mutual authentication to initiate the tunneling protocol: this begs the question of how sharing of said keys is secure in the first place, and may take place such that each downloaded client comes with a unique key and a key to expect from the server (or, these passwords may be exchanged via encrypted traffic over the network). \\
+    \phantom{~~~~} Certificates are the better-scaling option, but they need to be purchased and issued from the CA (Certificate Authority). They contain the public key for a digital signature and specifies the identity associated with the key, such as the name of an organization. The certificate is used to confirm that the public key belongs to said organization. \\
+    \phantom{~~~~} Privacy and anonymity are often confused services that a VPN provides, which only includes the former. When intercepting traffic from a VPN or attempting to keep logs of it as an ISP, packet contents are encrypted, but meta data such as source/destination ports, the VPN's IP address(es), number and frequency of connections, amount of data transferred, etc. will always remain visible. Profiles can be built around this meta data to associate with individual devices. The VPN services still remain useful, though.
+    \item\textbf{Like with overlay of security protocols, how can multiple services be using the same port(s) simultaneously? How many ports are there?} \\
+    \phantom{~~~~} To some degree of abstraction, ports are just reserved lines of communication that can be recognized by a sender and receiver, and they shouldn't be thought of as physical space residing anywhere. For reasons that ``seemed to be correct at the time," ports are assigned 16-bits each in the header blocks of each TCP and UDP packet---in total, 32-bits. This means $2^{16}-1=65535$ possible ports to be used at any given time. The reason a port can receive multiple communications simultaneously is because of the different sender port labels: they're just a way for the computer to keep ongoing conversations separate, and for said lines to know when to be expecting answers.
+\end{itemize}
+\end{orangebox}
+\begin{orangebox}{Thursday, June 8th (Cont. \#1/2)\vspace{-2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
+\begin{itemize}
+    \item\textbf{Is it more secure to run SSH through a non-default port? How can someone find out an SSH service is running on any port without prior knowledge?} \\
+    \phantom{~~~~} By running SSH through a non-default port, you prevent communication from all sources that know to look for it, and lower the scope of sources that can contact the server. This filters false-malicious connections to a minimum from scripted attacks, meaning repeated failed connection requests suggest the server is being targeted. This also means that any automated or trusted sources that know to look for the default port must also be informed, however. \\
+    \phantom{~~~~} Taken from this \href{https://unix.stackexchange.com/questions/539882/find-which-port-does-ssh-client-used-to-send-connection-request}{\textbf{source}}, to know what port a particular ssh connection will use, you can look in \codebox{/etc/ssh/ssh\_config} for any system/global hosts configured, and in \codebox{~/.ssh/config} for any user/local hosts. To know what port will be used by default, you can use the command \codebox{\$ getent services ssh} (the standard port is 22). To know what ports are actively in use, the command \codebox{\$ netstat --tcp --programs --numeric | grep ssh} should show you.
+    \item\textbf{What are the VPN protocols IPSec, OpenVPN, and Wireguard?} \\
+    \phantom{~~~~} Where IP is the standard that says how and where data should go over the internet, IPsecure adds encryption and authentication on top of that process to avoid unwanted monitoring of network traffic; it scrambles information at the source and unscrambles information at the destination. IPsec connections are commonly used with VPNs when accessing files remotely, for example (like with NIST). \\
+    \phantom{~~~~} OpenVPN is an open-sourced VPN protocol integrated into a lot of commercial VPNs' models. It uses UDP primarily for the sake of having fast connections---some of which are across the world streaming video, so speed is more of the essence (and if data is scrambled on top as a security measure, packet order won't make a difference and neither will dropping a handful of them in comparison)---but also supports TCP connections as a backup option. \\
+    \phantom{~~~~} Wireguard is a third free, open-sourced tunneling protocol that uses only UDP with the goal of improved performance over the aforementioned two. It's also said to be fast because its low-level components are built into the Linux kernel, making it faster than userspace VPNs. It launched in 2015 with newer and faster cryptographic methods, also focusing on minimizing attack surface against hackers. It does not counter deep-packet inspection alone, however, but has the architecture to support further obfuscation.
+\end{itemize}
+    \begin{center}
+    \vspace{-0.5em}
+    \large\bullet \\
+    \large\bullet \\
+    \large\bullet \\
+    \Large\textbf{(\textit{Continued...})}
+    \end{center}
+\end{orangebox}
+\begin{orangebox}{Thursday, June 8th (Cont. \#2/2)\vspace{-2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
+\begin{itemize}
+    \item\textbf{How does a VPN client (say, Ubuntu Linux) know to not leak data by sending traffic outside the VPN (through the normal network connection)?}
+    \begin{enumerate}
+        \item\textbf{Routing:} Upon establishing a connection, the VPN client modifies the routing table on the OS, adding a route that directs all traffic through the VPN tunnel.
+        \item\textbf{Network Firewall:} The VPN client may also employ a network firewall to block any outgoing network connections that are not intended to go through the VPN tunnel. The firewall rules are set up to allow only the VPN traffic to pass through.
+        \item\textbf{DNS Leak Protection:} DNS (Domain Name System) leak is a common issue where DNS requests made by the operating system bypass the VPN tunnel and are resolved by the default DNS servers of the network. To prevent this, the VPN client typically configures the system to use its own DNS servers.
+        \item\textbf{Kill Switch:} A kill switch is a fail-safe that monitors the VPN connection status and immediately blocks all network traffic if the VPN connection drops unexpectedly, preventing any data from being transmitted outside the VPN tunnel.
+    \end{enumerate}
     \item\textbf{How could you tell that someone is using a VPN, and how could you hide that fact from someone else?} \\
-    Answer.
+    \phantom{~~~~} An ISP logs the data of its users, and when it expects to read that data and finds that it's encrypted upon arrival, then it knows a VPN is being used---this is true for anyone intercepting traffic from the (W)LAN to the ISP. The solution is to hide the packets in plain sight, disguising their contents as something else that \textit{is} readable. A real-life motivation for disguising a VPN is in countries where VPNs are illegal. The scope of IP addresses should also be taken into consideration, as some entire countries may even share (a small range of) them.
     \item\textbf{Looking for meta data---even surrounding encrypted packet contents---is a standard practice; how could someone use cryptography to apply a further layer of security and hide that meta data?} \\
-    Answer.
+    \phantom{~~~~} The concept of analyzing meta data hinges on the fact that said data is truthful, meaning said user's actions are uninfluenced by surveillance. If someone were to apply noise to this meta data by sending garbage packets randomly in the mix, the data becomes harder to extrapolate. For instance, a second layer of meta-security could be enforced where packets are send along a TCP stream along with garbage packets: the real packets are encrypted by the usual encrypted tunneling, but the garbage packets' placement is well-ordered and adheres to an additional pre-exchanged sequence (e.g. the real packets' indices in the stream correspond to Fibonacci numbers).
 \end{itemize}
 \end{orangebox}
 
@@ -1009,8 +1035,23 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{orangebox}{Friday, June 9th}
-This is my own box with a mandatory title.
+\normalsize\begin{orangebox}{Friday, June 9th\vspace{-2em}\begin{flushright}VPN Lab with AWS \emoji{microscope}\emoji{cloud}\end{flushright}}
+\begin{itemize}
+    \item Today's agenda will be to perform a VPN lab. We will buy digital infrastructure from AWS to run a server that we will communicate with using OpenVPN, in order to observe how it encapsulates packets. The goal will be to SSH into the server using our remote machine (Ubuntu Linux VM), capture that traffic on our host machine in the form of a \texttt{.pcap} file using \texttt{tcpdump}, and finally examine said file using Wireshark:
+    \begin{enumerate}
+        \item Accept an invitation to create an account with \href{https://en.wikipedia.org/wiki/Okta,_Inc.}{\textbf{Okta}} (an American identity and access management company), which will allow AJ to add you to an AWS account \texttt{surf-vpn-research} that can be accessed from the Okta dashboard.
+        \item Visit the Console Home of \texttt{surf-vpn-research}, and then go to the EC2 tab (Elastic Control Cloud allows users to rent virtual computers on which to run their own computer applications).
+        \item Select the running instance \texttt{openvpn-test}, and click ``Connect"; in the connection options, select the Session Manager tab to enable SSH connections to the server.
+        \item As long as the server is running, ideally you should be able to ssh into the server on the Ubuntu Linux VM's console; however, we experienced some trouble with this, and will try again on Monday. Instead, we can SSH into the server on our Mac's terminal with the server's IP address: \codebox{ssh ssm-user@54.211.93.59}. \\
+        \textbf{Note:} at this point, the server is configured to only allow connections over two ports from public Internet: TCP/22 for SSH and TCP/443 for OpenVPN TCP.
+        \item Following this \href{https://www.comparitech.com/net-admin/tcpdump-capture-wireshark/}{\textbf{guide}}, first ensure that \texttt{tcpdump} is installed by running \codebox{\$ brew install tcpdump} in a separate terminal.
+        \item After SSH-ing into the server, run \codebox{\$ sudo tcpdump -s 0 -i eth0 -w tcpdump.pcap} to begin capturing traffic with \texttt{tcpdump}. You may let it run for about a minute or two (or until you've done something you'd like to examine while collecting traffic) before ending the session with \codebox{Ctrl+C}.
+        \item Before you can copy the traffic from (what should be) your remote computer to the local one for analysis with Wireshark, you’ll have to change the permissions. By default, \texttt{tcpdump} sessions captured by the root user can’t be copied. Change this by running \codebox{\$ sudo chmod 644 tcpdump.pcap}.
+        \item To copy the new file \texttt{tcpdump.pcap} to the host machine, run \codebox{\$ scp ssm-user@54.211.93.59:home/ssm-user/tcpdump.pcap .\textbackslash}. \\
+    \end{enumerate}
+    \vspace{-1.5em}
+    The \texttt{.pcap} file can now be opened and analyzed with Wireshark on the host computer.
+\end{itemize}
 \end{orangebox}
 \newpage
 
