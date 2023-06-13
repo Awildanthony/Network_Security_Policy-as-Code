@@ -1076,8 +1076,50 @@ border-right-style=double,
 \vspace{-0.5em}
 \end{center}
 
-\begin{shininggoldbox}{Monday, June 12th}
-This is my own box with a mandatory title.
+\begin{shininggoldbox}{Monday, June 12th\vspace{-2em}\begin{flushright}\large pcap expressions \emoji{candy}\emoji{pencil}\end{flushright}}
+\begin{multicols}{2}
+    \Large\textbf{\textit{\underline{What we talk about when we}}} \\ 
+    \Large\textbf{\textit{\underline{talk about pcap expressions}}}
+    \bigskip
+    
+    \normalsize Nik Sultana, University of Pennsylvania
+    \columnbreak
+    \begin{mdframed}
+    \tiny Nik Sultana. 2019. What we talk about when we talk about pcap expressions. In Real World Domain Specific Languages (RWDSL), February 17, 2019, Washington D. C., DC, USA. ACM, New York, NY, USA, 9 pages. \\ https://doi.org/10.1145/nnnnnnn.nnnnnnn
+    \end{mdframed}
+    \vspace{-2em}
+\end{multicols}
+\vspace{-2em}
+\textbf{\hline}
+\begin{itemize}
+    \item The \textbf{BSD Packet Filter (BPF - Berkeley Packet Filter)} : pcap :: Assembly : C
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item The most successful host-based system for capturing network packets.
+        \item Included in the \texttt{libpcap} library, the basis for \texttt{tcpdump}.
+        \item BPF is in the form of instructions for a VM, which are compiled into machine code by a just-in-time (JIT) mechanism and executed in the kernel to reduce overhead from userspace-kernel transitions (see below).
+    \end{itemize}
+    \vspace{-0.75em}
+    \item These packet filters form a domain-specific language (DSL) called ``\textbf{pcap expressions}''.
+    \vspace{-2em}
+    \item These are either fed to IDS/IPS or can be exported as \texttt{.pcap} files for offline analysis.
+    \vspace{0.25em}
+\end{itemize}
+\vspace{-3em}
+\begin{center}
+    \includegraphics[width = 15.5cm, height = 5cm]{User and Kernel Space.png}
+\end{center}
+\vspace{-2em}
+\begin{itemize}
+    \item\textbf{Caper} is a free open-source language provided with the formal semantics of the pcap expression language to act as an equivalence-checker tool.
+    \vspace{-0.75em}
+    \begin{itemize}
+        \item It can emit warnings for queries with unexpected behaviors, such as non-isomorphic permutations of clauses that lead to subsumations (see below).
+        \item It implements a parser for the full pcap language and its semantics to expand them into equivalent pcap expressions.
+        \item These can then be fed to \textbf{SMT solvers}, which are like SAT Solvers except generalized to mathematical formulae instead of just boolean statements.
+        \item Equivalences are determined using bit-vector semantics (see Figs. 1-3).
+    \end{itemize}
+\end{itemize}
 \end{shininggoldbox}
 
 \begin{center}
