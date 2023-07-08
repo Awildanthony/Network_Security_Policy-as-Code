@@ -1206,9 +1206,25 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{shininggoldbox}{Thursday, June 15th}
+\begin{shininggoldbox}{Thursday, June 15th\vspace{-2.2em}\begin{flushright}\large Building Expressions \emoji{candy}\emoji{construction-worker}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Tried my hand at manually translating English network policy into PCAP expressions:
+        \vspace{-2em}
+        \begin{itemize}
+            \item ``The organization should only allow DNS traffic for all staff workstation networks to the approved internal DNS service." $\Longrightarrow$ \\
+            \hspace{-2cm}\codebox{dst port 53 and (src net <work\_net> or dst net <work\_net>)}
+            \item ``The organization should only allow web traffic from all staff workstation networks to the public Internet from the organization's web proxy service." $\Longrightarrow$ \\
+            \codebox{(dst port 80 or dst port 443) and src net <staff\_net> and} ... \\
+            ... \codebox{dst net <public\_net> and src host <web\_proxy>}
+            \item ``The organization should not allow any VPN traffic from the inside all staff workstation networks to the public Internet." $\Longrightarrow$ \\
+            \codebox{not (src net <staff\_net> and dst net <public\_net> and} ... \\
+            ... \codebox{(src port <vpn\_port> or dst port <vpn\_port>))}
+            \item ``The organization's web traffic from all staff workstations network through the organization's web proxy service (VPN). These workstations should not be able to visit any of the following websites in the list \texttt{prohib\_list = [www.foo.com, www.bar.com, www.zoo.com]}." $\Longrightarrow$ \\
+            \codebox{src net <staff\_net> and dst net <public\_net> and src host <web\_proxy> and}
+            \codebox{not (dst host www.foo.com or dst host www.bar.com or dst host www.zoo.com)}
+        \end{itemize}
+        \vspace{-2em}
+        \item Drew up a \href{https://docs.google.com/document/d/1hRBz8IYQxX02fCSRM8ljHqrv7i1HLet6dXB-_NdKSJY/edit?usp=sharing}{\textbf{rough outline}} of our project's soon-to-be substitution algorithm in GDocs.
     \end{itemize}
 \end{shininggoldbox}
 
