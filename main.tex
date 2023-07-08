@@ -309,13 +309,13 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.23}{\textbf{WEEK [VI.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.23}{\fcolorbox{shininggold}{white}{Mon 06/12}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Tue 06/13}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Wed 06/14}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Thrs 06/15}}\textbf{------}\fcolorbox{shininggold}{white}{Fri 06/16} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.23}{\fcolorbox{shininggold}{white}{Mon 06/12}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Tue 06/13}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Wed 06/14}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Thrs 06/15}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Fri 06/16}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\textbf{WEEK [V.]}
+    \hspace{-0.3cm}\small\hyperlink{page.26}{\textbf{WEEK [V.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\fcolorbox{yellow}{white}{Mon 06/19}\textbf{------}\fcolorbox{yellow}{white}{Tue 06/20}\textbf{------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\fcolorbox{yellow}{white}{Thrs 06/22}\textbf{------}\fcolorbox{yellow}{white}{Fri 06/23} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.26}{\fcolorbox{yellow}{white}{Mon 06/19}}\textbf{------}\fcolorbox{yellow}{white}{Tue 06/20}\textbf{------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\fcolorbox{yellow}{white}{Thrs 06/22}\textbf{------}\fcolorbox{yellow}{white}{Fri 06/23} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [VI.]}
@@ -1234,9 +1234,20 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{shininggoldbox}{Friday, June 16th}
+\begin{shininggoldbox}{Friday, June 16th\vspace{-2.2em}\begin{flushright}Dev's Log \#1\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Reviewed some publication/intellectual property licensing stuff with A.J. and Nikita.
+        \vspace{-0.5em}
+        \item Inaugural commit on \href{https://github.com/usnistgov/ngpac}{\textbf{GitHub}}.
+        \vspace{-0.5em}
+        \item Finished first working prototype over the weekend:
+        \vspace{-0.25em}
+        \begin{itemize}
+            \item Added \codebox{eng\_to\_pcap.ml} file, wherein all code is hosted currently: will soon abstract this into separate files when project scales up.
+            \item Added usage comments: will move these to a \texttt{README.md} file eventually once project scales, and hopefully put together a makefile soon.
+            \item Added \codebox{tests.ml} file, which prints results of tests of the form:
+            \codebox{let test\_cases = ["<eng\_input>",  <pcap\_output>"; (* other tests... *)]}
+        \end{itemize}
     \end{itemize}
 \end{shininggoldbox}
 \newpage
