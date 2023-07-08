@@ -1289,9 +1289,11 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{yellowbox}{Wednesday, June 21st}
+\normalsize\begin{yellowbox}{Wednesday, June 21st\vspace{-2.2em}\begin{flushright}\large Generating Test Expressions \emoji{robot}\emoji{test-tube}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.
+        \item Asked ChatGPT to generate 50 network policy \href{https://chat.openai.com/share/212960e8-fdef-4c9d-adf2-39c76e055d18}{\textbf{examples}}; translate them into PCAP expressions if possible, and if not, explain why it wasn't possible; and answer select questions for certain policies to steer it in a particular solution's direction, prompting it again to try and generate PCAP expressions for those. 
+        \vspace{-0.25em}
+        \item There are certain scopes of technology outside of the OSI Model that simply can't be touched by PCAP expressions alone: how \href{https://en.wikipedia.org/wiki/Role-based_access_control}{\textbf{Role-Based Access Control (RBAC)}} could be implemented on a network level, checking permissions for specific machines/hardware on the network, whether foreign devices are plugged into work machines (using a \texttt{netstat} command to see which ports are in use), checking network traffic to see if something is being downloaded, etc.
     \end{itemize}
 \end{yellowbox}
 
