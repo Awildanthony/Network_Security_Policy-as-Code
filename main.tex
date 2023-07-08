@@ -1394,9 +1394,9 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{leafgreenbox}{Friday, June 30th}
+\normalsize\begin{leafgreenbox}{Friday, June 30th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#08}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.
+        \item\href{https://github.com/usnistgov/ngpac/commit/7882f0532e7eaf22b9597a30cf5df01dd23396c1}{\textbf{Massive overhaul}}: split the \codebox{eng\_to\_pcap.ml} file into several files that group relevant pieces of code together. Looking into using \texttt{dune} as a building tool rather than a makefile in hopes of fixing that \codebox{"Error: Unbound"} bug in the codebase. After that's done, I'll make \codebox{.mli} files and start documentation.     
     \end{itemize}
 \end{leafgreenbox}
 
