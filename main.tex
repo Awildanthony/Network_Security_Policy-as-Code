@@ -1385,8 +1385,10 @@ This is my own box with a mandatory title.
 \vspace{-0.4em}
 \end{center}
 
-\begin{hulkgreenbox}{Friday, July 7th}
-This is my own box with a mandatory title.
+\begin{hulkgreenbox}{Friday, July 7th\vspace{-2.2em}\begin{flushright}Dev's Log \#?\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
+    \begin{itemize}
+        \item Fixed the \textbf{TODO:} \codebox{/app/dune-project} issue temporarily by simply removing the file and ensuring the project's \codebox{main.exe} and \codebox{tests.exe} executables compiled and ran smoothly separate from launching the site in \codebox{/app}. The next step will likely be to either try to expand functionality of \codebox{eng\_to\_pcap.ml} by writing the \codebox{remove\_excess\_parens} function and perhaps looking at some more ChatGPT-generated test cases, or integrate the program into the site via a more complicated prototype; this involve as little complication as possible, as I already see a fullstack/backend effort going horribly wrong for several weeks. On that note, there's a cool blog by a Penn State student using OCaml Web frameworks to write a \href{https://discuss.ocaml.org/t/tutorial-full-stack-web-dev-in-ocaml-w-dream-bonsai-and-graphql/9963}{\textbf{fullstack project}}.
+    \end{itemize}
 \end{hulkgreenbox}
 \newpage
 
