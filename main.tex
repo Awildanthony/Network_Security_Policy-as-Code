@@ -321,7 +321,7 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.27}{\textbf{WEEK [VI.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Mon 06/26}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Tue 06/27}}\textbf{------}\fcolorbox{leafgreen}{white}{Wed 06/28}\textbf{------}\fcolorbox{leafgreen}{white}{Thrs 06/29}\textbf{------}\fcolorbox{leafgreen}{white}{Fri 06/30} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Mon 06/26}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Tue 06/27}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Wed 06/28}}\textbf{------}\fcolorbox{leafgreen}{white}{Thrs 06/29}\textbf{------}\fcolorbox{leafgreen}{white}{Fri 06/30} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [VII.]}
@@ -432,7 +432,7 @@ https://github.com/canonical/multipass/releases/tag/v1.11.1
     \end{center}
 \end{redbox}
 
-\begin{redbox}{Tuesday, May 23rd \hspace{0.2cm}(cont. \#1/2)\vspace{-2.2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
+\begin{redbox}{Tuesday, May 23rd \hspace{0.2cm}\texttt{(cont. \#1/2)}\vspace{-2.2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
     \begin{MacTerminal}
  multipass find `\StartConsole` 
 Image                   Aliases      Version     Description
@@ -476,7 +476,7 @@ ros2-humble                          0.1         A development and
     \end{center}
 \end{redbox}
 
-\begin{redbox}{Tuesday, May 23rd \hspace{0.2cm}(cont. \#2/2)\vspace{-2.2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
+\begin{redbox}{Tuesday, May 23rd \hspace{0.2cm}\texttt{(cont. \#2/2)}\vspace{-2.2em}\begin{flushright}\large\emoji{beer}\emoji{technologist}\end{flushright}}
     \begin{itemize}
         \item Spent a bit more time figuring out how to run a web server on a multipass VM (on macOS with an M1 processor), mostly using StackOverflow and prompting ChatGPT (I think I was successful, as I was able to visit the IP address at the end in my browser):
         \begin{enumerate}
@@ -500,7 +500,7 @@ ros2-humble                          0.1         A development and
     \end{itemize}
 \end{redbox}
 
-\begin{redbox}{Wednesday, May 24th \hspace{0.2cm}(cont. \#1/2)\vspace{-2.2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
+\begin{redbox}{Wednesday, May 24th \hspace{0.2cm}\texttt{(cont. \#1/2)}\vspace{-2.2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
     \begin{itemize}
         \begin{itemize}
             \item Open up two terminal windows and run \codebox{python3 -m http.server 8080} and \codebox{python3 -m http.server 9090}, so that they're both up.
@@ -534,7 +534,7 @@ Listen 9090
     \end{itemize}
 \end{redbox}
 
-\begin{redbox}{Wednesday, May 24th \hspace{0.2cm}(cont. \#2/2)\vspace{-2.2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
+\begin{redbox}{Wednesday, May 24th \hspace{0.2cm}\texttt{(cont. \#2/2)}\vspace{-2.2em}\begin{flushright}\large\emoji{fire}\emoji{brick}\end{flushright}}
     \begin{MacTerminal}
  sudo nano /etc/pf.conf`\StartConsole`
 
@@ -631,7 +631,7 @@ target     prot opt source               destination
 
 \newpage
 
-\begin{bloodorangebox}{Tuesday, May 30th \hspace{0.2cm}(cont. \#1/1)\vspace{-2.2em}\begin{flushright}\large\emoji{left-right-arrow}\emoji{warning}\end{flushright}}
+\begin{bloodorangebox}{Tuesday, May 30th \hspace{0.2cm}\texttt{(cont. \#1/1)}\vspace{-2.2em}\begin{flushright}\large\emoji{left-right-arrow}\emoji{warning}\end{flushright}}
     \begin{ubuntu}
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
@@ -749,7 +749,7 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
     \end{itemize}
 \end{bloodorangebox}
 
-\begin{bloodorangebox}{Thursday, June 1st \hspace{0.2cm}(cont. \#1/1)\vspace{-2.2em}\begin{flushright}\large \emoji{bug}\emoji{shark}\end{flushright}}
+\begin{bloodorangebox}{Thursday, June 1st \hspace{0.2cm}\texttt{(cont. \#1/1)}\vspace{-2.2em}\begin{flushright}\large \emoji{bug}\emoji{shark}\end{flushright}}
     \begin{itemize}
         \item\LARGE\textbf{mailserver.pcap} \\
         \normalsize This file contains information about a mail server in an AWS account. You can see this server communicating with multiple computers, one of them is a user (maybe from the company running) this mail server and other computers in internal/external networks.
@@ -973,7 +973,7 @@ $ cd /var/lib/suricata
     \end{ubuntu}
 \end{orangebox}
 
-\begin{orangebox}{Wednesday, June 7th \hspace{0.2cm}(cont. \#1/1)\vspace{-2.2em}\begin{flushright}\large \emoji{hamster}\emoji{counterclockwise-arrows-button}\end{flushright}}
+\begin{orangebox}{Wednesday, June 7th \hspace{0.2cm}\texttt{(cont. \#1/1)}\vspace{-2.2em}\begin{flushright}\large \emoji{hamster}\emoji{counterclockwise-arrows-button}\end{flushright}}
     \switchuser{host=amalysz@ubuntum1, prompt char=\textcolor{ubuntublue}{/var/lib/suricata}}
     \begin{ubuntu}
 $ ls`\BeginConsole`
@@ -1022,7 +1022,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \end{itemize}
 \end{orangebox}
 
-\begin{orangebox}{Thursday, June 8th \hspace{0.2cm}(cont. \#1/2)\vspace{-2.2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
+\begin{orangebox}{Thursday, June 8th \hspace{0.2cm}\texttt{(cont. \#1/2)}\vspace{-2.2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
     \begin{itemize}
         \item\textbf{Is it more secure to run SSH through a non-default port? How can someone find out an SSH service is running on any port without prior knowledge?} \\
         \phantom{~~~~} By running SSH through a non-default port, you prevent communication from all sources that know to look for it, and lower the scope of sources that can contact the server. This filters false-malicious connections to a minimum from scripted attacks, meaning repeated failed connection requests suggest the server is being targeted. This also means that any automated or trusted sources that know to look for the default port must also be informed, however. \\
@@ -1041,7 +1041,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \end{center}
 \end{orangebox}
 
-\begin{orangebox}{Thursday, June 8th \hspace{0.2cm}(cont. \#2/2)\vspace{-2.2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
+\begin{orangebox}{Thursday, June 8th \hspace{0.2cm}\texttt{(cont. \#2/2)}\vspace{-2.2em}\begin{flushright}\emoji{detective}\emoji{exclamation-question-mark}\end{flushright}}
     \begin{itemize}
         \item\textbf{How does a VPN client (say, Ubuntu Linux) know to not leak data by sending traffic outside the VPN (through the normal network connection)?}
         \begin{enumerate}
@@ -1358,9 +1358,9 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{leafgreenbox}{Tuesday, June 27th}
+\normalsize\begin{leafgreenbox}{Tuesday, June 27th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#05}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Made some improvements that resulted in a \href{https://github.com/usnistgov/ngpac/commit/70ece0fe6d537e2e63d131ab03440d1135f0557f}{\textbf{new bug}}. Finalized our \hyperlink{page.2}{\textbf{Abstract}}.
     \end{itemize}
 \end{leafgreenbox}
 
@@ -1454,7 +1454,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \end{itemize}
 \end{hulkgreenbox}
 
-\begin{hulkgreenbox}{Wednesday, July 5th \hspace{0.2cm}(cont. \#1/1)\vspace{-2.2em}\begin{flushright}\emoji{zzz}\emoji{two-hump-camel}\end{flushright}}
+\begin{hulkgreenbox}{Wednesday, July 5th \hspace{0.2cm}\texttt{(cont. \#1/1)}\vspace{-2.2em}\begin{flushright}\emoji{zzz}\emoji{two-hump-camel}\end{flushright}}
     \begin{itemize}
         \begin{itemize}
             \item\href{https://github.com/aantron/dream/tree/master/example/6-echo}{\fbox{\textbf{\texttt{6-echo}}}} We pivot to echoing post requests from a separate terminal.
