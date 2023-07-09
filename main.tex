@@ -327,13 +327,13 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.28}{\textbf{WEEK [VII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.28}{\fcolorbox{hulkgreen}{white}{Mon 07/03}}\textbf{------}\fbox{\hspace{0.22cm}Holiday\hspace{0.22cm}}\textbf{------}\fcolorbox{hulkgreen}{white}{Wed 07/05}\textbf{------}\fcolorbox{hulkgreen}{white}{Thrs 07/06}\textbf{------}\fcolorbox{hulkgreen}{white}{Fri 07/07} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.28}{\fcolorbox{hulkgreen}{white}{Mon 07/03}}\textbf{------}\fbox{\hspace{0.22cm}Holiday\hspace{0.22cm}}\textbf{------}\hyperlink{page.28}{\fcolorbox{hulkgreen}{white}{Wed 07/05}}\textbf{------}\hyperlink{page.30}{\fcolorbox{hulkgreen}{white}{Thrs 07/06}}\textbf{------}\hyperlink{page.30}{\fcolorbox{hulkgreen}{white}{Fri 07/07}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\textbf{WEEK [VIII.]}
+    \hspace{-0.3cm}\small\hyperlink{page.31}{\textbf{WEEK [VIII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\fcolorbox{oceanblue}{white}{Mon 07/10}\textbf{------}\fcolorbox{oceanblue}{white}{Tue 07/11}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\fcolorbox{oceanblue}{white}{Tue 07/11}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [IX.]}
@@ -1334,7 +1334,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     border-right-style=double,
 ]
     \medskip
-    \phantom{~~}\Large\textbf{WEEK \barroman{VI}.} \large(06/26 - 06/30)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~}\textbf{\textit{Continuing Development...}}
+    \phantom{~~}\Large\textbf{WEEK \barroman{VI}.} \large(06/26 - 06/30)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\textbf{\textit{Building a Prototype...}}
 \end{longfbox}
 \\
 
@@ -1415,7 +1415,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
     \medskip
 
-    \phantom{~~}\Large\textbf{WEEK \barroman{VII}.} \large(07/03 - 07/07)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+    \phantom{~~}\Large\textbf{WEEK \barroman{VII}.} \large(07/03 - 07/07)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~}\textbf{\textit{OCaml Web Frameworks...}}
 \end{longfbox}
 \\
 
@@ -1425,9 +1425,13 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{hulkgreenbox}{Monday, July 3rd}
+\normalsize\begin{hulkgreenbox}{Monday, July 3rd\vspace{-2.2em}\begin{flushright}Web Frameworks: \texttt{incr\_dom}, by Jane Street \emoji{white-square-button}\emoji{two-hump-camel}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Added a \href{https://github.com/usnistgov/ngpac/commit/c7ac89a0e2e4395556da2efc8c18c4d8fe867c39}{\textbf{\texttt{.bashrc} file}} to allow execution of \codebox{eng\_to\_pcap.exe} and \codebox{tests.exe} from any path in the repository (ease-of-use).
+        \vspace{-0.25em}
+        \item Found and resolved an issue with the \codebox{/bin/dune} stanzas wherein \codebox{eng\_to\_pcap.ml} was meant to be treated both as a library and an executable; resolved this by simply calling \codebox{eng\_to\_pcap.ml} with \codebox{main.ml}, having the former remain a library defined in \codebox{/lib/dune} and the latter being defined as an executable in \codebox{/bin/dune}.
+        \vspace{-0.25em}
+        \item Investigated potential frontend web frameworks that allow integration with OCaml code, and found Jane Street's \href{https://github.com/janestreet/incr_dom}{\textbf{\texttt{incr\_dom} library}}. Watched through its tutorial demo \href{https://www.youtube.com/watch?v=h_e5pPKI0K4}{\textbf{here}}, and added it as a dependency library in our \href{https://github.com/usnistgov/ngpac/commit/d4a62d5a8179fd744c580016c5ec18553a4334f5}{\textbf{project}}.
     \end{itemize}
 \end{hulkgreenbox}
 
@@ -1442,7 +1446,13 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
         \item At this point, we've shifted our focus from writing the program to building its digital interface in the form of a web application. While \href{https://opensource.janestreet.com/incr_dom/}{\textbf{\texttt{Incr\_dom} by Jane Street}} looked promising, a web framework called \href{https://aantron.github.io/dream/}{\textbf{Dream}} looks to be simpler and therefore more promising. Its repository includes several \href{https://github.com/aantron/dream/tree/master/example}{\textbf{examples}}, which we'll go through today:
         \begin{itemize}
             \item\href{https://github.com/aantron/dream/tree/master/example/1-hello}{\fbox{\textbf{\texttt{1-hello}}}} We first notice the command \codebox{npm install esy \&\& npx esy}; recalling the syntax of \codebox{\&\&}, we know that what follows it is only executed if what precedes it is successful (or \texttt{true}, \texttt{0}, etc.). The package manager \href{https://www.npmjs.com/}{\textbf{npm}} is written in JS and is the default package manager for the JavaScript runtime environment \href{https://nodejs.org/en}{\textbf{Node.js}}. Recall in \texttt{opam} the concept of \href{https://opam.ocaml.org/doc/man/opam-switch.html}{\textbf{\textit{switches}}}, or independent installation prefixes with their own compiler and sets of installed and pinned packages; typically, you would need to create and choose which would be the active one, but \href{https://esy.sh/docs/en/what-why.html}{\textbf{esy}} is a rapid workflow for developing Reason/OCaml projects without switches. The command \codebox{npx esy} initializes the Esy environment in the project: it looks for an \texttt{esy.json} or \texttt{package.json} file in the current directory or the nearest parent directory and sets up the necessary dependencies and build configurations defined in that file. More on \texttt{.json} files later. Taking a look at the code, \codebox{let () = Dream.run (fun \_ -> Dream.html "Good morning, world!")} is where Dream ``translates'' OCaml to HTML quite succinctly: curious to see the CSS.
+        \end{itemize}
+    \end{itemize}
+\end{hulkgreenbox}
 
+\begin{hulkgreenbox}{Wednesday, July 5th \hspace{0.2cm}\texttt{(cont. \#1/2)}\vspace{-2.2em}\begin{flushright}\emoji{zzz}\emoji{two-hump-camel}\end{flushright}}
+    \begin{itemize}
+        \begin{itemize}
             \item\href{https://github.com/aantron/dream/tree/master/example/2-middleware}{\fbox{\textbf{\texttt{2-middleware}}}} The concept of \href{https://www.redhat.com/en/topics/middleware/what-is-middleware}{\textbf{\textit{Middleware}}} is simple to understand, and perhaps the best-known example is the \href{https://ocaml.org/p/dream/1.0.0~alpha4/doc/Dream/index.html#logging}{\textbf{\textit{logger}}}: it can be made super useful with some syntactical sugar (on that note, I learned \codebox{@@} is neater function composition).
 
             \item\href{https://github.com/aantron/dream/tree/master/example/3-router}{\fbox{\textbf{\texttt{3-router}}}} The concept of a \href{https://medium.com/@kennedyjt88/frontend-routing-vs-backend-routing-874b2bc41e5a}{\textbf{\textit{router}}} invites our site to be dynamic, but should also usher some caution from trusting user-input; we will touch upon this in our discussion of injection attacks. So far, the simplest action our router can take is receive \texttt{GET} requests to \codebox{/echo/*} and regurgitate them somehow.
@@ -1450,17 +1460,24 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
             \item\href{https://github.com/aantron/dream/tree/master/example/4-counter}{\fbox{\textbf{\texttt{4-counter}}}} This is a good example of proper ordering in code: \codebox{let count\_requests inner\_handler request = count := !count + 1;} comes first before the page is \texttt{GET} request is even processed, and afterwards the arguments \codebox{inner\_handler request} are themselves just executed together!
 
             \item\href{https://github.com/aantron/dream/tree/master/example/5-promise}{\fbox{\textbf{\texttt{5-promise}}}} The problem with the previous example was its inability to distinguish between successfully-handled requests and those that aren't; here, we explore the actions both preceding and \textit{following} the handling with a \codebox{try\%lwt ... with} catch (I suspect the use of the \texttt{Lwt} library because we're outside of the application layer?). We can then match the output to the respective HTML with \codebox{Dream.get}; a question: does the order of these matter?
-        \end{itemize}
-    \end{itemize}
-\end{hulkgreenbox}
 
-\begin{hulkgreenbox}{Wednesday, July 5th \hspace{0.2cm}\texttt{(cont. \#1/1)}\vspace{-2.2em}\begin{flushright}\emoji{zzz}\emoji{two-hump-camel}\end{flushright}}
-    \begin{itemize}
-        \begin{itemize}
             \item\href{https://github.com/aantron/dream/tree/master/example/6-echo}{\fbox{\textbf{\texttt{6-echo}}}} We pivot to echoing post requests from a separate terminal.
 
             \item\href{https://github.com/aantron/dream/tree/master/example/7-template}{\fbox{\textbf{\texttt{7-template}}}} This is our first look into the interweaving of OCaml and HTML, and a fantastic example of \href{https://en.wikipedia.org/wiki/Cross-site_scripting}{\textbf{\textit{cross-site-scripting attacks (XSS)}}}. That's a misnomer and could more \href{https://en.wikipedia.org/wiki/Code_injection}{\textbf{injection attack}}. I want to look at \href{https://aantron.github.io/dream/#val-html_escape}{\codebox{Dream.html\_escape}}, which ``escapes a string so that it is suitable for use as text inside HTML elements and quoted attribute values", but ``is not suitable for use with unquoted attributes, inline scripts, or inline CSS." The former functionality is borrowed from \href{https://owasp.org/}{\textbf{OWASP}}, a leading international non-profit cybersecurity org, which publishes an annual \href{https://owasp.org/www-project-top-ten/}{\textbf{\textit{\underline{Top 10 Web Application Security Risks}}}} poll. How \codebox{Dream.html\_escape} replaces the harmful formats (\codebox{\%s}, \codebox{\%S}, \codebox{\%c}, \codebox{\%C}, \codebox{\%a}, and \codebox{\%t}) capable of emitting dangerous characters (\texttt{$<$}, \texttt{$>$}, \texttt{\&}, \texttt{"}, or \texttt{'}) is by replacing them with a ``look-alike" via \href{https://en.wikipedia.org/wiki/URL_encoding}{\textbf{URL encoding}}, such as \codebox{$<$}$\rightarrow$\codebox{\%3C}, \codebox{$>$}$\rightarrow$\codebox{\%3E}, \codebox{"}$\rightarrow$\codebox{\%22}, etc. A very useful general tool surrounding encryption, encoding, compression and data analysis is \href{https://gchq.github.io/CyberChef/}{\textbf{CyberChef}}, a tool developed by the \href{https://en.wikipedia.org/wiki/GCHQ}{\textbf{GCHQ}} (British NSA).
+        \end{itemize}
+    \end{itemize}
+    \begin{center}
+        \vspace{-0.5em}
+        \large\bullet \\
+        \large\bullet \\
+        \large\bullet \\
+        \Large\textbf{(\textit{Continued...})}
+    \end{center}
+\end{hulkgreenbox}
 
+\begin{hulkgreenbox}{Wednesday, July 5th \hspace{0.2cm}\texttt{(cont. \#2/2)}\vspace{-2.2em}\begin{flushright}\emoji{zzz}\emoji{two-hump-camel}\end{flushright}}
+    \begin{itemize}
+        \begin{itemize}
             \item\href{https://github.com/aantron/dream/tree/master/example/8-debug}{\fbox{\textbf{\texttt{8-debug}}}} Like some previous examples, uses \codebox{Dream.get} to capture the path component and match it to different error pages like \codebox{/bad} or \codebox{/fail}. Also uses the logger to display information like the error message; a stack trace; if the error is an exception; \codebox{From:} which part of the HTTP stack reported the error (TLS, HTTP, HTTP/2, WebSockets, or the app); \codebox{Blame:} who is likely responsible for the error, the server or the client; \codebox{Severity:} a suggested log level for the error; \codebox{Client:} the client address; request headers; any other request variables.
 
             \item\href{https://github.com/aantron/dream/tree/master/example/9-error}{\fbox{\textbf{\texttt{9-error}}}} This is the final major example: cleverly customizing error messages.
@@ -1476,7 +1493,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{hulkgreenbox}{Thursday, July 6th\vspace{-2.2em}\begin{flushright}Dev's Log \#?\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
+\begin{hulkgreenbox}{Thursday, July 6th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#09}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}
         \item After getting the separate moving parts of \codebox{/NGPaC/test} and \codebox{/NGPaC/bin} to work, unresolved errors are left with the web app in \codebox{/NGPaC/app}: severed communication between \codebox{/bin} and \codebox{/app} that didn't exist before: it's caused by the presence of \codebox{/app/dune-project}, which painstakingly also needs to be there. \textbf{TODO:} fix this.
     \end{itemize}
@@ -1488,7 +1505,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{hulkgreenbox}{Friday, July 7th\vspace{-2.2em}\begin{flushright}Dev's Log \#?\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
+\begin{hulkgreenbox}{Friday, July 7th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#10}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}
         \item Fixed the \textbf{TODO:} \codebox{/app/dune-project} issue temporarily by simply removing the file and ensuring the project's \codebox{main.exe} and \codebox{tests.exe} executables compiled and ran smoothly separate from launching the site in \codebox{/app}. The next step will likely be to either try to expand functionality of \codebox{eng\_to\_pcap.ml} by writing the \codebox{remove\_excess\_parens} function and perhaps looking at some more ChatGPT-generated test cases, or integrate the program into the site via a more complicated prototype; this involve as little complication as possible, as I already see a fullstack/backend effort going horribly wrong for several weeks. On that note, there's a cool blog by a Penn State student using OCaml Web frameworks to write a \href{https://discuss.ocaml.org/t/tutorial-full-stack-web-dev-in-ocaml-w-dream-bonsai-and-graphql/9963}{\textbf{fullstack project}}.
     \end{itemize}
