@@ -333,7 +333,7 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.31}{\textbf{WEEK [VIII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\fcolorbox{oceanblue}{white}{Tue 07/11}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [IX.]}
@@ -390,7 +390,7 @@ title={#1}}
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{redbox}{Monday, May 22nd\vspace{-2.2em}\begin{flushright}\large\textbf{Virtual Orientation} \emoji{laptop}\emoji{wave}\end{flushright}}
+\normalsize\begin{redbox}{Monday, May 22nd\vspace{-2.2em}\begin{flushright}\large\textbf{Orientation Day} \emoji{laptop}\emoji{wave}\end{flushright}}
     \begin{itemize}
         \item Attended welcome meeting via BlueJeans.
         \item Sat in on a meeting of AJ's with people reporting their week's work in the NIST ITL.
@@ -402,7 +402,7 @@ title={#1}}
     \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Tuesday, May 23rd\vspace{-2.2em}\begin{flushright}\large\textbf{VM Struggles} \emoji{beer}\emoji{technologist}\end{flushright}}
+\begin{redbox}{Tuesday, May 23rd\vspace{-2.2em}\begin{flushright}\large\textbf{Virtual Machines} \emoji{beer}\emoji{technologist}\end{flushright}}
     \begin{itemize}
         \item Had trouble with iTAC getting into my work laptop; installed VirtualBox with the goal of installing Ubuntu as the VM inside it. Decided using homebrew would be easier.
         \item Installed multipass using \codebox{brew install multipass}.
@@ -494,7 +494,7 @@ ros2-humble                          0.1         A development and
     \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Wednesday, May 24th\vspace{-2.2em}\begin{flushright}\large\textbf{Firewall Struggles} \emoji{fire}\emoji{brick}\end{flushright}}
+\begin{redbox}{Wednesday, May 24th\vspace{-2.2em}\begin{flushright}\large\textbf{Firewalls} \emoji{fire}\emoji{brick}\end{flushright}}
     \begin{itemize}
         \item Figured out how to configure two HTTP servers, one on port 8080 and one on port 9090 by opening two shells and running \codebox{python3 -m http.server 8080} in one shell and \codebox{python3 -m http.server 9090} in the other; then, I installed \href{https://en.wikipedia.org/wiki/Iptables}{\textbf{iptables}} and configured the iptables such that access to the 9090 HTTP server was allowed, but access to the 8080 server was prohibited. These were the steps I took (ChatGPT, Stack Overflow):
     \end{itemize}
@@ -555,7 +555,7 @@ block in inet proto tcp from any to any port 8080
     \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Thursday, May 25th\vspace{-2.2em}\begin{flushright}\large\textbf{Documentation Begins} \emoji{memo}\emoji{art}\end{flushright}}
+\begin{redbox}{Thursday, May 25th\vspace{-2.2em}\begin{flushright}\large\textbf{Starting Documentation} \emoji{memo}\emoji{art}\end{flushright}}
     \begin{itemize}
         \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.3}{\textbf{Work Log}} and \hyperlink{page.1}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
     \end{itemize}
@@ -566,7 +566,7 @@ block in inet proto tcp from any to any port 8080
     \vspace{-0.5em}
 \end{center}
 
-\begin{redbox}{Friday, May 26th\vspace{-2.2em}\begin{flushright}\large\textbf{Catch-Up} \emoji{runner}\emoji{check-mark-button}\end{flushright}}
+\begin{redbox}{Friday, May 26th\vspace{-2.2em}\begin{flushright}\large\textbf{Blog Catch-Up} \emoji{runner}\emoji{check-mark-button}\end{flushright}}
     \begin{itemize}
         \item Gained access to my NIST Laptop and downloaded necessary apps.
         \vspace{-0.65em}
@@ -601,7 +601,7 @@ block in inet proto tcp from any to any port 8080
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2.2em}\begin{flushright}\large\textbf{Success with \texttt{iptables}} \emoji{left-right-arrow}\emoji{warning}\end{flushright}}
+\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2.2em}\begin{flushright}\large\textbf{Ubuntu \& \texttt{iptables}} \emoji{left-right-arrow}\emoji{warning}\end{flushright}}
     \begin{itemize}
         \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
         \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
@@ -917,7 +917,7 @@ tcp6       0      0  ::1.8021               *.*                    LISTEN`\SU{ro
     \vspace{-0.4em}
 \end{center}
 
-\begin{orangebox}{Tuesday, June 6th\vspace{-2.2em}\begin{flushright}\large\textbf{UTM (new VM) \& Suricata} \emoji{penguin}\emoji{hamster}\end{flushright}}
+\begin{orangebox}{Tuesday, June 6th\vspace{-2.2em}\begin{flushright}\large\textbf{UTM \& Suricata} \emoji{penguin}\emoji{hamster}\end{flushright}}
     \begin{itemize}
         \item \texttt{multipass} is becoming more trouble than it's worth; when trying to launch a shell from the primary (or any) instance, it takes forever and times out. Other people seem to have similar problems: see Issues tab of the \texttt{multipass} \href{https://github.com/canonical/multipass/issues}{\textbf{GitHub repo}}. I suspect this is because of my M1 Mac, so I've looked into what people recommend and found \href{https://mac.getutm.app/}{\textbf{UTM}} as a possible alternative for a Linux VM. Installation steps:
         \begin{itemize}
@@ -1157,7 +1157,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{shininggoldbox}{Tuesday, June 13th\vspace{-2.2em}\begin{flushright}\large PCAP Literature \emoji{candy}\emoji{glasses}\end{flushright}}
+\begin{shininggoldbox}{Tuesday, June 13th\vspace{-2.2em}\begin{flushright}\large PCAP Literature \emoji{candy}\emoji{nerd-face}\end{flushright}}
     \begin{multicols}{2}
         \large\textbf{\textit{\underline{The BSD Packet Filter:}}} \\ 
         \large\textbf{\textit{\underline{A New Architecture for User-level}}} \\
@@ -1206,7 +1206,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\begin{shininggoldbox}{Thursday, June 15th\vspace{-2.2em}\begin{flushright}\large Building Expressions \emoji{candy}\emoji{construction-worker}\end{flushright}}
+\begin{shininggoldbox}{Thursday, June 15th\vspace{-2.2em}\begin{flushright}\large Building PCAP Expressions \emoji{candy}\emoji{construction-worker}\end{flushright}}
     \begin{itemize}         
         \item Tried my hand at manually translating English network policy into PCAP expressions:
         \vspace{-2em}
@@ -1425,7 +1425,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{hulkgreenbox}{Monday, July 3rd\vspace{-2.2em}\begin{flushright}Web Frameworks: \texttt{incr\_dom}, by Jane Street \emoji{white-square-button}\emoji{two-hump-camel}\end{flushright}}
+\normalsize\begin{hulkgreenbox}{Monday, July 3rd\vspace{-2.2em}\begin{flushright}Web Frameworks: \texttt{Incr\_dom}, by Jane Street \emoji{white-square-button}\emoji{two-hump-camel}\end{flushright}}
     \begin{itemize}         
         \item Added a \href{https://github.com/usnistgov/ngpac/commit/c7ac89a0e2e4395556da2efc8c18c4d8fe867c39}{\textbf{\texttt{.bashrc} file}} to allow execution of \codebox{eng\_to\_pcap.exe} and \codebox{tests.exe} from any path in the repository (ease-of-use).
         \vspace{-0.25em}
@@ -1536,9 +1536,23 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{oceanbluebox}{Monday, July 10th}
+\normalsize\begin{oceanbluebox}{Monday, July 10th\vspace{-2.2em}\begin{flushright}XSS \& CSRF Attacks \emoji{cookie}\emoji{ogre}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Updated this blog with the last 2 weeks' worth of entries, because I was being lazy.
+        \vspace{-0.25em}
+        \item Pushed \href{https://github.com/usnistgov/ngpac/commit/95b36f15ec7b2f7f820e348a83b3787e6a200c71}{\textbf{changes}} that removed redundant code, fixed the whitespacing issue, and elaborated upon the debug statements. \textbf{Note:} I should look over the project to look for similar code, not sure why I thought to trust the Internet...
+        \vspace{-0.25em}
+        \item Discovered the \href{https://github.com/usnistgov/ngpac/commit/b6d58f86032b3221fb0d209190066e721e26e094}{\textbf{reason}} why my \codebox{.gitignore} wasn't ignoring \codebox{\_esy/} or related folders was because their compilation includes their own \codebox{.gitignore} file with a \codebox{!*} override command; this isn't an issue, but it presents the project as mostly JS.
+        \vspace{-0.25em}
+        \item Will begin fleshing out the site, starting with a \href{https://github.com/usnistgov/ngpac/commit/4eb2ddce25940be484bef5a02fca9eb0a245e75a}{\textbf{switch}} from the Dream \codebox{example/7-template} to \codebox{example/d-form}, to allow for secure user English input.
+        \begin{itemize}
+            \item Looking through \codebox{example/8-debug} and \codebox{example/9-error}, I see potential to include a beautified error page once the site's main functionality is finished. The problem with this, though, is that \codebox{$\sim$error\_handler:Dream.debug\_error\_handler} looks in the URL for a \codebox{Dream.get} matching, and coincidentally, the \codebox{example/d-form} template is implemented such that an XSS attack is made possible by inputting \codebox{/bad} the textbox. \textbf{TODO:} fix this (via URL decoding?).
+            \item Another security-related concern presented by \codebox{example/d-form} is the threat of \href{https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html}{\textbf{Cross-Site Request Forgery (CSRF ``c-surf")}} attacks. This is prevented in the form's first field via \codebox{Dream.csrf\_tag}, which returns a token \codebox{`Ok \_}. 
+            \item Real-life validation tokens will be used in a required challenge-response mechanism that verifies the identity (origin) and authority of the requester, instead of immediately trusting them because of the session cookies kept by the browser. 
+            \item Bad tokens like \codebox{`Expired \_} or \codebox{`Wrong\_session \_} are indicative of a compromised session, and require special handling for each; additionally, a safer implementation over replying to the form POST directly with HTML involves a redirect request opened in a separate tab with \codebox{Dream.redirect} to avoid compromisation of sensitive data when dealing with login/authentication pages. It is also important not to use \texttt{GET} requests for state-changing operations.
+        \end{itemize}
+        \vspace{-0.5em}
+        \item Pushed \href{https://github.com/usnistgov/ngpac/commit/0794fd40ea6870dc76d9c12ff12164a74c9adff1}{\textbf{changes}} that integrated custom error-page display with the form template.
     \end{itemize}
 \end{oceanbluebox}
 
