@@ -333,7 +333,7 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.31}{\textbf{WEEK [VIII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\fcolorbox{oceanblue}{white}{Wed 07/12}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Wed 07/12}}\textbf{------}\fcolorbox{oceanblue}{white}{Thrs 07/13}\textbf{------}\fcolorbox{oceanblue}{white}{Fri 07/14} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [IX.]}
@@ -1562,9 +1562,13 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{oceanbluebox}{Tuesday, July 11th}
+\normalsize\begin{oceanbluebox}{Tuesday, July 11th\vspace{-2.2em}\begin{flushright}Insufficient Testing \emoji{chart-decreasing}\emoji{clipboard}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item I spoke with AJ about some immediately-relevant career advice and drawing up a short-term roadmap to prepare for the upcoming job search in cyber for Summer 2024.
+        \vspace{-1.75em}
+        \item I decided experimenting a little bit with how to beautify the site, and ended up including some tables in the body of the HTML in \codebox{index.eml.html} (it can be renamed to end in either \codebox{.html} or \codebox{.ml}, depending on whether it's mostly HTML or not, so that the syntax highlighting picks up most of the relevant code) that display the Egyptian deity Thoth. (I think that's a more interesting name an theme that can be added to the name, perhaps, instead of a long-winded acronym like NGPaC. Also, Thoth is the Ancient Egyptian god of writing, magic, and wisdom. He is believed to have invented hieroglyphic writing and was considered the scribe of the gods. He was also associated with translation and interpretation, hence the possible project name.) \textbf{TODO:} figure out how to import HTML in Dream instead of copy-pasting huge chunks of it sloppily.
+        \vspace{-1.75em}
+        \item I realized that this project is getting way too big to not have tests for every single helper function to ensure that they're working properly at this point (because some of them definitely are not for edge cases). \textbf{TODO:} make a scalable testing file for each file in \codebox{/lib} to test its respective functions: much like in the current style of \codebox{tests.ml}, which should afterwards be renamed to something like \codebox{final\_tests.ml}
     \end{itemize}
 \end{oceanbluebox}
 
