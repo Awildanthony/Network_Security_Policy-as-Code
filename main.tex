@@ -336,10 +336,10 @@ title={#1}}
     \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Wed 07/12}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Thrs 07/13}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Fri 07/14}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\textbf{WEEK [IX.]}
+    \hspace{-0.3cm}\small\hyperlink{page.33}{\textbf{WEEK [IX.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\fcolorbox{blue}{white}{Mon 07/17}\textbf{------}\fcolorbox{blue}{white}{Tue 07/18}\textbf{------}\fcolorbox{blue}{white}{Wed 07/19}\textbf{------}\fcolorbox{blue}{white}{Thrs 07/20}\textbf{------}\fcolorbox{blue}{white}{Fri 07/21} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Mon 07/17}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Tue 07/18}}\textbf{------}\fcolorbox{blue}{white}{Wed 07/19}\textbf{------}\fcolorbox{blue}{white}{Thrs 07/20}\textbf{------}\fcolorbox{blue}{white}{Fri 07/21} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [X.]}
@@ -1526,7 +1526,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
     \medskip
 
-    \phantom{~~}\Large\textbf{WEEK \barroman{VIII}.} \large(07/10 - 07/14)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+    \phantom{~~}\Large\textbf{WEEK \barroman{VIII}.} \large(07/10 - 07/14)\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~}\textbf{\textit{Web Exploits \& Testing...}}
 \end{longfbox}
 \\
 
@@ -1542,7 +1542,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
         \vspace{-0.25em}
         \item Pushed \href{https://github.com/usnistgov/ngpac/commit/95b36f15ec7b2f7f820e348a83b3787e6a200c71}{\textbf{changes}} that removed redundant code, fixed the whitespacing issue, and elaborated upon the debug statements. \textbf{Note:} I should look over the project to look for similar code, not sure why I thought to trust the Internet...
         \vspace{-0.25em}
-        \item Discovered the \href{https://github.com/usnistgov/ngpac/commit/b6d58f86032b3221fb0d209190066e721e26e094}{\textbf{reason}} why my \codebox{.gitignore} wasn't ignoring \codebox{\_esy/} or related folders was because their compilation includes their own \codebox{.gitignore} file with a \codebox{!*} override command; this isn't an issue, but it presents the project as mostly JS.
+        \item Discovered that the \href{https://github.com/usnistgov/ngpac/commit/b6d58f86032b3221fb0d209190066e721e26e094}{\textbf{reason}} why my \codebox{.gitignore} wasn't ignoring \codebox{\_esy/} or related folders was because their compilation includes their own \codebox{.gitignore} file with a \codebox{!*} override command; this isn't an issue, but the project appears as mostly JavaScript.
         \vspace{-0.25em}
         \item Will begin fleshing out the site, starting with a \href{https://github.com/usnistgov/ngpac/commit/4eb2ddce25940be484bef5a02fca9eb0a245e75a}{\textbf{switch}} from the Dream \codebox{example/7-template} to \codebox{example/d-form}, to allow for secure user English input.
         \begin{itemize}
@@ -1603,9 +1603,9 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{oceanbluebox}{Friday, July 14th}
+\normalsize\begin{oceanbluebox}{Friday, July 14th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#13}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item Fixed the \href{https://github.com/usnistgov/ngpac/commit/48722b7e5f386ff24f2b10cee2861b8fa9a9ab3d}{\textbf{style}} in \codebox{test/test\_helpers.ml}, and also introduced some beautified printing methods. \textbf{TODO:} replicate for remaining \codebox{test} dir, and start generating tests.    
     \end{itemize}
 \end{oceanbluebox}
 
@@ -1634,9 +1634,14 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{bluebox}{Monday, July 17th}
+\normalsize\begin{bluebox}{Monday, July 17th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#14}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item This is my own box with a mandatory title.     
+        \item\href{https://github.com/usnistgov/ngpac/commit/c648534e0733e5e2680b39d87cd466e227a9de45}{\textbf{Implemented}} remaining testing files in \codebox{test/}, abstracted away common printing functions into \codebox{test/printer.ml}, and added new path script(s) for the new functions.
+        \vspace{-1.75em}
+        \item\href{https://github.com/usnistgov/ngpac/commit/9dc10f8488e6ccfcb78a0492df039a72586b5132}{\textbf{Updated}} and beautified printing format of \codebox{test/final\_tests.ml}.
+        \vspace{-0.5em}
+        \item\href{https://github.com/usnistgov/ngpac/commit/8ceff5ae58688ddf423de0219ea11dfa8a2c8d25}{\textbf{Enabled}} site communication with \codebox{Eng\_to\_pcap}, so you can now input English prompts and have them translated into PCAP expressions that display as HTML.
+        \textbf{TODO:} Research government and industry policy to add relevant tests to \codebox{test/} directory; finalize and build functionality; beautify site; write documentation; consider adding a frontend/backend if time remains; create presentation/final-writeup.
     \end{itemize}
 \end{bluebox}
 
