@@ -339,7 +339,7 @@ title={#1}}
     \hspace{-0.3cm}\small\hyperlink{page.33}{\textbf{WEEK [IX.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Mon 07/17}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Tue 07/18}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Wed 07/19}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Thrs 07/20}}\textbf{------}\fcolorbox{blue}{white}{Fri 07/21} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Mon 07/17}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Tue 07/18}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Wed 07/19}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Thrs 07/20}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Fri 07/21}} \\
     
     \vspace{-1em}
     \hspace{-0.3cm}\small\textbf{WEEK [X.]}
@@ -1641,7 +1641,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
         \item\href{https://github.com/usnistgov/ngpac/commit/9dc10f8488e6ccfcb78a0492df039a72586b5132}{\textbf{Updated}} and beautified printing format of \codebox{test/final\_tests.ml}.
         \vspace{-0.5em}
         \item\href{https://github.com/usnistgov/ngpac/commit/8ceff5ae58688ddf423de0219ea11dfa8a2c8d25}{\textbf{Enabled}} site communication with \codebox{Eng\_to\_pcap}, so you can now input English prompts and have them translated into PCAP expressions that display as HTML.
-        \textbf{TODO:} Research government and industry policy to add relevant tests to \codebox{test/} directory; finalize and build functionality; beautify site; write documentation; consider adding a frontend/backend if time remains; create presentation/final-writeup.
+        \textbf{TODO:} Research government and industry policy to add relevant tests to \codebox{test/}; finalize scope; beautify site; write documentation; create presentation/final-writeup.
     \end{itemize}
 \end{bluebox}
 
@@ -1663,9 +1663,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
 \normalsize\begin{bluebox}{Wednesday, July 19th\vspace{-2.2em}\begin{flushright}Campus Visit \emoji{metro}\emoji{office-building}\end{flushright}}
     \begin{itemize}         
-        \item Visited the NIST Gaithersburg Campus. 
-        \vspace{-0.5em}
-        \item Continued writing \& passing tests for the \codebox{test} directory.
+        \item Visited the NIST Gaithersburg Campus, where I continued writing tests for \codebox{test/}.
     \end{itemize}
 \end{bluebox}
 
@@ -1677,7 +1675,10 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
 \normalsize\begin{bluebox}{Thursday, July 20th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#16}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}  
-        \item This is my own box with a mandatory title.     
+        \item Finished writing bulk of tests, but will postpone the remaining few until after everything else is finished---things seem to be working for now.
+        \vspace{-0.5em}
+        \item \href{https://github.com/usnistgov/ngpac/commit/03813d89c6673417f4bdf33e963a6d6e58322776}{\textbf{Debugged}} the project such that all tests in \codebox{final\_tests.ml} now pass. \\
+        \textbf{TODO:} project needs support for breaking apart separate sentences/sentences that can be immediately split apart according to ``, and", etc. Project needs finalized scope.
     \end{itemize}
 \end{bluebox}
 
