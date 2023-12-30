@@ -4,6 +4,10 @@ This is a daily blog for a project that is in the process of being published und
 It is currently in the repository [usnistgov/ngpac](https://github.com/usnistgov/ngpac), but will be forked to this profile soon.
 Until then, a copy of its README.md file is found below.
 
+[Read the blog HERE](https://github.com/Awildanthony/NIST_SURF_2023_Blog/blob/main/NGPaC_Blog.pdf)
+
+![Image Preview](images/blog_preview.png)
+
 # **P-Capyrus**
 ## ***Next Generation Policy-as-Code***
 
