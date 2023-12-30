@@ -254,16 +254,16 @@ title={#1}}
 \begin{center}
     \textcolor{red}{
     \HUGE \underline{Next-Generation} \\
-    \HUGE \underline{Policy as Code} \\
-    \bigskip
-    \normalsize created by \\
-    \medskip
-    \hspace{-2cm}\large Anthony Malysz\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}A.J. Stein \\
-    \hspace{-1.7cm}\normalsize\texttt{anthonymalysz@college.harvard.edu}\phantom{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\texttt{alexander.stein@nist.gov} \\
+    \HUGE \underline{Policy as Code} \large \\
+    \vspace{2em}
+    Anthony \hspace{0.2cm}Malysz \\
+    \texttt{anthonymalysz@college.harvard.edu} \\
+    \vspace{1em}
+    A.J. \hspace{0.2cm}Stein \\
+    \texttt{alexander.stein@nist.gov} \\
+    \vspace{1em}
     }
 \end{center}
-
-\newpage
 
 \begin{blackbox}{\begin{center}\LARGE\textcolor{red}{Abstract}\end{center}}
     \normalfont
@@ -272,86 +272,161 @@ title={#1}}
         --- \href{https://github.com/usnistgov/ngpac/tree/main}{\texttt{\textbf{usnistgov/ngpac/README.md}}}
     \end{center}
     
-    \phantom{~~~~} IT governance and information security policies are often complex to formulate, and even more complex to implement. Technical management and organization executives draft policy language with the intent to inform all employees---not necessarily engineers, let alone the computers themselves---who must actualize said policies. After policy language is drafted, expert technical staff are needed to implement the policy to their respective technical domains, such as network and security administration of Linux operating systems. Oftentimes, rigorous information security programs require additional impartial, third-party experts to come and assess the implementation and review its readiness for production use separate of those that wrote the policy and implemented the systems to support it. \\
-
-    \phantom{~~~~} In short, even minor policy changes require significant trickle-down efforts by skilled employees in high-demand sectors of industry that are difficult to employ and retain. It would be ideal to have software read and interpret these plain-English policy documents instead, providing code in the appropriate domains to implement and assess them. In this project, we aim to explore this research space with the following approach:
+    \normalsize\phantom{~~~~} IT governance and infosec policies are often complex to formulate, and even more complex to implement. Technical management and organization executives draft policy language with the intent to inform all employees---not necessarily engineers, let alone the computers themselves---who must actualize said policies. After policy language is drafted, expert technical staff are needed to implement the policy to their respective technical domains, such as network and security administration of Linux operating systems. \\
+    \phantom{~~~~} Oftentimes, rigorous information security programs require additional impartial, third-party experts to come and assess the implementation and review its readiness for production use separate of those that wrote the policy and implemented the systems to support it. \\
+    \phantom{~~~~} It would be ideal to have software read and interpret these plain-English policy documents instead, providing code in the appropriate domains to implement and assess them. In this project, we aim to explore this research space with the following approach:
 
     \begin{enumerate}
-        \item Review the current state of software and machine learning models to convert policy documents to Linux system network and security administration functions in a semi-automated or completely automated fashion.
+        \item Review the current state of software to convert policy documents into system network and security administration functions in a semi- or totally-automated fashion.
 
-        \item Build a naive prototype with a visual interface to handle ``formatted" human-friendly policy documents and convert them into PCAP expressions now (and eBPF in the long-term) for a novel Policy-as-Code approach to manage network and security functions for modern Linux operating systems.
+        \item Build a prototype web application to handle policy documents in ``formatted" English and convert them into PCAP expressions (and eBPF later): a novel policy-as-code approach to manage network and security functions for modern Linux operating systems.
 
-        \item Publicize this repository as open-source project for the long-term goal of integrating more sophisticated machine-learning models in translating English sentences, integrating existing open-source projects into NGPaC for added functionality, searching for specialized data with which to train and test these models with, and more.
+        \item Publish this repository as open-source project for the long-term goal of integrating existing open-source projects into NGPaC for added functionality, searching for specialized data with which to train and test these models with, and more.
     \end{enumerate}
 \end{blackbox}
 
 \newpage
 
+\begin{blackbox}{\begin{center}\LARGE\textcolor{red}{Table of Contents}\end{center}}
+    \normalfont
+    \hyperlink{page.1}{\textbf{Abstract}} ...........................................................................................................................\hfill 1\\
+    \hyperlink{page.2}{\textbf{Table of Contents}} ...........................................................................................................\hfill 2\\
+    \hyperlink{page.4}{\textbf{Work Log}} .........................................................................................................................\hfill 4\\
+    \textbf{Week \barroman{I}: ``\textit{Virtual Machines...}"}\\
+    \phantom{~~~~}\hyperlink{page.5}{Orientation Day} .............................................................................................................\hfill 5\\
+    \phantom{~~~~}\hyperlink{page.5}{Virtual Machines} ...........................................................................................................\hfill 5\\
+    \phantom{~~~~}\hyperlink{page.7}{Firewalls} ........................................................................................................................\hfill 7\\
+    \phantom{~~~~}\hyperlink{page.9}{Starting Documentation} ................................................................................................\hfill 9\\
+    \phantom{~~~~}\hyperlink{page.9}{Blog Catch-Up} ...............................................................................................................\hfill 9\\
+    \textbf{Week \barroman{II}: ``\textit{Network Protocols...}"}\\
+    \phantom{~~~~}\hyperlink{page.10}{Ubuntu \& iptables} .........................................................................................................\hfill 10\\
+    \phantom{~~~~}\hyperlink{page.12}{Investigating Protocols} ................................................................................................. \hfill 12\\
+    \phantom{~~~~}\hyperlink{page.13}{GitHub Bug Issue \& Wireshark} ...................................................................................\hfill 13\\
+    \phantom{~~~~}\hyperlink{page.15}{Wireshark: File Excavation} ..........................................................................................\hfill 15\\
+    \textbf{Week \barroman{III}: ``\textit{Intercepting Network Traffic...}"}\\
+    \phantom{~~~~}\hyperlink{page.16}{Firewalls \& Network Traffic}  .........................................................................................\hfill 16\\
+    \phantom{~~~~}\hyperlink{page.17}{UTM \& Suricata} ..........................................................................................................\hfill 17\\
+    \phantom{~~~~}\hyperlink{page.18}{UTM \& Suricata, Continued} ........................................................................................\hfill 18\\
+    \phantom{~~~~}\hyperlink{page.20}{Q\&A with VPNs} ..........................................................................................................\hfill 20\\
+    \phantom{~~~~}\hyperlink{page.23}{VPN Lab with AWS} .....................................................................................................\hfill 23\\
+    \textbf{Week \barroman{IV}: ``\textit{Researching PCAP Expressions...}"}\\
+    \phantom{~~~~}\hyperlink{page.24}{PCAP Expressions}  ......................................................................................................\hfill 24\\
+    \phantom{~~~~}\hyperlink{page.25}{PCAP Literature} .........................................................................................................\hfill 25\\
+    \phantom{~~~~}\hyperlink{page.25}{PCAP Translators} .......................................................................................................\hfill 25\\
+    \phantom{~~~~}\hyperlink{page.26}{Building PCAP Expressions} ........................................................................................\hfill 26\\
+    \phantom{~~~~}\hyperlink{page.26}{Dev's Log \texttt{\#01}} ..............................................................................................................\hfill 26\\
+    \textbf{Week \barroman{V}: ``\textit{Starting Development...}"}\\
+    \phantom{~~~~}\hyperlink{page.27}{Travel \& Pen-testing Enrichment}  ................................................................................\hfill 27\\
+    \phantom{~~~~}\hyperlink{page.27}{Generating Test Expressions} ........................................................................................\hfill 27\\
+    \phantom{~~~~}\hyperlink{page.27}{Dev's Log \texttt{\#02}} ..............................................................................................................\hfill 27\\
+    \phantom{~~~~}\hyperlink{page.27}{Dev's Log \texttt{\#03}} ..............................................................................................................\hfill 27\\
+    \textbf{Week \barroman{VI}: ``\textit{Building a Prototype...}"}\\
+    \phantom{~~~~}\hyperlink{page.28}{Dev's Log \texttt{\#04}} ..............................................................................................................\hfill 28\\
+    \phantom{~~~~}\hyperlink{page.28}{Dev's Log \texttt{\#05}} ..............................................................................................................\hfill 28\\
+    \phantom{~~~~}\hyperlink{page.28}{Dev's Log \texttt{\#06}} ..............................................................................................................\hfill 28\\
+    \phantom{~~~~}\hyperlink{page.28}{Dev's Log \texttt{\#07}} ..............................................................................................................\hfill 28\\
+    \phantom{~~~~}\hyperlink{page.28}{Dev's Log \texttt{\#08}} ..............................................................................................................\hfill 28
+\end{blackbox}
+
+\newpage
+
+\begin{blackbox}{}
+    \normalfont
+    \textbf{Week \barroman{VII}: ``\textit{OCaml Web Frameworks...}"}\\
+    \phantom{~~~~}\hyperlink{page.29}{Web Frameworks: Incr\_dom, by Jane Street} ..............................................................\hfill 29\\
+    \phantom{~~~~}\hyperlink{page.29}{Web Frameworks: Dream} ............................................................................................\hfill 29\\
+    \phantom{~~~~}\hyperlink{page.31}{Dev's Log \texttt{\#09}} ..............................................................................................................\hfill 31\\
+    \phantom{~~~~}\hyperlink{page.31}{Dev's Log \texttt{\#10}} ..............................................................................................................\hfill 31\\
+    \textbf{Week \barroman{VIII}: ``\textit{Web Exploits \& Testing...}"}\\
+    \phantom{~~~~}\hyperlink{page.32}{XSS \& CSRF Attacks} ..................................................................................................\hfill 32\\
+    \phantom{~~~~}\hyperlink{page.33}{Insufficient Testing} .......................................................................................................\hfill 33\\
+    \phantom{~~~~}\hyperlink{page.33}{Dev's Log \texttt{\#11}} ..............................................................................................................\hfill 33\\
+    \phantom{~~~~}\hyperlink{page.33}{Dev's Log \texttt{\#12}} ..............................................................................................................\hfill 33\\
+    \phantom{~~~~}\hyperlink{page.33}{Dev's Log \texttt{\#13}} ..............................................................................................................\hfill 33\\
+    \textbf{Week \barroman{IX}: ``\textit{Finalizing Scope...}"}\\
+    \phantom{~~~~}\hyperlink{page.34}{Dev's Log \texttt{\#14}} ..............................................................................................................\hfill 34\\
+    \phantom{~~~~}\hyperlink{page.34}{Dev's Log \texttt{\#15}} ..............................................................................................................\hfill 34\\
+    \phantom{~~~~}\hyperlink{page.34}{Campus Visit} ...............................................................................................................\hfill 34\\
+    \phantom{~~~~}\hyperlink{page.34}{Dev's Log \texttt{\#16}} ..............................................................................................................\hfill 34\\
+    \phantom{~~~~}\hyperlink{page.34}{Dev's Log \texttt{\#17}} ..............................................................................................................\hfill 34\\
+    \textbf{Week \barroman{X}: ``\textit{Preparing Presentation...}"}\\
+    \phantom{~~~~}\hyperlink{page.35}{Outlining Presentation} ................................................................................................\hfill 35\\
+    \phantom{~~~~}\hyperlink{page.35}{Drafting Presentation \texttt{\#01}} ...........................................................................................\hfill 35\\
+    \phantom{~~~~}\hyperlink{page.35}{Drafting Presentation \texttt{\#02}} ...........................................................................................\hfill 35\\
+    \phantom{~~~~}\hyperlink{page.35}{Finalizing Presentation} ................................................................................................\hfill 35\\
+    \phantom{~~~~}\hyperlink{page.35}{Practicing Presentation} ................................................................................................\hfill 35\\
+    \textbf{Week \barroman{XI}: ``\textit{Preparing Presentation...}"}\\
+    \phantom{~~~~}\hyperlink{page.36}{Dev's Log \texttt{\#18}} ..............................................................................................................\hfill 36\\
+    \phantom{~~~~}\hyperlink{page.36}{Dev's Log \texttt{\#19}} ..............................................................................................................\hfill 36\\
+    \phantom{~~~~}\hyperlink{page.36}{Dev's Log \texttt{\#20}} ..............................................................................................................\hfill 36\\
+    \phantom{~~~~}\hyperlink{page.36}{Final Presentation \& Parting Thoughts} .......................................................................\hfill 36
+\end{blackbox}
+
 \begin{blackbox}{\begin{center}\LARGE\textcolor{red}{Work\hspace{0.5cm}Log}\end{center}}
     \normalfont
-    \hspace{-0.3cm}\small\textbf{\hyperlink{page.4}{WEEK [I.]}} \\
+    \hspace{-0.3cm}\small\textbf{\hyperlink{page.5}{WEEK [I.]}} \\
     \vspace{0.25em}
-    \indent\hspace{-0.12cm}\vline\normalsize\textbf{------------}\hyperlink{page.4}{\fcolorbox{red}{white}{Mon 05/22}}\textbf{------}\hyperlink{page.4}{\fcolorbox{red}{white}{Tue 05/23}}\textbf{------}\hyperlink{page.6}{\fcolorbox{red}{white}{Wed 05/24}}\textbf{------}\hyperlink{page.8}{\fcolorbox{red}{white}{Thrs 05/25}}\textbf{------}\hyperlink{page.8}{\fcolorbox{red}{white}{Fri 05/26}} \\
+    \indent\hspace{-0.12cm}\vline\normalsize\textbf{------------}\hyperlink{page.5}{\fcolorbox{red}{white}{Mon 05/22}}\textbf{------}\hyperlink{page.5}{\fcolorbox{red}{white}{Tue 05/23}}\textbf{------}\hyperlink{page.7}{\fcolorbox{red}{white}{Wed 05/24}}\textbf{------}\hyperlink{page.9}{\fcolorbox{red}{white}{Thrs 05/25}}\textbf{------}\hyperlink{page.9}{\fcolorbox{red}{white}{Fri 05/26}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\textbf{\hyperlink{page.9}{WEEK [II.]}}
+    \hspace{-0.3cm}\small\textbf{\hyperlink{page.10}{WEEK [II.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.9}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\hyperlink{page.11}{\fcolorbox{bloodorange}{white}{Wed 05/31}}\textbf{------}\hyperlink{page.12}{\fcolorbox{bloodorange}{white}{Thrs 06/01}}\textbf{------}\hyperlink{page.14}{\fcolorbox{bloodorange}{white}{Fri 06/02}} \\
+    \normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.10}{\fcolorbox{bloodorange}{white}{Tue 05/30}}\textbf{------}\hyperlink{page.12}{\fcolorbox{bloodorange}{white}{Wed 05/31}}\textbf{------}\hyperlink{page.13}{\fcolorbox{bloodorange}{white}{Thrs 06/01}}\textbf{------}\hyperlink{page.15}{\fcolorbox{bloodorange}{white}{Fri 06/02}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.15}{\textbf{WEEK [III.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.16}{\textbf{WEEK [III.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.15}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\hyperlink{page.16}{\fcolorbox{orange}{white}{Tue 06/06}}\textbf{------}\hyperlink{page.17}{\fcolorbox{orange}{white}{Wed 06/07}}\textbf{------}\hyperlink{page.19}{\fcolorbox{orange}{white}{Thrs 06/08}}\textbf{------}\hyperlink{page.22}{\fcolorbox{orange}{white}{Fri 06/09}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.16}{\fcolorbox{orange}{white}{Mon 06/05}}\textbf{------}\hyperlink{page.17}{\fcolorbox{orange}{white}{Tue 06/06}}\textbf{------}\hyperlink{page.18}{\fcolorbox{orange}{white}{Wed 06/07}}\textbf{------}\hyperlink{page.20}{\fcolorbox{orange}{white}{Thrs 06/08}}\textbf{------}\hyperlink{page.23}{\fcolorbox{orange}{white}{Fri 06/09}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.23}{\textbf{WEEK [VI.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.24}{\textbf{WEEK [VI.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.23}{\fcolorbox{shininggold}{white}{Mon 06/12}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Tue 06/13}}\textbf{------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Wed 06/14}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Thrs 06/15}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Fri 06/16}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.24}{\fcolorbox{shininggold}{white}{Mon 06/12}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Tue 06/13}}\textbf{------}\hyperlink{page.25}{\fcolorbox{shininggold}{white}{Wed 06/14}}\textbf{------}\hyperlink{page.26}{\fcolorbox{shininggold}{white}{Thrs 06/15}}\textbf{------}\hyperlink{page.26}{\fcolorbox{shininggold}{white}{Fri 06/16}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.26}{\textbf{WEEK [V.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.27}{\textbf{WEEK [V.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.26}{\fcolorbox{yellow}{white}{Tue 06/20}}\textbf{------}\hyperlink{page.26}{\fcolorbox{yellow}{white}{Wed 06/21}}\textbf{------}\hyperlink{page.26}{\fcolorbox{yellow}{white}{Thrs 06/22}}\textbf{------}\hyperlink{page.26}{\fcolorbox{yellow}{white}{Fri 06/23}} \\
+    \normalsize\indent \vline\textbf{------------}\fbox{\hspace{0.28cm}Holiday\hspace{0.28cm}}\textbf{------}\hyperlink{page.27}{\fcolorbox{yellow}{white}{Tue 06/20}}\textbf{------}\hyperlink{page.27}{\fcolorbox{yellow}{white}{Wed 06/21}}\textbf{------}\hyperlink{page.27}{\fcolorbox{yellow}{white}{Thrs 06/22}}\textbf{------}\hyperlink{page.27}{\fcolorbox{yellow}{white}{Fri 06/23}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.27}{\textbf{WEEK [VI.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.28}{\textbf{WEEK [VI.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Mon 06/26}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Tue 06/27}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Wed 06/28}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Thrs 06/29}}\textbf{------}\hyperlink{page.27}{\fcolorbox{leafgreen}{white}{Fri 06/30}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.28}{\fcolorbox{leafgreen}{white}{Mon 06/26}}\textbf{------}\hyperlink{page.28}{\fcolorbox{leafgreen}{white}{Tue 06/27}}\textbf{------}\hyperlink{page.28}{\fcolorbox{leafgreen}{white}{Wed 06/28}}\textbf{------}\hyperlink{page.28}{\fcolorbox{leafgreen}{white}{Thrs 06/29}}\textbf{------}\hyperlink{page.28}{\fcolorbox{leafgreen}{white}{Fri 06/30}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.28}{\textbf{WEEK [VII.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.29}{\textbf{WEEK [VII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.28}{\fcolorbox{hulkgreen}{white}{Mon 07/03}}\textbf{------}\fbox{\hspace{0.22cm}Holiday\hspace{0.22cm}}\textbf{------}\hyperlink{page.28}{\fcolorbox{hulkgreen}{white}{Wed 07/05}}\textbf{------}\hyperlink{page.30}{\fcolorbox{hulkgreen}{white}{Thrs 07/06}}\textbf{------}\hyperlink{page.30}{\fcolorbox{hulkgreen}{white}{Fri 07/07}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.29}{\fcolorbox{hulkgreen}{white}{Mon 07/03}}\textbf{------}\fbox{\hspace{0.22cm}Holiday\hspace{0.22cm}}\textbf{------}\hyperlink{page.29}{\fcolorbox{hulkgreen}{white}{Wed 07/05}}\textbf{------}\hyperlink{page.31}{\fcolorbox{hulkgreen}{white}{Thrs 07/06}}\textbf{------}\hyperlink{page.31}{\fcolorbox{hulkgreen}{white}{Fri 07/07}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.31}{\textbf{WEEK [VIII.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.32}{\textbf{WEEK [VIII.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.31}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Wed 07/12}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Thrs 07/13}}\textbf{------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Fri 07/14}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.32}{\fcolorbox{oceanblue}{white}{Mon 07/10}}\textbf{------}\hyperlink{page.33}{\fcolorbox{oceanblue}{white}{Tue 07/11}}\textbf{------}\hyperlink{page.33}{\fcolorbox{oceanblue}{white}{Wed 07/12}}\textbf{------}\hyperlink{page.33}{\fcolorbox{oceanblue}{white}{Thrs 07/13}}\textbf{------}\hyperlink{page.33}{\fcolorbox{oceanblue}{white}{Fri 07/14}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.33}{\textbf{WEEK [IX.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.34}{\textbf{WEEK [IX.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Mon 07/17}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Tue 07/18}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Wed 07/19}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Thrs 07/20}}\textbf{------}\hyperlink{page.33}{\fcolorbox{blue}{white}{Fri 07/21}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.34}{\fcolorbox{blue}{white}{Mon 07/17}}\textbf{------}\hyperlink{page.34}{\fcolorbox{blue}{white}{Tue 07/18}}\textbf{------}\hyperlink{page.34}{\fcolorbox{blue}{white}{Wed 07/19}}\textbf{------}\hyperlink{page.34}{\fcolorbox{blue}{white}{Thrs 07/20}}\textbf{------}\hyperlink{page.34}{\fcolorbox{blue}{white}{Fri 07/21}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.34}{\textbf{WEEK [X.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.35}{\textbf{WEEK [X.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.34}{\fcolorbox{darkblue}{white}{Mon 07/24}}\textbf{------}\hyperlink{page.34}{\fcolorbox{darkblue}{white}{Tue 07/25}}\textbf{------}\hyperlink{page.34}{\fcolorbox{darkblue}{white}{Wed 07/26}}\textbf{------}\hyperlink{page.34}{\fcolorbox{darkblue}{white}{Thrs 07/27}}\textbf{------}\hyperlink{page.34}{\fcolorbox{darkblue}{white}{Fri 07/28}} \\
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.35}{\fcolorbox{darkblue}{white}{Mon 07/24}}\textbf{------}\hyperlink{page.35}{\fcolorbox{darkblue}{white}{Tue 07/25}}\textbf{------}\hyperlink{page.35}{\fcolorbox{darkblue}{white}{Wed 07/26}}\textbf{------}\hyperlink{page.35}{\fcolorbox{darkblue}{white}{Thrs 07/27}}\textbf{------}\hyperlink{page.35}{\fcolorbox{darkblue}{white}{Fri 07/28}} \\
     
     \vspace{-1em}
-    \hspace{-0.3cm}\small\hyperlink{page.35}{\textbf{WEEK [XI.]}}
+    \hspace{-0.3cm}\small\hyperlink{page.36}{\textbf{WEEK [XI.]}}
     \vspace{0.25em}
     
-    \normalsize\indent \vline\textbf{------------}\hyperlink{page.35}{\fcolorbox{indigo}{white}{Mon 07/31}}\textbf{------}\hyperlink{page.35}{\fcolorbox{indigo}{white}{Tue 08/01}}\textbf{------}\hyperlink{page.35}{\fcolorbox{indigo}{white}{Wed 08/02}}\textbf{------}\hyperlink{page.35}{\fcolorbox{indigo}{white}{Thrs 08/03}}
+    \normalsize\indent \vline\textbf{------------}\hyperlink{page.36}{\fcolorbox{indigo}{white}{Mon 07/31}}\textbf{------}\hyperlink{page.36}{\fcolorbox{indigo}{white}{Tue 08/01}}\textbf{------}\hyperlink{page.36}{\fcolorbox{indigo}{white}{Wed 08/02}}\textbf{------}\hyperlink{page.36}{\fcolorbox{indigo}{white}{Thrs 08/03}}
 \end{blackbox}
 
 \newpage
@@ -557,7 +632,7 @@ block in inet proto tcp from any to any port 8080
 
 \begin{redbox}{Thursday, May 25th\vspace{-2.2em}\begin{flushright}\large\textbf{Starting Documentation} \emoji{memo}\emoji{art}\end{flushright}}
     \begin{itemize}
-        \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.3}{\textbf{Work Log}} and \hyperlink{page.1}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
+        \item Spent the whole day creating this document from scratch, getting it to a point where all weeks' text boxes are colored, styled, and ready to be written in; also, see new sections \hyperlink{page.4}{\textbf{Work Log}} and \hyperlink{page.2}{\textbf{Table of Contents}} (works in progress) with clickable hyperlinks to other pages (you can only see these by hovering over them, but I'll try to make it obvious when links are link-y). Will share with AJ soon, so that this can become a collaborative document to mostly log progress, but also to communicate ideas/concerns/goals.
     \end{itemize}
 \end{redbox}
 
@@ -601,7 +676,7 @@ block in inet proto tcp from any to any port 8080
     \vspace{-0.5em}
 \end{center}
 
-\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2.2em}\begin{flushright}\large\textbf{Ubuntu \& \texttt{iptables}} \emoji{left-right-arrow}\emoji{warning}\end{flushright}}
+\normalsize\begin{bloodorangebox}{Tuesday, May 30th\vspace{-2.2em}\begin{flushright}\large\textbf{Ubuntu \& iptables} \emoji{left-right-arrow}\emoji{warning}\end{flushright}}
     \begin{itemize}
         \item We refreshed what we did last week, and tried to see if I could run a Linux VM on my work laptop, now that it's accessible. Trying to run Powershell on Windows 10 as administrator (administrative command prompt) didn't work, as I needed a user/login from NIST. Trying to run the command \codebox{usl --install} in a normal Powershell prompt didn't work either, with the same result. We'll try to resolve this issue by filing a waiver (asking for permission, in the government bureaucracy) to NIST.
         \item In the meantime, on my Mac I tried repeating all of last week's shenanigans with \codebox{iptables}, only this time actually in the Linux VM:
@@ -698,8 +773,8 @@ target     prot opt source               destination
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.1cm}\large{HTTP}\end{tabular}}       & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{Hypertext Transfer Protocol} is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. In a typical flow over HTTP, a client machine makes a request---these have a version type, URL, method, request headers, and (optional) body---to a server, which then responds.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.3cm}\large{SSH}\end{tabular}}                       & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{Secure Shell} is a cryptographic network protocol for operating network services securely over unsecured networks. Its most notable applications are remote login and command-line execution. SSH applications are based on a client–server architecture, connecting an SSH client instance with an SSH server. SSH operates as a layered protocol suite with three principal hierarchical components: the transport layer provides server authentication, confidentiality, and integrity; the user authentication protocol validates the user to the server; and the connection protocol multiplexes the encrypted tunnel into multiple logical communication channels.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.3cm}\large{FTP}\end{tabular}}             & \hspace{0.06cm}\cellcolor{blueone}\footnotesize{\textbf{Application}} & \tiny{\textbf{File Transfer Protocol} is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network. FTP is built on a client–server model architecture using separate control and data connections between the client and the server. FTP users may authenticate themselves with a clear-text sign-in protocol, usually with a username and password, but can connect anonymously if the server is configured to allow it. FTP is often secured with SSL/TLS or replaced with SSH File Transfer Protocol.}                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \cline{1-1} \cline{3-3} 
-        \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.26cm}\large{TCP}\end{tabular}}      & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{Transmission Control Protocol} is one of the main protocols of the IP suite. \hyperlink{page.10}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \cline{1-1} \cline{3-3} 
-        \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.24cm}\large{UDP}\end{tabular}}             & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{User Datagram Protocol} is one of the core communication protocols of the Internet protocol suite used to send messages to other hosts on an IP network. \hyperlink{page.10}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
+        \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.26cm}\large{TCP}\end{tabular}}      & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{Transmission Control Protocol} is one of the main protocols of the IP suite. \hyperlink{page.11}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \cline{1-1} \cline{3-3} 
+        \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.24cm}\large{UDP}\end{tabular}}             & \hspace{0.18cm}\cellcolor{bluetwo}\footnotesize{\textbf{Transport}}   & \tiny{\textbf{User Datagram Protocol} is one of the core communication protocols of the Internet protocol suite used to send messages to other hosts on an IP network. \hyperlink{page.11}{\textbf{[See Above]}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.55cm}\large{IP}\end{tabular}}                   & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Protocol} is the network layer communications protocol for relaying datagrams across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. IP has the task of delivering packets from the source host to the destination host solely based on the IP addresses in the packet headers. IP defines packet structures that encapsulate the data to be delivered. It also defines addressing methods that are used to label the datagram with source and destination information. The original Internet Protocol Version 4 (IPv4) is the dominant protocol of the Internet, with successor IPv6.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\ \cline{1-1} \cline{3-3} 
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.15cm}\large{ICMP}\end{tabular}} & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Internet Control Message Protocol} is used by network devices (e.g. router), to send error messages and operational info. indicating (un)successful communications with another IP address. ICMP differs from transport protocols (TCP, UDP, etc.) in that it is not typically used to exchange data between systems nor regularly employed by end-user network applications.}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \cline{1-1} \cline{3-3} 
         \textbf{\begin{tabular}[c]{@{}c@{}}\hspace{0.25cm}\large{ARP}\end{tabular}}        & \hspace{0.32cm}\cellcolor{bluethree}\footnotesize{\textbf{Internet}}    & \tiny{\textbf{Address Resolution Protocol} is a communication protocol that discovers the link layer address (e.g. MAC address) associated with a given internet layer address (usually IPv4).}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \\ \cline{1-1} \cline{3-3} 
@@ -1360,7 +1435,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
 \normalsize\begin{leafgreenbox}{Tuesday, June 27th\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#05}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item Made some improvements that resulted in a \href{https://github.com/usnistgov/ngpac/commit/70ece0fe6d537e2e63d131ab03440d1135f0557f}{\textbf{new bug}}. Finalized our \hyperlink{page.2}{\textbf{Abstract}}.
+        \item Made some improvements that resulted in a \href{https://github.com/usnistgov/ngpac/commit/70ece0fe6d537e2e63d131ab03440d1135f0557f}{\textbf{new bug}}. Finalized our \hyperlink{page.1}{\textbf{Abstract}}.
     \end{itemize}
 \end{leafgreenbox}
 
@@ -1731,7 +1806,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{darkbluebox}{Tuesday, July 25th\vspace{-2.2em}\begin{flushright}Drafting Presentation \emoji{speaking-head}\emoji{megaphone}\end{flushright}}
+\normalsize\begin{darkbluebox}{Tuesday, July 25th\vspace{-2.2em}\begin{flushright}Drafting Presentation \texttt{\#01} \emoji{speaking-head}\emoji{megaphone}\end{flushright}}
     \begin{itemize}         
         \item Finished slides 5-8 of presentation.
     \end{itemize}
@@ -1743,9 +1818,9 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{darkbluebox}{Wednesday, July 26th\vspace{-2.2em}\begin{flushright}Drafting Presentation \emoji{speaking-head}\emoji{megaphone}\end{flushright}}
+\normalsize\begin{darkbluebox}{Wednesday, July 26th\vspace{-2.2em}\begin{flushright}Drafting Presentation \texttt{\#02} \emoji{speaking-head}\emoji{megaphone}\end{flushright}}
     \begin{itemize}         
-        \item Finished presentation (slides 9-16).    
+        \item Finished slides 9-16 of presentation.    
     \end{itemize}
 \end{darkbluebox}
 
@@ -1826,7 +1901,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
 
 \normalsize\begin{indigobox}{Wednesday, August 2nd\vspace{-2.2em}\begin{flushright}Dev's Log \texttt{\#20}\hspace{0.5cm}\emoji{technologist}\emoji{open-book}\end{flushright}}
     \begin{itemize}         
-        \item Borrowed \href{https://github.com/usnistgov/ngpac/blob/main/LICENSE.md}{\codebox{LICENSE.md}} and \href{https://github.com/usnistgov/ngpac/blob/main/CONTRIBUTING.md}{\codebox{CONTRIBUTING.md}} from \href{https://github.com/usnistgov/OSCAL}{\textbf{OSCAL}} team.     
+        \item Borrowed \href{https://github.com/usnistgov/ngpac/blob/main/LICENSE.md}{\codebox{LICENSE.md}} and \href{https://github.com/usnistgov/ngpac/blob/main/CONTRIBUTING.md}{\codebox{CONTRIBUTING.md}} from the NIST \href{https://github.com/usnistgov/OSCAL}{\textbf{OSCAL}} team.     
     \end{itemize}
 \end{indigobox}
 
@@ -1836,7 +1911,7 @@ alert tcp any any -> $HOME_NET any (msg:"Yahoo"; content:"|59 4d 53 47 00 13 00 
     \vspace{-0.4em}
 \end{center}
 
-\normalsize\begin{indigobox}{Thursday, August 3rd\vspace{-2.2em}\begin{flushright}Gave Presentation \emoji{speaking-head}\emoji{megaphone}\end{flushright}}
+\normalsize\begin{indigobox}{Thursday, August 3rd\vspace{-2.2em}\begin{flushright}Final Presentation \& Parting Thoughts \emoji{megaphone}\emoji{thought-balloon}\end{flushright}}
     \begin{itemize}
         \item Gave presentation to Student Colloquium with other IT Lab SURFers.
         \vspace{-0.5em}
