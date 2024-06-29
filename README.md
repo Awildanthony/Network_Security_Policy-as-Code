@@ -15,6 +15,8 @@ An easy-to-use prototype that parses English-language prompts detailing informat
 
 Built as a 2023 SURF Project at the National Institute of Standards and Technology (NIST), an agency of the federal government. It is a soon-to-be open-sourced project on GitHub with the goal of semi-automatically enforcing all cybersecurity policy pertaining to Layers 3 & 4 network traffic.
 
+![Homepage Demo](images/homepage-demo.png?raw=true "Homepage Demo")
+
 Currently a work in progress by [@Awildanthony](https://github.com/Awildanthony).
 
 Documentation is being continually drafted alongside development of the web application, as well as additional support for the translation tool.
